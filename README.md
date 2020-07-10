@@ -11,7 +11,7 @@ Welcome to the CodePound! A social media site geared toward developers and the a
 
 ## Tree / Controller-WireFrame / Mockups
 ### Tree
-<img src = "./pictures/tree.png">
+<img src = "./pictures/Tree.png">
 
 ### Controller
 <img src = "./pictures/Controller-wireframe.png">
