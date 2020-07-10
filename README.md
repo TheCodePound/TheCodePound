@@ -29,8 +29,12 @@ Welcome to the CodePound! A social media site geared toward developers and the a
 ### Profile component
 <img src = "./pictures/Profile component.png">
 
+### User update
+<img src = "./pictures/Update view.png">
+
 ## Schema (DataBase Design):
 <img src = "./pictures/Database-relations.png">
+
 
 ### Users TABLE
 ```SQL
