@@ -1,68 +1,92 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# CodePound- Group Project
+## Members:
+Benjamin Doggett, Eric Camp, Jason Towner, Paul Brooks
 
-## Available Scripts
+## IDEA and USER:
+Welcome to the CodePound! A social media site geared toward developers and the ability for said developers to share the creative projects they have built throughout their careers. The CodePound is comparable to Instagram in sense of the post comment/ like of each project (the “like” can be a “bone” or something to set itself apart) However, not only does it allow developers to share projects, but receive feedback and or help on projects in order to better refine these projects for live hosting. Thus, when employers or others see these projects there is a more polished project backed by a community of developers who are helping one another grow... Also great for any developer hoping to get some extra teaching experience and learn some new things by helping other developers.
 
-In the project directory, you can run:
+## Features:
+<img src = "./pictures/mvp-part1.png">
+<img src = "./pictures/mvp-part2.png">
 
-### `npm start`
+## Tree / Controller-WireFrame / Mockups
+### Tree
+<img src = "./pictures/tree.png">
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Controller
+<img src = "./pictures/Controller-wireframe.png">
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Mockups
+### Sign in component
+<img src = "./pictures/Sign-in-component.png">
 
-### `npm test`
+### Register component
+<img src = "./pictures/Register component.png">
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Home component
+<img src = "./pictures/Home component.png">
 
-### `npm run build`
+### Profile component
+<img src = "./pictures/Profile component.png">
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Schema (DataBase Design):
+<img src = "./pictures/Database-relations.png">
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Users TABLE
+```SQL
+CREATE TABLE users(
+    id SERIAL PRIMARY KEY,
+    full_name VARCHAR(100),
+    email VARCHAR(50)
+    password TEXT,
+    profile_pic TEXT
+);
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Posts TABLE 
+```SQL
+CREATE TABLE posts(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id),
+    title VARCHAR(50),
+    img TEXT,
+    content TEXT
+);
+```
 
-### `npm run eject`
+### Comments TABLE
+```SQL 
+CREATE TABLE comments(
+id SERIAL PRIMARY KEY,
+user_id INTEGER REFERENCES users(id),
+post_id INTEGER REFERENCES posts(id),
+comments TEXT,
+bones INTEGER
+);
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### image TABLE 
+```SQL 
+CREATE TABLE image (
+  id SERIAL PRIMARY KEY,
+  post_id INTEGER,
+  post_img TEXT
+);
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### languages TABLE 
+```SQL
+CREATE TABLE languages (
+  id SERIAL PRIMARY KEY,
+  languages TEXT
+);
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### junction TABLE 
+```SQL
+CREATE TABLE junction (
+  id SERIAL PRIMARY KEY,
+  posts_id INTEGER,
+  languages_id INTEGER
+);
+```
