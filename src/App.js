@@ -1,12 +1,40 @@
-import React from 'react';
-import './App.css';
+import React, {useEffect} from 'react';
+import './styles/App.scss'
+import Routes from './routes.js'
+import Nav from './components/Nav.js'
+import Footer from './components/Footer.js'
+import axios from 'axios'
+import {loginUser} from './ducks/userReducer.js'
+import {connect} from 'react-redux'
 
-function App() {
+function App(props) {
+
+useEffect(() => {
+  axios.get('/api/user')
+  .then(res => {
+    props.loginUser(res.data)
+  })
+  .catch(err => console.log(err))
+}, [])
+
+
   return (
     <div className="App">
-      <h1>App Component</h1>
+      <div>
+        <Nav/>
+      </div>
+      <div className="routes">
+        {Routes}
+      </div>
+      <div>
+        <Footer/>
+      </div>
     </div>
   );
 }
+
+const mapStateToProps = reduxState => reduxState
+
+export default connect(mapStateToProps, {loginUser})(App)
 
 export default App;
