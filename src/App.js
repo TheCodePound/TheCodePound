@@ -10,7 +10,7 @@ import {connect} from 'react-redux'
 function App(props) {
 
 useEffect(() => {
-  axios.get('/api/user')
+  axios.get('/auth/user')
   .then(res => {
     props.loginUser(res.data)
   })
