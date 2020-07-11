@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
+import {loginUser} from '../ducks/userReducer.js'
+import "../styles/App.scss"
+import { connect } from 'react-redux'
 
-export default function Signin() {
+function Signin(props) {
+
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    function login() {
+        axios.post('/auth/login', {email, password})
+        .then( res => {
+            props.loginUser(res.data)
+            props.history.push('/Home')
+        })
+        .catch(err => {alert('Username or password incorrect')})
+    }
 
     return (
     <div>
@@ -11,9 +27,19 @@ export default function Signin() {
             </div>
             <div>
                 <h1>Welcome to the Pound</h1>
-                <input/>
-                <input/>
-                <button>Sign In</button>
+                <input
+                    placeholder="Email"
+                    type="email"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                />
+                <input
+                    placeholder="Password"
+                    type="password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                />
+                <button onClick={() => login()}>Sign In</button>
                 <h4>Don't Have an Account?</h4>
                 <Link to="/Register">
                     <h4>Register Here</h4>
@@ -30,3 +56,9 @@ export default function Signin() {
     </div>
     )
 }
+
+const mapStateToProps = reduxState => reduxState
+
+const mapDispatchToProps = {loginUser}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signin)
