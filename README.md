@@ -11,10 +11,10 @@ Welcome to the CodePound! A social media site geared toward developers and the a
 
 ## Tree / Controller-WireFrame / Mockups
 ### Tree
-<img src = "./pictures/Tree.png">
+<img src = "./pictures/Tree FINAL.png">
 
 ### Controller
-<img src = "./pictures/Controller-wireframe.png">
+<img src = "./pictures/Controller-wireframe FINAL.png">
 
 ### Mockups
 ### Sign in component
@@ -24,13 +24,10 @@ Welcome to the CodePound! A social media site geared toward developers and the a
 <img src = "./pictures/Register component.png">
 
 ### Home component
-<img src = "./pictures/Home component.png">
+<img src = "./pictures/Home FINAL component.png">
 
 ### Profile component
-<img src = "./pictures/Profile component.png">
-
-### User update
-<img src = "./pictures/Update view.png">
+<img src = "./pictures/Profile FINAL component.png">
 
 ## Schema (DataBase Design):
 <img src = "./pictures/Database-relations.png">
