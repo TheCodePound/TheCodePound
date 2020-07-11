@@ -25,6 +25,7 @@ useEffect(() => {
       <div>
         <Nav/>
       </div>
+      <div className="center-div">
       <div>
         <LeftNav/>
       </div>
@@ -32,6 +33,7 @@ useEffect(() => {
         {Routes}
       </div>
       <RightNav/>
+      </div>
       <div>
         <Footer/>
       </div>
