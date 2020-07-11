@@ -17,7 +17,7 @@
 //Line 68
 
 .nav-container {
-
+    @include flex(space-evenly)
     .nav-main-logo {
 
     }
