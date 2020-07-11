@@ -1,4 +1,42 @@
 const bcrypt = require('bcrypt')
+const nodemailer = require('nodemailer')
+
+function main(email, full_name) {
+
+  let tranporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: 'TheCodePound@gmail.com',
+      pass: 'devmountain1@'
+    },
+    tls: {
+      rejectUnauthorized: false
+    }
+  })
+
+  const mailOptions = {
+    from: '"TheCodePound" <TheCodePound@gmail.com>',
+    to: email,
+    subject: 'Welcome to the Pound',
+    text: 'Welcome email from The Code Pound',
+    html: `<body style="text-align: center;">
+        <h1 style="color: #38B6FF;">Welcome ${full_name}!</h1>
+          <img style="background-color: transparent;width:200px;position:relative;top:10px;" src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Ficons8-dog-64.png?v=1594436168204"/>
+        <h2 style="color:#FF5757; position:relative;top:0px;">Thank you for joining Code Pound</h2>
+        <h3 style="color:#FFDE59;position:relative;top:0px;">Welcome to the CodePound! A social media site geared toward developers and the ability for said developers to share the creative projects they have built throughout their careers. The CodePound is comparable to Instagram in sense of the post comment/ like of each project (the “like” can be a “bone” or something to set itself apart) However, not only does it allow developers to share projects, but receive feedback and or help on projects in order to better refine these projects for live hosting. Thus, when employers or others see these projects there is a more polished project backed by a community of developers who are helping one another grow... Also great for any developer hoping to get some extra teaching experience and learn some new things by helping other developers.</h3>
+         </body>`
+  }
+
+  tranporter.sendMail(mailOptions, function(error, info) {
+    if (error) {
+      console.log(error)
+    }
+    else {
+      console.log('email sent:' + info.response)
+    }
+  })
+}
+
 
 module.exports = {
   register: async (req, res) => {
@@ -18,6 +56,7 @@ module.exports = {
   
       req.session.user = newUser
       res.status(200).send(req.session.user)
+      main(email, full_name)
   },
 
   login: async (req, res) => {

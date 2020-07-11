@@ -13,6 +13,11 @@ function LeftNav(props) {
     const [newPassword, setNewPassword] = useState("")
     const [image, setImage] = useState("")
 
+    function updateUser() {
+        const {id} = props.user.user
+      axios.put(`/auth/update/${id}`, {name, email, newPassword, image})  
+    }
+
 
     const pathname = props.location.pathname
 
@@ -95,7 +100,9 @@ function LeftNav(props) {
                 value={image}
                 onChange={e => setImage(e.target.value)}
             />
-            <button>Update</button>
+            <button 
+                onClick={() => updateUser()}>Update
+            </button>
         </div>
     )
     }
