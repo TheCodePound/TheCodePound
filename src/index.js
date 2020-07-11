@@ -9,8 +9,8 @@ import store from './ducks/store.js'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider>
-    <HashRouter store={store}>
+    <Provider store={store}>
+    <HashRouter>
     <App />
     </HashRouter>
     </Provider>

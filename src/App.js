@@ -3,6 +3,8 @@ import './styles/App.scss'
 import Routes from './routes.js'
 import Nav from './components/Nav.js'
 import Footer from './components/Footer.js'
+import LeftNav from './components/LeftNav'
+import RightNav from './components/RightNav'
 import axios from 'axios'
 import {loginUser} from './ducks/userReducer.js'
 import {connect} from 'react-redux'
@@ -23,9 +25,13 @@ useEffect(() => {
       <div>
         <Nav/>
       </div>
+      <div>
+        <LeftNav/>
+      </div>
       <div className="routes">
         {Routes}
       </div>
+      <RightNav/>
       <div>
         <Footer/>
       </div>
@@ -37,4 +43,3 @@ const mapStateToProps = reduxState => reduxState
 
 export default connect(mapStateToProps, {loginUser})(App)
 
-export default App;
