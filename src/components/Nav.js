@@ -33,7 +33,7 @@ if (pathname === '/') {
             <div>
                 <img className="nav-main-logo" src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Ficons8-dog-64.png?v=1594436168204" alt="Dog Logo"/>
             </div>
-            <div>
+            <div className="signin-nav-right">
                 <a href="#about">
                     <h2>About</h2>
                 </a>
@@ -51,7 +51,7 @@ else if (pathname === '/Register') {
             <div>
                 <img className="nav-main-logo" src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Ficons8-dog-64.png?v=1594436168204" alt="Dog Logo"/>
             </div>
-            <div>
+            <div className="signin-nav-right">
                 <a href="#about">
                     <h2>About</h2>
                 </a>

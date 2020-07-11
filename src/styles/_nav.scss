@@ -1,5 +1,9 @@
 .signin-nav-container {
+    @include flex(space-between);
 
+    .signin-nav-right {
+        @include flex(center);
+    }
 }
 
 .nav-main-logo {
