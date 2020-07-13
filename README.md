@@ -17,17 +17,23 @@ Welcome to the CodePound! A social media site geared toward developers and the a
 <img src = "./pictures/Controller-wireframe FINAL.png">
 
 ### Mockups
-### Sign in component
-<img src = "./pictures/Sign-in-component.png">
+### Landing component
+<img src = "./pictures/Landing FINAL component.png">
 
 ### Register component
 <img src = "./pictures/Register component.png">
 
 ### Home component
-<img src = "./pictures/Home FINAL component.png">
+<img src = "./pictures/Home FINAL 2 component.png">
+
+### Home adding a language view
+<img src = "./pictures/Language Select Screen.png">
 
 ### Profile component
-<img src = "./pictures/Profile FINAL component.png">
+<img src = "./pictures/Profile FINAL 2 component.png">
+
+### Update user profile component
+<img src = "./pictures/Profile Update view.png">
 
 ## Schema (DataBase Design):
 <img src = "./pictures/Database-relations.png">
