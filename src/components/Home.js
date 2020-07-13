@@ -5,6 +5,9 @@ import { getPosts } from "../ducks/postReducer"
 
 const Home = ({ postReducer, posts, getPosts, ...props }) => {
   const [loading, setLoading] = useState(true)
+  // const [title, setTitle] = useState("")
+  // const [img, setImg] = useState('')
+  // const [content, setContrent] = useState('')
 
   // commenting out until post controller is built out so it dosent break anything.
   // useEffect(() => {
@@ -19,17 +22,50 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   //     .finally(() => setLoading(false))
   // }, [])
 
+  // function handleTitle(e) {
+  //   setTitle(e.target.value)
+  // }
+
+  // function handleImg(e) {
+  //   setImg(e.target.value)
+  // }
+
+  // function handleContent(e) {
+  //   setContent(e.target.value)
+  // }
+
+  // function handleSubmit(e) {
+  //   e.preventDefault()
+  //   axios
+  //     .post("/api/posts", { title, img, content, fullname: props.userReducer.user.fullname })
+  //     .then((res) => {
+  //       props.history.push("/Home")
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  // }
+
+  // dont know if we will want this button or not. Might add some good user experience.
+  // function cancel() {
+  //   props.history.push("/Home")
+  // }
+
   return (
     <div>
-      <div>
+      <div className='pound-container'>
         {props.userReducer.languages}
-        <div>
+        <div className='pound-text-details'>
           {props.userReducer.profile_pic}
-          <inpit placeholder='Project details here...' />
-          <div>
+          <input placeholder='Project details here...' />
+        </div>
+        <div className='pound-gif-btn'>
+          <div className='pound-icon-img'>
             <img />
             <img />
             <img />
+          </div>
+          <div className='pound-btns'>
             <button>Add Language +</button>
             <button>Post Pound</button>
           </div>
