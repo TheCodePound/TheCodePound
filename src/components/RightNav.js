@@ -41,7 +41,11 @@ function RightNav(props) {
 
     else {
         return (
-            <div><div>Tail Wagging Favorites</div>{languageList}</div>
+            <div>
+                <div>Tail Wagging Favorites</div>
+                <div></div>
+                <div>{languageList}</div>
+            </div>
         )
     }
 

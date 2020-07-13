@@ -107,7 +107,7 @@ function LeftNav(props) {
     )
     }
 
-    else if (pathname === '/Home') {
+    else {
         return (
             <div>
                 <img 
