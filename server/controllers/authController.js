@@ -82,7 +82,7 @@ module.exports = {
 
   updateUserInfo: async (req, res) => {
     const db = req.app.get('db')
-    const {id} = req.session.user
+    const {user_id} = req.session.user
     const {full_name, email, new_email, password, new_password, profile_pic} = req.body
 
     const existingUser = await db.get_user_by_email(email)
@@ -99,7 +99,7 @@ module.exports = {
     const salt = bcrypt.genSaltSync(10)
     const newHash = bcrypt.hashSync(new_password, salt)
 
-    const [newInfo] = await db.update_user_info([id, full_name, email, new_email, password, newHash, profile_pic ])
+    const [newInfo] = await db.update_user_info([user_id, full_name, email, new_email, password, newHash, profile_pic ])
   
     req.session.user = newInfo
     res.status(200).send(req.session.user)
