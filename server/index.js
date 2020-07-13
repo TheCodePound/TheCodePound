@@ -22,6 +22,7 @@ app.use(
 // authentication end points
 app.post('/auth/register', authCtrl.register)
 app.post(`/auth/login`, authCtrl.login)
+app.put(`/auth/update`, authCtrl.updateUserInfo)
 app.delete(`/auth/logout`, authCtrl.logout)
 app.get(`/auth/user`, authCtrl.getUser)
 
