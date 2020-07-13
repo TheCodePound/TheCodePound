@@ -18,17 +18,17 @@ const Routes = () => {
       <ProtectedRoute path='/Register' component={Register} />
     </Switch>
   )
+}
 
-  const ProtectedRoute = (props) => {
-    const {
-      userReducer: { user },
-    } = useStore().getState()
+const ProtectedRoute = (props) => {
+  const {
+    userReducer: { user },
+  } = useStore().getState()
 
-    if (user.email === "") {
-      return <Redirect to='/' />
-    } else {
-      return <Route {...props} />
-    }
+  if (user.email === "") {
+    return <Redirect to='/' />
+  } else {
+    return <Route {...props} />
   }
 }
 
