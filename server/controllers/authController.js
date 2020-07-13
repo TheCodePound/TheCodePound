@@ -83,23 +83,26 @@ module.exports = {
   updateUserInfo: async (req, res) => {
     const db = req.app.get('db')
     const {id} = req.session.user
-    const {full_name, email, password, profile_pic} = req.body
+    const {full_name, email, password, new_password, profile_pic} = req.body
 
-    // const checkPassword = 
+    const existingUser = await db.get_user_by_email(email)
 
-    // note start here when you get back 
-    // note might need to get users password off of session somehow and need to check if it matches the 
-    // pass word that the use input before they can change the password
-    // need to do a check if old password matches new password 
-    //   return new password set as the password then hash and salt it
-    // else return err 'wrong password'
+    if(!existingUser[0]){
+      return res.status(404).send('user does not exist')
+    }
 
-
+    const authenticated = bcrypt.compareSync(password, existingUser[0].password)
+    if(!authenticated){
+      return res.status(403).send('incorrect password')
+    }
+    
     const salt = bcrypt.genSaltSync(10)
-    const hash = bcrypt.hashSync(password, salt)
+    const newHash = bcrypt.hashSync(new_password, salt)
 
-    const newInfo = await db.update_user_info([[full_name, email, hash, profile_pic ]])
-
+    const [newInfo] = await db.update_user_info([id, full_name, email, password, newHash, profile_pic ])
+  
+    req.session.user = newInfo
+    res.status(200).send(req.session.user)
   },
 
   logout: (req, res) => {
