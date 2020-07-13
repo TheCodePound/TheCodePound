@@ -1,47 +1,45 @@
-import React, {useEffect} from 'react';
-import './styles/App.scss'
-import Routes from './routes.js'
-import Nav from './components/Nav.js'
-import Footer from './components/Footer.js'
-import LeftNav from './components/LeftNav'
-import RightNav from './components/RightNav'
-import axios from 'axios'
-import {loginUser} from './ducks/userReducer.js'
-import {connect} from 'react-redux'
+import React, { useEffect } from "react"
+import "./styles/App.scss"
+import Routes from "./routes.js"
+import Nav from "./components/Nav.js"
+import Footer from "./components/Footer.js"
+import LeftNav from "./components/LeftNav"
+import RightNav from "./components/RightNav"
+import axios from "axios"
+import { loginUser } from "./ducks/userReducer.js"
+import { connect } from "react-redux"
 
 function App(props) {
-
-useEffect(() => {
-  axios.get('/auth/user')
-  .then(res => {
-    props.loginUser(res.data)
-  })
-  .catch(err => console.log(err))
-}, [])
-
+  useEffect(() => {
+    axios
+      .get("/auth/user")
+      .then((res) => {
+        props.loginUser(res.data)
+      })
+      .catch((err) => console.log(err))
+  }, [])
 
   return (
-    <div className="App">
+    <div className='App'>
       <div>
-        <Nav/>
+        <Nav />
       </div>
-      <div className="center-div">
+      <div className='center-div'>
+        <div>
+          <LeftNav />
+        </div>
+        <div className='routes'>
+          <Routes />
+        </div>
+        <RightNav />
+      </div>
       <div>
-        <LeftNav/>
-      </div>
-      <div className="routes">
-        {Routes}
-      </div>
-      <RightNav/>
-      </div>
-      <div>
-        <Footer/>
+        <Footer />
       </div>
     </div>
-  );
+  )
 }
 
-const mapStateToProps = reduxState => reduxState
+const mapStateToProps = (reduxState) => reduxState
 
-export default connect(mapStateToProps, {loginUser})(App)
-
+export default connect(mapStateToProps, { loginUser })(App)
