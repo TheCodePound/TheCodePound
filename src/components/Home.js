@@ -22,9 +22,9 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   return (
     <div>
       <div>
-        {props.userReducer.languages}
+        {props.user.user.languages}
         <div>
-          {props.userReducer.profile_pic}
+          {props.user.user.profile_pic}
           <inpit placeholder='Project details here...' />
           <div>
             <img />

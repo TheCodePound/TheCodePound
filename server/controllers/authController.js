@@ -16,7 +16,7 @@ function main(email, full_name) {
 
   const mailOptions = {
     from: '"TheCodePound" <TheCodePound@gmail.com>',
-    to: email,
+    to: "jairohmsford77@hotmail.com",
     subject: 'Welcome to the Pound',
     text: 'Welcome email from The Code Pound',
     html: `<body style="text-align: center;">
@@ -56,6 +56,7 @@ module.exports = {
   
       req.session.user = newUser
       res.status(200).send(req.session.user)
+      console.log(email, full_name)
       main(email, full_name)
   },
 

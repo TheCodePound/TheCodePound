@@ -9,8 +9,12 @@ function Register(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullname, setFullname] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("")
 
   function register() {
+    if (password !== confirmPassword) {
+      alert("passwords do not match")}
+      else {
     axios
       .post("/auth/register", { fullname, email, password })
       .then((res) => {
@@ -20,7 +24,7 @@ function Register(props) {
       .catch((err) => {
         alert("Could not register.");
       });
-  }
+  }}
 
   return (
     <div>
@@ -67,8 +71,8 @@ function Register(props) {
                 className="signin-bone-fields"
                 placeholder=" Confirm Password"
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
               <button className="signin-bone-btn" onClick={() => register()}>Register</button>
             </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { logoutUser, getUser } from "../ducks/userReducer";
+import { logoutUser, getUser, loginUser } from "../ducks/userReducer";
 import axios from "axios";
 import "../styles/App.scss";
 
@@ -102,5 +102,5 @@ function Nav(props) {
 const mapStateToProps = (reduxState) => reduxState;
 
 export default withRouter(
-  connect(mapStateToProps, { logoutUser, getUser })(Nav)
+  connect(mapStateToProps, { logoutUser, getUser, loginUser })(Nav)
 );
