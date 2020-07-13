@@ -47,8 +47,10 @@
 
 .nav-container {
     @include flex(space-evenly);
+    background-color: $red;
     .nav-main-logo {
-
+        margin-left: 50px;
+        padding:20px;
     }
 
     .nav-search {
