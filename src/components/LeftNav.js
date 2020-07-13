@@ -13,6 +13,11 @@ function LeftNav(props) {
     const [newPassword, setNewPassword] = useState("")
     const [image, setImage] = useState("")
 
+    function updateUser() {
+        const {id} = props.user.user
+      axios.put(`/auth/update/${id}`, {name, email, newPassword, image})  
+    }
+
 
     const pathname = props.location.pathname
 
@@ -26,13 +31,13 @@ function LeftNav(props) {
     else if (pathname === '/Profile') {
 
     return (
-        <div>
+        <div className="leftnavmain">
             <img 
                 src=""
                 alt="user"
             />
             <h2>username</h2>
-            <div>
+            <div className="left-nav-div">
                 <img
                     src=""
                     alt="person"
@@ -41,21 +46,21 @@ function LeftNav(props) {
                     <h2>Home</h2>
                 </Link>     
             </div>
-            <div>
+            <div div className="left-nav-div">
                 <img
                     src=""
                     alt="people"
                 />
                 <h2>Friends</h2>  
             </div>
-            <div>
+            <div div className="left-nav-div">
                 <img
                     src=""
                     alt="bone"
                 />
                 <h2>Dog Bones</h2>
             </div>
-            <div>
+            <div div className="left-nav-div">
                 <img
                     src=""
                     alt="plus"
@@ -95,20 +100,22 @@ function LeftNav(props) {
                 value={image}
                 onChange={e => setImage(e.target.value)}
             />
-            <button>Update</button>
+            <button 
+                onClick={() => updateUser()}>Update
+            </button>
         </div>
     )
     }
 
     else if (pathname === '/Home') {
         return (
-            <div>
+            <div className="left-nav-main">
                 <img 
                     src=""
                     alt="user"
                 />
                 <h2>username</h2>
-                <div>
+                <div className="left-nav-div">
                     <img
                         src=""
                         alt="person"
@@ -117,7 +124,7 @@ function LeftNav(props) {
                         <h2>Profile</h2>
                     </Link>
                 </div>
-                <div>
+                <div className="left-nav-div">
                     <img
                         src=""
                         alt="people"
@@ -126,7 +133,7 @@ function LeftNav(props) {
                         <h2>Friends</h2>
                     </Link>
                 </div>
-                <div>
+                <div className="left-nav-div">
                     <img
                         src=""
                         alt="bone"

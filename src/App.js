@@ -12,7 +12,7 @@ import {connect} from 'react-redux'
 function App(props) {
 
 useEffect(() => {
-  axios.get('/api/user')
+  axios.get('/auth/user')
   .then(res => {
     props.loginUser(res.data)
   })
@@ -25,6 +25,7 @@ useEffect(() => {
       <div>
         <Nav/>
       </div>
+      <div className="center-div">
       <div>
         <LeftNav/>
       </div>
@@ -32,6 +33,7 @@ useEffect(() => {
         {Routes}
       </div>
       <RightNav/>
+      </div>
       <div>
         <Footer/>
       </div>
