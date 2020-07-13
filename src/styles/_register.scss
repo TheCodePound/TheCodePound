@@ -1,19 +1,2 @@
-.signin-main {
-    @include flex(space-evenly);
-    margin-bottom: 20px;
-
-    .signin-right {
-        @include flex(center);
-        flex-direction: column;
-    }
-}
-
-#about {
-    border-top: solid 1px black;
-    padding: 20px;
-    text-align: center;
-
-    .about {
-        @include flex(space-evenly);
-    }
-}
+// PUT EVERYTHING IN THE _signin.scss
+//-Ben

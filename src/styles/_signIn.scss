@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap');
+
+.signin-main {
+    @include flex(space-evenly);
+    margin-bottom: 20px;
+    
+    .landing-logo {
+        width: 850px;
+    }
+    .signin-right {
+        @include flex(center);
+        flex-direction: column;
+        width: 600px;
+    }
+
+    .background-signin-bone {
+        height: 550px;
+        width: 800px;
+        transform: rotate(90deg);
+    }
+
+    .signin-content {
+        position: absolute;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .signin-bone-title {
+        color: $red;
+        font-weight: bolder;
+        font-size: 50px;
+        margin:5px; 
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .signin-bone-text {
+        color: $blue;
+        font-weight: bolder;
+        font-size: 30px;
+        padding: 10px;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .signin-inputs {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .signin-bone-fields {
+        margin: 10px;
+        border: solid 3px $blue;
+        border-radius: 8px; 
+        height: 30px;
+        width: 240px;
+    }
+
+    .signin-bone-btn {
+        border: none;
+        border-radius: 6px;
+        color: white;
+        background-color: $blue;
+        width: 150px;
+        height: 40px;
+        margin:5px;
+    }
+
+    .signin-bone-btn:hover {
+        cursor: pointer;
+        opacity: 0.8;
+    }
+
+    .signin-bone-forgot-acct {
+        text-decoration: underline;
+        color: $red;
+        font-weight: bolder;
+    }
+
+    .signin-bone-forgot-acct:hover {
+        cursor: pointer;
+        opacity: 0.6;
+    }
+}
+
+#about {
+    border-top: solid 1px grey;
+    padding: 20px;
+
+    .signin-about-title {
+        color: $red;
+        font-weight: bolder;
+        font-size: 50px;
+        margin:5px; 
+        font-family: 'Nunito', sans-serif;
+        text-align: center;
+    }
+
+    .signin-about-paragraph {
+        width: 42em;
+    }
+
+    .about {
+        @include flex(space-evenly);
+        padding: 20px;
+    }
+
+    #line-break {
+        border: none;
+        height: 3px;
+        background-color: black;
+    }
+}
