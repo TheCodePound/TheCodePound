@@ -4,20 +4,49 @@
     .signin-nav-right {
         @include flex(center);
     }
+
+    background-color: $red;
 }
 
 .nav-main-logo {
-
+    margin-left: 50px;
+    padding:20px;
 }
 
-.signin-nav-link {
-
+.signin-nav-inputs-container {
+    margin-right: 50px;
 }
+
+.signin-nav-inputs {
+   margin: 15px;
+   border: solid 3px $blue;
+   border-radius: 8px; 
+   height: 30px;
+   width: 240px;
+}
+
+.signin-nav-btn {
+    border: none;
+    border-radius: 6px;
+    color: white;
+    background-color: $blue;
+    width: 100px;
+    height: 40px;
+    margin:5px;
+}
+
+.signin-nav-btn:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+
+
 
 //Line 68
 
 .nav-container {
-    @include flex(space-evenly)
+    @include flex(space-evenly);
     .nav-main-logo {
 
     }

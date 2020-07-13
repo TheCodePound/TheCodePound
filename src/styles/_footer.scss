@@ -1,4 +1,23 @@
 .footer {
     @include flex(center);
     flex-direction: column;
+    // background-color: $blue;
+    padding: 30px;
+}
+
+.footer-text {
+    color:$red;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.social-icon {
+    margin:5px;
+    width: 64px;
+    height:64px;
+}
+
+.social-icon:hover {
+    cursor: pointer;
+    opacity: 0.8;
 }
