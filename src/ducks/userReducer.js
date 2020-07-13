@@ -49,7 +49,7 @@ export default function(state = initialState, action) {
             return {...state, user: action.payload, isLoggedIn: true}
         case GET_USER + '_PENDING':
             return state
-        case GET_USER + '_FULLFILLED':
+        case GET_USER + '_FULFILLED':
             return {...state, user: action.payload.data, isLoggedIn: true}
         case GET_USER + 'REJECTED':
             return state

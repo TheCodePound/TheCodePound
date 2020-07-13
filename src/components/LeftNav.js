@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {logoutUser, getUser} from '../ducks/userReducer'
 import axios from 'axios'
 import '../styles/App.scss'
+import { $CombinedState } from 'redux'
 
 function LeftNav(props) {
 
@@ -12,10 +13,16 @@ function LeftNav(props) {
     const [oldPassword, setOldPassword] = useState("")
     const [newPassword, setNewPassword] = useState("")
     const [image, setImage] = useState("")
+    const [updateInfo, setUpdateInfo] = useState(true)
+    const [newEmail, setNewEmail] = useState("")
+
+    function toggleUpdateInfo() {
+        setUpdateInfo(!updateInfo)
+    }
 
     function updateUser() {
         const {id} = props.user.user
-      axios.put(`/auth/update/${id}`, {name, email, newPassword, image})  
+      axios.put(`/auth/update/${id}`, {email, oldPassword, name, newEmail, newPassword, image})  
     }
 
 
@@ -31,11 +38,20 @@ function LeftNav(props) {
     else if (pathname === '/Profile') {
 
     return (
+    
         <div className="leftnavmain">
-            <img 
-                src=""
-                alt="user"
-            />
+            <div className="left-nav-div">
+                <img 
+                    src=""
+                    alt="user"
+                />
+                <div>
+                    <img
+                        src=""
+                        alt="bone"
+                     />
+                </div>
+            </div>
             <h2>username</h2>
             <div className="left-nav-div">
                 <img
@@ -56,64 +72,78 @@ function LeftNav(props) {
             <div div className="left-nav-div">
                 <img
                     src=""
-                    alt="bone"
-                />
-                <h2>Dog Bones</h2>
-            </div>
-            <div div className="left-nav-div">
-                <img
-                    src=""
                     alt="plus"
+                    onClick={toggleUpdateInfo}
                 />
                 <h2>Update Info</h2>
             </div>
             <Link to="/Newpost">
-                <button>New Pound</button>
+                <button className={`new-pound ${!updateInfo ? "new-pound-open" : null}`}>New Pound</button>
             </Link>
-            <input
-                placeholder="Full Name"
-                type="text"
-                value={name}
-                onChange={e => setName(e.target.value)}
-            />
-            <input
-                placeholder="Email"
-                type="email"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-            />
-            <input
-                placeholder="Old Password"
-                type="text"
-                value={oldPassword}
-                onChange={e => setOldPassword(e.target.value)}
-            />
-            <input
-                placeholder="New Password"
-                type="text"
-                value={newPassword}
-                onChange={e => setNewPassword(e.target.value)}
-            />
-            <input
-                placeholder="Image URL"
-                type="text"
-                value={image}
-                onChange={e => setImage(e.target.value)}
-            />
-            <button 
-                onClick={() => updateUser()}>Update
-            </button>
+            <div className={`updateMenu ${updateInfo ? "updateMenu-open" : null}`}>
+                <input
+                    placeholder="Current Email"
+                    type="text"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                />
+                <input
+                    placeholder="Current Password"
+                    type="text"
+                    value={oldPassword}
+                    onChange={e => setOldPassword(e.target.value)}
+                />
+                <input
+                    placeholder="Full Name"
+                    type="text"
+                    value={name}
+                    onChange={e => setName(e.target.value)}
+                />
+                <input
+                    placeholder="New Email"
+                    type="email"
+                    value={newEmail}
+                    onChange={e => setNewEmail(e.target.value)}
+                />
+                <input
+                    placeholder="New Password"
+                    type="text"
+                    value={newPassword}
+                    onChange={e => setNewPassword(e.target.value)}
+                />
+                <input
+                    placeholder="Image URL"
+                    type="text"
+                    value={image}
+                    onChange={e => setImage(e.target.value)}
+                /><br></br>
+                <button 
+                    onClick={() => updateUser()}>Update
+                </button><br></br>
+                <button
+                    onClick={toggleUpdateInfo}>Cancel
+                </button>
+            </div>
         </div>
+        
     )
     }
 
-    else if (pathname === '/Home') {
+    else {
         return (
             <div className="left-nav-main">
-                <img 
-                    src=""
-                    alt="user"
-                />
+                <div className="left-nav-div">
+                    <img 
+                        src=""
+                        alt="user"
+                    />
+                    <div>
+                        <img
+                            src=""
+                            alt="bone"
+                        />
+                    </div>
+                </div>
                 <h2>username</h2>
                 <div className="left-nav-div">
                     <img
@@ -131,15 +161,6 @@ function LeftNav(props) {
                     />
                     <Link to="/Profile">
                         <h2>Friends</h2>
-                    </Link>
-                </div>
-                <div className="left-nav-div">
-                    <img
-                        src=""
-                        alt="bone"
-                    />
-                    <Link to="/Profile">
-                        <h2>Dog Bones</h2>
                     </Link>
                 </div>
             </div>
