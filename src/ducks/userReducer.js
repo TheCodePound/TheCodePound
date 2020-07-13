@@ -3,7 +3,6 @@ import axios from "axios"
 const initialState = {
   user: {},
   isLoggedIn: false,
-  profile_pic: "",
 }
 
 const LOGIN_USER = "LOGIN_USER"
