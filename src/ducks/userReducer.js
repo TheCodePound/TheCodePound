@@ -1,42 +1,42 @@
-import axios from 'axios'
+import axios from "axios"
 
 const initialState = {
-    user: {},
-    isLoggedIn: false
+  user: {},
+  isLoggedIn: false,
 }
 
-const LOGIN_USER = 'LOGIN_USER'
-const REGISTER_USER = 'REGISTER_USER'
-const LOGOUT_USER = 'LOGOUT_USER'
-const GET_USER = 'GET_USER'
+const LOGIN_USER = "LOGIN_USER"
+const REGISTER_USER = "REGISTER_USER"
+const LOGOUT_USER = "LOGOUT_USER"
+const GET_USER = "GET_USER"
 
 export function loginUser(user) {
-    return {
-        type: LOGIN_USER,
-        payload: user
-    }
+  return {
+    type: LOGIN_USER,
+    payload: user,
+  }
 }
 
 export function registerUser(user) {
-    return {
-        type: REGISTER_USER,
-        payload: user
-    }
+  return {
+    type: REGISTER_USER,
+    payload: user,
+  }
 }
 
 export function logoutUser(user) {
-    return {
-        type: LOGOUT_USER,
-        payload: initialState
-    }
+  return {
+    type: LOGOUT_USER,
+    payload: initialState,
+  }
 }
 
 export function getUser() {
-    const user = axios.get('/auth/user')
-    return {
-        type: GET_USER,
-        payload: user
-    }
+  const user = axios.get("/auth/user")
+  return {
+    type: GET_USER,
+    payload: user,
+  }
 }
 
 export default function(state = initialState, action) {
@@ -56,3 +56,4 @@ export default function(state = initialState, action) {
             default: return state
     }
 }
+
