@@ -41,11 +41,10 @@ module.exports = {
       const allPosts = await db.get_all_post()
       res.status(200).send(allPosts)
     } catch (err) {
-      res.status(404).send(err)
+      res.status(404).send('could not get posts', err)
     }
-
   },
-  getUserPosts: async (req, res) => {},
+
   updatePosts: async (req, res) => {},
   deletePost: async (req, res) => {},
   
