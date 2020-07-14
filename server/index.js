@@ -28,7 +28,10 @@ app.delete(`/auth/logout`, authCtrl.logout)
 app.get(`/auth/user`, authCtrl.getUser)
 
 // posts end points
-app.post(`/api/post`, postCtrl.createPost)
+app.post(`/api/post`, postCtrl.createPostContent)
+app.post(`/api/post/img/:post_img_id`, postCtrl.createPostImg)
+app.post(`/api/post/languages/:post_languages_id`, postCtrl.createPostLanguages)
+app.get(`/api/all/posts`, postCtrl.getAllPosts)
 
 
 massive({
