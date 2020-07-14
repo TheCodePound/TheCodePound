@@ -56,8 +56,11 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
       <div className='pound-container'>
         {props.user.languages}
         <div className='pound-text-details'>
-          {props.user.profile_pic}
-          <input placeholder='Project details here...' />
+          {/* {props.user.profile_pic} */}
+          <img className="pound-profile-pic" src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2FFamily%20Pic%202018%202.jpg?v=1546837304267"/>
+          <textarea className="pound-text-input" 
+                    placeholder='Project details here...' 
+          />
         </div>
         <div className='pound-gif-btn'>
           <div className='pound-icon-img'>
