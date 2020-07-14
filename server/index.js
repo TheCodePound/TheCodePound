@@ -32,6 +32,9 @@ app.post(`/api/post`, postCtrl.createPostContent)
 app.post(`/api/post/img/:post_img_id`, postCtrl.createPostImg)
 app.post(`/api/post/languages/:post_languages_id`, postCtrl.createPostLanguages)
 app.get(`/api/all/posts`, postCtrl.getAllPosts)
+app.delete(`/api/post/imgs/:post_img_id`, postCtrl.deletePostImg)
+app.delete(`/api/post/languages/:post_languages_id`, postCtrl.deletePostLanguages)
+app.delete(`/api/post/content/:post_id`, postCtrl.deletePostContent)
 
 
 massive({

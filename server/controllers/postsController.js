@@ -46,6 +46,30 @@ module.exports = {
   },
 
   updatePosts: async (req, res) => {},
-  deletePost: async (req, res) => {},
+
+
+  deletePostImg: async (req, res) => {
+    const db = req.app.get('db')
+    const {post_img_id} = req.params
+
+    const deleteImg = await db.delete_post_img([post_img_id])
+    res.status(200).send(deleteImg)
+  },
+
+  deletePostLanguages: async (req, res) => {
+    const db = req.app.get('db')
+    const {post_languages_id} = req.params
+
+    const deleteLanguages = await db.delete_post_languages([post_languages_id])
+    res.status(200).send(deleteLanguages)
+  },
+
+  deletePostContent: async (req, res) => {
+    const db = req.app.get('db')
+    const {post_id} = req.params
+
+    const deleteContent = await db.delete_post_content([post_id])
+    res.status(200).send(deleteContent)
+  },
   
 }
