@@ -22,7 +22,7 @@ const Routes = () => {
 
 const ProtectedRoute = (props) => {
   const {
-    userReducer: { user },
+    user: { user },
   } = useStore().getState()
 
   if (user.email === "") {
