@@ -79,7 +79,7 @@ function Nav(props) {
         <div className="nav-search">
           <img
             className="nav-search-logo"
-            src=""
+            src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fmagnifying-glass-thin.png?v=1594746257323"
             alt="Magnifying Glass"
             onClick={() => siteSearch()}
           />
