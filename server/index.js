@@ -29,6 +29,7 @@ app.get(`/auth/user`, authCtrl.getUser)
 
 // posts end points
 app.post(`/api/post`, postCtrl.createPost)
+app.get(`/api/all/posts`, postCtrl.getAllPosts)
 
 
 massive({
