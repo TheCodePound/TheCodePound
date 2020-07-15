@@ -20,13 +20,3 @@ values (${user_id}, ${title}, ${content}) returning *;
 
 
 
--- insert into img (post_img_id, img)
--- values (${post_img_id}, ${img});
-
--- insert into languages (post_languages_id, languages)
--- values (${post_languages_id}, ${languages});
-
--- select users.full_name, posts.title, posts.content, img.img, languages.languages from posts
--- join users on posts.user_post_id = user.user_id
--- join img on posts.post_id = img.post_img_id
--- join languages on posts.post_id = languages.post_languages_id

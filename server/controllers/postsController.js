@@ -5,33 +5,43 @@ module.exports = {
     const db = req.app.get('db')
     const {user_id} = req.session.user
     const { title, content} = req.body
-    // console.log(user_post_id)
-    // const {user_post_id} = req.session.user.user_id
     
-    const newPost = await db.add_post({user_id, title, content});
-      return res.status(200).send(newPost)
+      const newPost = await db.add_post({user_id, title, content});
+      const user_junction_id = req.session.user.user_id
+      const post_junction_id = newPost[0].post_id
+      await db.get_post_id_in_junction([user_junction_id, post_junction_id])
+       res.status(200).send(newPost)
 
   },
 
   createPostImg: async (req, res) => {
     const db = req.app.get('db')
-    const {user_id} = req.session.user
+    const user_img_id = req.session.user.user_id
     const {post_img_id} = req.params
     const {img} = req.body
 
-    const newImg = await db.new_img({user_id, post_img_id, img})
+    const newImg = await db.new_img({user_img_id, post_img_id, img})
     res.status(200).send(newImg)
 
   },
 
   createPostLanguages: async (req, res) => {
     const db = req.app.get('db')
-    const {user_id} = req.session.user
+    const user_languages_id = req.session.user.user_id
     const {post_languages_id} = req.params
     const {languages} = req.body
 
-    const newImg = await db.new_language({user_id, post_languages_id, languages})
+    const newImg = await db.new_language({user_languages_id, post_languages_id, languages})
     res.status(200).send(newImg)
+  },
+
+  createPostComments: async (req, res) => {
+    const db = req.app.get('db')
+    const user_id = req.session.user
+    const {comments} = req.body
+
+    const makePost = await db.new_comment({user_id, comments})
+    res.status(200).send(makePost)
   },
 
   getAllPosts: async (req, res) => {
