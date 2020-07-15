@@ -37,7 +37,9 @@ app.get(`/api/user/posts`, postCtrl.getAllUserPosts)
 app.get(`/api/one/post/:post_id`, postCtrl.getPostById)
 app.put(`/api/post/:post_id`, postCtrl.updatePost)
 app.delete(`/api/post/imgs/:post_img_id`, postCtrl.deletePostImg)
+app.delete(`/api/post/imgs/by/:img_id`, postCtrl.deleteImgById)
 app.delete(`/api/post/languages/:post_languages_id`, postCtrl.deletePostLanguages)
+app.delete(`/api/post/languages/by/:languages_id`, postCtrl.deleteLanguageById)
 app.delete(`/api/post/content/:post_id`, postCtrl.deletePostContent)
 
 

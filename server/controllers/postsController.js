@@ -96,6 +96,21 @@ module.exports = {
     res.status(200).send(updatedContent)
   },
 
+  deleteImgById: async (req, res) => {
+    const db = req.app.get('db')
+    const {img_id} = req.params
+
+    const deleteImg = await db.delete_img_by_id([img_id])
+    res.status(200).send(deleteImg)
+  },
+
+  deleteLanguageById: async (req, res) => {
+    const db = req.app.get('db')
+    const {languages_id} = req.params
+
+    const deleteImg = await db.delete_language_by_id([languages_id])
+    res.status(200).send(deleteImg)
+  },
 
   deletePostImg: async (req, res) => {
     const db = req.app.get('db')
