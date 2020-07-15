@@ -19,12 +19,24 @@ function main(email, full_name) {
     to: "jairohmsford77@hotmail.com",
     subject: 'Welcome to the Pound',
     text: 'Welcome email from The Code Pound',
-    html: `<body style="text-align: center;">
-        <h1 style="color: #38B6FF;">Welcome ${full_name}!</h1>
-          <img style="background-color: transparent;width:200px;position:relative;top:10px;" src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Ficons8-dog-64.png?v=1594436168204"/>
-        <h2 style="color:#FF5757; position:relative;top:0px;">Thank you for joining Code Pound</h2>
-        <h3 style="color:#FFDE59;position:relative;top:0px;">Welcome to the CodePound! A social media site geared toward developers and the ability for said developers to share the creative projects they have built throughout their careers. The CodePound is comparable to Instagram in sense of the post comment/ like of each project (the “like” can be a “bone” or something to set itself apart) However, not only does it allow developers to share projects, but receive feedback and or help on projects in order to better refine these projects for live hosting. Thus, when employers or others see these projects there is a more polished project backed by a community of developers who are helping one another grow... Also great for any developer hoping to get some extra teaching experience and learn some new things by helping other developers.</h3>
-         </body>`
+    html: `<body style="text-align: center; border: solid 1px #FFDE59;">
+    <div style="position: relative; display: flex; align-items:center; justify-content: space-evenly; top: 20px; width:100%;">
+      <img style="background-color: transparent;width:50%;position:relative;top:10px;" src='https://media.discordapp.net/attachments/730850944597753877/732351096311382046/codepound_logo.png?width=671&height=671'/>
+      <div style="width:50%; text-align: center;position:relative">      
+        <h1 style="color: #FF5757;">Welcome ${full_name}!</h1>
+        <img src="https://media.discordapp.net/attachments/731323786837753868/732662496569196564/Bone.gif" style="width:100%;height:100%;position: relative; top: 50px;"/>
+      </div>
+    </div>
+    <div style="display:flex; justify-content: center; width:100%;">
+      <h2 style="color:#38B6FF; position:relative; width:100%;">Thank you for joining Code Pound!</h2>
+    </div>
+    <div style="width:100%; margin-bottom: 20px; display: flex; justify-content: center;">
+    
+      <h3 style="color:#FF5757; width: 100%; text-align:center;">Welcome to the CodePound! A social media site geared toward developers and the ability for said developers to share the creative projects they have built throughout their careers. The CodePound is comparable to Instagram in sense of the post comment/ like of each project (the “like” can be a “bone” or something to set itself apart) However, not only does it allow developers to share projects, but receive feedback and or help on projects in order to better refine these projects for live hosting. Thus, when employers or others see these projects there is a more polished project backed by a community of developers who are helping one another grow... Also great for any developer hoping to get some extra teaching experience and learn some new things by helping other developers.</h3>
+    </div>
+    <img src='https://omundy.files.wordpress.com/2012/04/i-will-not-write-any-more-bad-code.gif'/>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/07d2dXHYb94" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+ </body>`
   }
 
   tranporter.sendMail(mailOptions, function(error, info) {
@@ -79,6 +91,7 @@ module.exports = {
     delete existingUser[0].password
     req.session.user = existingUser[0]
     res.status(200).send(req.session.user)
+    main(email, "Pablo")
   },
 
   updateUserInfo: async (req, res) => {

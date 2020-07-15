@@ -54,9 +54,9 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   return (
     <div>
       <div className='pound-container'>
-        {props.userReducer.languages}
+        {props.user.languages}
         <div className='pound-text-details'>
-          {props.userReducer.profile_pic}
+          {props.user.profile_pic}
           <input placeholder='Project details here...' />
         </div>
         <div className='pound-gif-btn'>
