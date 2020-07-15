@@ -87,7 +87,14 @@ module.exports = {
   },
 
 
-  updatePosts: async (req, res) => {},
+  updatePost: async (req, res) => {
+    const db = req.app.get('db')
+    const {post_id} = req.params
+    const {title, content} = req.body
+
+    const updatedContent = await db.update_post_content([post_id, title, content])
+    res.status(200).send(updatedContent)
+  },
 
 
   deletePostImg: async (req, res) => {
