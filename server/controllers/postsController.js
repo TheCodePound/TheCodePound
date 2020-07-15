@@ -27,6 +27,14 @@ module.exports = {
 
   },
 
+  // getImgByPostId: async (req, res) => {
+  //   const db = req.app.get('db')
+  //   const {user_img_id} = req.params
+
+  //   const imgsForPosts = await db.get_all_img_by_post([user_img_id])
+  //   res.status(200).send(imgsForPosts)
+  // },
+
   createPostLanguages: async (req, res) => {
     const db = req.app.get('db')
     const user_languages_id = req.session.user.user_id
@@ -35,6 +43,10 @@ module.exports = {
 
     const newImg = await db.new_language({user_languages_id, post_languages_id, languages})
     res.status(200).send(newImg)
+  },
+
+  getLanguagesByPostId: async (req, res) => {
+
   },
 
   createPostComments: async (req, res) => {
