@@ -1,33 +1,102 @@
+.home-container {
+    
+}
+
 .pound-container {
     display: flex;
     flex-direction: column;
+    border: 2px solid grey;
+    padding-right: 150px;
+    padding-left: 100px;
+    padding-bottom: 10px;
+    border-top: none;
+    border-bottom: 50px solid black;
+    
+}
+
+.language-image {
+    width: 25px;
+    height: 25px;
+    margin-top: 5px;
 }
 
 .pound-text-details {
+
+    // border: 2px solid pink;
     
     .pound-profile-pic {
-        width: 70px;
-        height: 70px;
+        width: 80px;
+        height: 80px;
         border-radius: 180px;
         margin: 10px;
+        position: relative;
+        top: 10px;
+        right: 15px;
     }
     
     .pound-text-input {
-        width: 400px;
+        width: 650px;
         height: 60px;
         border-radius: 7px;
+        font-family:"Times New Roman", Times, serif;  
+        font-size: 16px; 
     }    
 }
 
 
-.pound-giff-btn {
-
+.pound-icons-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.pound-icon-img {
+.pound-icons {
+    position: relative;
+    left: 98px;
 
+    .icon-image {
+        width: 35px;
+        height: 35px;
+        margin: 5px;
+    }
+
+    .icon-image:hover {
+        opacity: 0.6;
+        cursor: pointer;
+    }
+    
 }
 
 .pound-btns {
+
+    .pound-individual-btn {
+        background-color: $blue;
+        border: none;
+        color: white;
+        width: 140px;
+        height: 40px;
+        border-radius: 12px;
+        margin: 5px;
+    }
+
+    .pound-individual-btn:hover {
+        opacity: 0.6;
+        cursor: pointer;
+    }
     
+}
+
+@media(max-width: 1585px) {
+    .pound-container {
+        display: flex;
+        flex-direction: column;
+        border: 2px solid grey;
+        padding-right: 150px;
+        padding-left: 100px;
+        padding-bottom: 10px;
+        border-top: none;
+        border-bottom: 50px solid black;
+        
+    }
 }

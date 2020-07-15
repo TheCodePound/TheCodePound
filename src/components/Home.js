@@ -52,25 +52,26 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   // }
 
   return (
-    <div>
+    <div className="home-container">
       <div className='pound-container'>
-        {props.user.languages}
+        {/* {props.user.languages} */}
+        <img className="language-image" src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fjavascript-icon.png?v=1594835510447" alt="programming language icon" />
         <div className='pound-text-details'>
           {/* {props.user.profile_pic} */}
-          <img className="pound-profile-pic" src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2FFamily%20Pic%202018%202.jpg?v=1546837304267"/>
+          <img className="pound-profile-pic" src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2FFamily%20Pic%202018%202.jpg?v=1546837304267" alt="profile"/>
           <textarea className="pound-text-input" 
                     placeholder='Project details here...' 
           />
         </div>
-        <div className='pound-gif-btn'>
-          <div className='pound-icon-img'>
-            <img />
-            <img />
-            <img />
+        <div className='pound-icons-btns'>
+          <div className='pound-icons'>
+            <img className="icon-image" src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Ficon%20image%20BIG.png?v=1594831414804" alt="image icon" />
+            <img className="icon-image" src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fgif%20icon%20big.png?v=1594831425259" alt="gif icon"/>
+            <img className="icon-image" src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fvideo%20icon%20big.png?v=1594831421374" alt="video icon"/>
           </div>
           <div className='pound-btns'>
-            <button>Add Language +</button>
-            <button>Post Pound</button>
+            <button className="pound-individual-btn">Add Language +</button>
+            <button className="pound-individual-btn">Post Pound</button>
           </div>
         </div>
       </div>

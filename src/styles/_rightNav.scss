@@ -1,0 +1,27 @@
+.right-home-nav-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+
+.home-right-nav-welcome-text {
+    font-weight: bolder;
+    font-size: 30px;
+    position: absolute;
+    right:15px;
+    width: 10em;
+    text-align: center;
+}
+
+@media(max-width: 1585px) {
+    .home-right-nav-welcome-text {
+        font-weight: bolder;
+        font-size: 25px;
+        position: absolute;
+        right:35px;
+        width: 7em;
+        text-align: center;
+    }
+}
