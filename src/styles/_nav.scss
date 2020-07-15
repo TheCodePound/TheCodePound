@@ -46,7 +46,7 @@
 //Line 68
 
 .nav-container {
-    @include flex(space-evenly);
+    @include flex(space-between);
     background-color: $red;
     .nav-main-logo {
         margin-left: 50px;
@@ -54,17 +54,40 @@
     }
 
     .nav-search {
+        background-color: white;
+        border: 2px solid $yellow; 
+        border-radius: 14px;
+        width: 500px;
+
 
         .nav-search-logo {
-
+            position: relative;
+            top: 4px;
+            width: 20px;
+            height: 20px;
+            margin-top: 3px;
         }
 
         .nav-search-text {
-
+            border: none;
+            margin-bottom: 3px;
+            outline: none;
         }       
     }
 
     .nav-logout-btn {
+        position: relative;
+        border: none;
+        border-radius: 6px;
+        color: white;
+        background-color: $blue;
+        width: 150px;
+        height: 40px;
+        right: 25px;
+    }
 
+    .nav-logout-btn:hover {
+        cursor: pointer;
+        opacity: 0.8;
     }
 }

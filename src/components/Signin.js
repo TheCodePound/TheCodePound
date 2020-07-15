@@ -86,7 +86,7 @@ function Register(props) {
         <h1 className="signin-about-title">About</h1>
         <div className="about">
           {/* <img src="" alt="ADDALT" /> */}
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/e_MR32HrPxM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <p className="signin-about-paragraph">
             Welcome to the CodePound! A social media site geared toward
             developers and the ability for said developers to share the creative
