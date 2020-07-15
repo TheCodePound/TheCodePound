@@ -39,10 +39,10 @@ function LeftNav(props) {
 
     return (
     
-        <div className="leftnavmain">
+        <div className="left-nav-profile-container">
             <div className="left-nav-div">
                 <img 
-                    src=""
+                    src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2FFamily%20Pic%202018%202.jpg?v=1546837304267"
                     alt="user"
                 />
                 <div>
@@ -131,36 +131,33 @@ function LeftNav(props) {
 
     else {
         return (
-            <div className="left-nav-main">
-                <div className="left-nav-div">
-                    <img 
-                        src=""
-                        alt="user"
-                    />
-                    <div>
-                        <img
-                            src=""
-                            alt="bone"
-                        />
-                    </div>
-                </div>
-                <h2>username</h2>
+            <div className="left-nav-home-container">
                 <div className="left-nav-div">
                     <img
-                        src=""
+                        className="profile-img-left-nav" 
+                        src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2FFamily%20Pic%202018%202.jpg?v=1546837304267"
+                        alt="user"
+                    />
+                </div>
+        <h2 className="left-nav-username">Benjamin Doggett</h2>
+                <div className="left-nav-div">
+                    <img
+                        className="left-nav-user-icons"
+                        src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fuser-profile-icon.png?v=1594841760468"
                         alt="person"
                     />
-                    <Link to="/Profile">
-                        <h2>Profile</h2>
+                    <Link style={{ textDecoration: "none" }} to="/Profile">
+                        <h2 className="left-nav-text">Profile</h2>
                     </Link>
                 </div>
                 <div className="left-nav-div">
                     <img
-                        src=""
+                        className="left-nav-user-icons"
+                        src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Ffriends%20icon.png?v=1594842398388"
                         alt="people"
                     />
-                    <Link to="/Profile">
-                        <h2>Friends</h2>
+                    <Link style={{ textDecoration: "none" }} to="/Profile">
+                        <h2 className="left-nav-text">Friends</h2>
                     </Link>
                 </div>
             </div>

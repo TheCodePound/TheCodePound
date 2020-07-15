@@ -1,9 +1,12 @@
-.leftnavmain {
+.left-nav-profile-container {
     width: 20vw;
 }
 
 .left-nav-div {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .updateMenu-open {
@@ -12,3 +15,59 @@
 .new-pound-open {
     display: none;
   }
+
+.left-nav-home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    padding-right: 500px;
+
+    .profile-img-left-nav {
+        width: 150px;
+        height:150px;
+        border-radius: 180px;
+    }
+
+    .left-nav-username {
+        font-weight: bolder;
+        margin: 10px;
+    }
+
+    .left-nav-text {
+        color: $red;
+        font-weight: bolder;
+        font-size: 20px;
+        margin:5px;
+    }
+
+    @media(max-width: 1585px) {
+        .profile-img-left-nav {
+            width: 100px;
+            height:100px;
+            border-radius: 180px;
+        }
+    
+        .left-nav-username {
+            font-weight: bolder;
+            margin: 6px;
+        }
+
+        .left-nav-user-icons {
+            width: 60px;
+            height: 60px;
+        }
+    
+        .left-nav-text {
+            color: $red;
+            font-weight: bolder;
+            font-size: 14px;
+            margin:5px;
+        }
+    }
+}
+
+

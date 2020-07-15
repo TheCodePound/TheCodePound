@@ -35,7 +35,9 @@ function RightNav(props) {
     else if (pathname === '/Home') {
 
     return (
-        <div><h1>{`Welcome Home ${full_name}`}</h1></div>
+        <div className="right-home-nav-container">
+            <h1 className="home-right-nav-welcome-text">{`Welcome Home ${props.full_name}!`}</h1>
+        </div>
     )
     }
 
