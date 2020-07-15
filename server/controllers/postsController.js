@@ -59,7 +59,11 @@ module.exports = {
   },
 
   getAllUserPosts: async (req, res) => {
+    const db = req.app.get('db')
+    const {user_id} = req.session.user
 
+    const userPosts = await db.get_all_user_posts([user_id])
+    res.status(200).send(userPosts)
   },
 
   getPostById: async (req, res) => {
