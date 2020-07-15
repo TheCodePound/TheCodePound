@@ -67,7 +67,11 @@ module.exports = {
   },
 
   getPostById: async (req, res) => {
+    const db = req.app.get('db')
+    const {post_id} = req.params
 
+    const onePostById = await db.get_post_by_id([post_id])
+    res.status(200).send(onePostById)
   },
 
 
