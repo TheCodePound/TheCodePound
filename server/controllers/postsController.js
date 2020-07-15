@@ -1,3 +1,5 @@
+const { renderSync } = require("node-sass");
+
 module.exports = {
   searchPosts: async (req, res) => {},
 
@@ -37,11 +39,12 @@ module.exports = {
 
   createPostComments: async (req, res) => {
     const db = req.app.get('db')
-    const user_id = req.session.user
+    const {user_id} = req.session.user
+    const {post_comments_id} = req.params
     const {comments} = req.body
 
-    const makePost = await db.new_comment({user_id, comments})
-    res.status(200).send(makePost)
+    const makeComment = await db.new_comment({user_id, post_comments_id, comments})
+    res.status(200).send(makeComment)
   },
 
   getAllPosts: async (req, res) => {
@@ -54,6 +57,15 @@ module.exports = {
       res.status(404).send('could not get posts', err)
     }
   },
+
+  getAllUserPosts: async (req, res) => {
+
+  },
+
+  getPostById: async (req, res) => {
+
+  },
+
 
   updatePosts: async (req, res) => {},
 
