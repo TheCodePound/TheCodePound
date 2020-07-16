@@ -39,7 +39,18 @@ function RightNav(props) {
         {languageList}
       </div>
     )
-  }
+    }
+
+    else {
+        return (
+            <div className="right-nav-languages">
+                <p className="right-nav-favorite-programing-languages">Tail Wagging Favorites</p>
+            {languageList}
+
+            </div>
+        )
+    }
+
 }
 
 const mapStateToProps = (reduxState) => reduxState

@@ -20,8 +20,8 @@ const Profile = ({ postReducer, posts, getPosts, ...props }) => {
   }, [])
 
   return (
-    <div>
-      <div>All User Posts</div>
+    <div className="profile-container">
+      <p className="profile-text">All User Posts</p>
       <div>
         {!loading ? (
           posts.posts.map((el, index) => {

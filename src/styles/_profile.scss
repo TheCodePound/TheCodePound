@@ -1,0 +1,22 @@
+.profile-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid grey;
+        padding-right: 470px;
+        padding-left: 450px;
+        padding-bottom: 10px;
+        border-top: 50px solid black;
+        border-bottom: 2px solid grey;
+        
+        .profile-text {
+            color: $blue;
+            position: absolute;
+            top: 0;
+            font-weight: bolder;
+            font-size: 20px;
+            margin-top: 10px;
+
+        }
+}

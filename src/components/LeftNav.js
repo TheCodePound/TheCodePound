@@ -37,90 +37,104 @@ function LeftNav(props) {
 
     else if (pathname === '/Profile') {
 
+
+    //PROFILE SECTION OF APPLICATION
     return (
     
-        <div className="left-nav-profile-container">
+        <div className="left-nav-container">
             <div className="left-nav-div">
-                <img 
+                <img
+                    className="profile-img-left-nav"  
                     src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2FFamily%20Pic%202018%202.jpg?v=1546837304267"
                     alt="user"
                 />
-                <div>
+                <div className="dog-bones-container">
                     <img
-                        src=""
+                        className="dog-bones-image"
+                        src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fbone%20like%20button.png?v=1594853507429"
                         alt="bone"
-                     />
+                    />
+                    <p className="dog-bones-number">127</p>
                 </div>
             </div>
-            <h2>username</h2>
+            <h2 className="left-nav-username">Benjamin Doggett</h2>
             <div className="left-nav-div">
                 <img
-                    src=""
-                    alt="person"
+                    src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fhome%20icon%20BIG.png?v=1594854280392"
+                    alt="home icon"
                 />
-                <Link to="/Home">
-                    <h2>Home</h2>
+                <Link style={{ textDecoration: "none" }} to="/Home">
+                    <h2 className="left-nav-text">Home</h2>
                 </Link>     
             </div>
             <div div className="left-nav-div">
                 <img
-                    src=""
-                    alt="people"
+                    src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Ffriends%20icon.png?v=1594842398388"
+                    alt="friends"
                 />
-                <h2>Friends</h2>  
+                <h2 className="left-nav-text">Friends</h2>  
             </div>
             <div div className="left-nav-div">
                 <img
-                    src=""
+                    className="plus-symbol-image"
+                    src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fplus%20BIG.png?v=1594854392581"
                     alt="plus"
                     onClick={toggleUpdateInfo}
                 />
-                <h2>Update Info</h2>
+                <h2 className="left-nav-text">Update Info</h2>
             </div>
             <Link to="/Newpost">
-                <button className={`new-pound ${!updateInfo ? "new-pound-open" : null}`}>New Pound</button>
+                <button className={`new-pound ${!updateInfo ? "new-pound-open" : null }`}>New Pound</button>
             </Link>
-            <div className={`updateMenu ${updateInfo ? "updateMenu-open" : null}`}>
+            <div className={`${updateInfo ? "updateMenu-open" : "updateMenu"}`}>
                 <input
+                    className="update-input-field"
                     placeholder="Current Email"
                     type="text"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                 />
                 <input
+                    className="update-input-field"
                     placeholder="Current Password"
                     type="text"
                     value={oldPassword}
                     onChange={e => setOldPassword(e.target.value)}
                 />
                 <input
+                    className="update-input-field"
                     placeholder="Full Name"
                     type="text"
                     value={name}
                     onChange={e => setName(e.target.value)}
                 />
                 <input
+                    className="update-input-field"
                     placeholder="New Email"
                     type="email"
                     value={newEmail}
                     onChange={e => setNewEmail(e.target.value)}
                 />
                 <input
+                    className="update-input-field"
                     placeholder="New Password"
                     type="text"
                     value={newPassword}
                     onChange={e => setNewPassword(e.target.value)}
                 />
                 <input
+                    className="update-input-field"
                     placeholder="Image URL"
                     type="text"
                     value={image}
                     onChange={e => setImage(e.target.value)}
                 /><br></br>
                 <button 
+                    className="update-user-btn-update"
                     onClick={() => updateUser()}>Update
                 </button><br></br>
                 <button
+                    className="update-user-btn-cancel"
                     onClick={toggleUpdateInfo}>Cancel
                 </button>
             </div>
@@ -129,15 +143,24 @@ function LeftNav(props) {
     )
     }
 
+    //HOME SECTION OF APPLICATION
     else {
         return (
-            <div className="left-nav-home-container">
+            <div className="left-nav-container">
                 <div className="left-nav-div">
                     <img
                         className="profile-img-left-nav" 
                         src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2FFamily%20Pic%202018%202.jpg?v=1546837304267"
                         alt="user"
                     />
+                    <div className="dog-bones-container">
+                    <img
+                        className="dog-bones-image"
+                        src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fbone%20like%20button.png?v=1594853507429"
+                        alt="bone"
+                    />
+                    <p className="dog-bones-number">127</p>
+                </div>
                 </div>
         <h2 className="left-nav-username">Benjamin Doggett</h2>
                 <div className="left-nav-div">
