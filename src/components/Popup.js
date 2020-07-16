@@ -4,60 +4,61 @@ import { connect } from "react-redux"
 
 const Popup = (props) => {
   const [loading, setLoading] = useState(true)
-  const [post, setPost] = useState({})
+  const [posts, setPosts] = useState([{}])
   const [title, setTitle] = useState("")
   const [img, setImg] = useState("")
   const [content, setContent] = useState("")
+  const [languages, setLanguage] = useState("")
   const [editMode, setEditMode] = useState(false)
 
-  //commented out so we dont have errors while back end is being built out
+  useEffect(() => {
+    function selectedPost() {
+      axios
+        .get(`/api/one/post/${props.match.params.post_id}`)
+        .then((res) => {
+          setPosts(res.data)
+          console.log("this is posts", posts)
+          setTitle(res.data.title)
+          setImg(res.data.img)
+          setContent(res.data.content)
+          setLanguage(res.data.languages)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+        .finally(() => {
+          setLoading(false)
+        })
+    }
+    selectedPost()
+  }, [props.match.params.post_id])
 
-  //   useEffect(() => {
-  //     function selectedPost() {
-  //       axios
-  //         .get(`/api/post/${props.match.params.id}`)
-  //         .then((res) => {
-  //           setPost(res.data)
-  //           setImg(res.data.img)
-  //           setTitle(res.data.title)
-  //           setContent(res.data.content)
-  //         })
-  //         .catch((err) => {
-  //           console.log(err)
-  //         })
-  //         .finally(() => {
-  //           setLoading(false)
-  //         })
-  //     }
-  //     selectedPost()
-  //   }, [props.match.params.id])
+  // function deletePost() {
+  //   axios
+  //     .delete(`/api/post/${props.match.params.id}`)
+  //     .then((res) => {
+  //       props.history.push("/Home")
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  // }
 
-  //   function deletePost() {
-  //     axios
-  //       .delete(`/api/post/${props.match.params.id}`)
-  //       .then((res) => {
-  //         props.history.push("/Home")
-  //       })
-  //       .catch((err) => {
-  //         console.log(err)
-  //       })
-  //   }
-
-  //   function submitHandler() {
-  //     axios
-  //       .put(`/api/post/${props.match.params.id}`, {
-  //         title,
-  //         img,
-  //         content,
-  //         author_id: props.userReducer.user.userId,
-  //       })
-  //       .then((res) => {
-  //         props.history.push("/Home")
-  //       })
-  //       .catch((err) => {
-  //         console.log(err)
-  //       })
-  //   }
+  function submitHandler() {
+    axios
+      .put(`/api/post/${props.match.params.post_id}`, {
+        title,
+        img,
+        content,
+        languages,
+      })
+      .then((res) => {
+        props.history.push("/Home")
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
   function editPost() {
     setEditMode(true)
@@ -85,8 +86,11 @@ const Popup = (props) => {
 
   if (loading) return <p>loading circle here</p>
 
+  const test = posts.posts.map((el) => <h1>This is a test</h1>)
+
   return (
     <div>
+      {test}
       {editMode ? (
         <div>
           <div>
@@ -130,19 +134,20 @@ const Popup = (props) => {
         <div>
           <div>
             <h3>
-              {post.profile_pic}
-              {post.full_name}
-              {post.languages}
+              {console.log("this is posts", posts)}
+              {posts.profile_pic}
+              {posts.full_name}
+              {posts.languages}
             </h3>
           </div>
           <div>
-            <p>{post.content}</p>
-            <img src={post.img} alt='post img' />
+            <p>{posts.content}</p>
+            <img src={posts.img} alt='post img' />
           </div>
           <div>
             <p>
-              {post.bones}
-              {post.comment}
+              {posts.bones}
+              {posts.comment}
             </p>
           </div>
         </div>

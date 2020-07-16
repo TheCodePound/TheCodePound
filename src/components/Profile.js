@@ -3,29 +3,29 @@ import axios from "axios"
 import { connect } from "react-redux"
 import { getPosts } from "../ducks/postReducer"
 
-const Profile = ({ postReducer, posts, setPosts, ...props }) => {
+const Profile = ({ postReducer, posts, getPosts, ...props }) => {
+  console.log("this is props", props)
   const [loading, setLoading] = useState(true)
 
-  //need api to get all of the users specific posts
-
-  // useEffect(() => {
-  //     axios
-  //       .get("/api/")
-  //       .then((res) => {
-  //         setPosts(res.data)
-  //       })
-  //       .catch((err) => {
-  //         console.log(err)
-  //       })
-  //       .finally(() => setLoading(false))
-  //   }, [])
+  useEffect(() => {
+    axios
+      .get("/api/user/posts")
+      .then((res) => {
+        getPosts(res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      .finally(() => setLoading(false))
+  }, [])
 
   return (
     <div className="profile-container">
       <p className="profile-text">All User Posts</p>
       <div>
         {!loading ? (
-          postReducer.posts.map((el, index) => {
+          posts.posts.map((el, index) => {
+            console.log("this is posts", posts.posts)
             return (
               <div key={el?.id ?? index} onClick={() => props.history.push(`/Popup/${el.post_id}`)}>
                 <div>
