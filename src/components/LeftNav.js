@@ -39,6 +39,7 @@ function LeftNav(props) {
 
 
     //PROFILE SECTION OF APPLICATION
+    console.log(props.user.user.full_name)
     return (
     
         <div className="left-nav-container">
@@ -57,7 +58,7 @@ function LeftNav(props) {
                     <p className="dog-bones-number">127</p>
                 </div>
             </div>
-            <h2 className="left-nav-username">Benjamin Doggett</h2>
+                <h2 className="left-nav-username">{props.user.user.full_name}</h2>
             <div className="left-nav-div">
                 <img
                     src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fhome%20icon%20BIG.png?v=1594854280392"
@@ -162,7 +163,7 @@ function LeftNav(props) {
                     <p className="dog-bones-number">127</p>
                 </div>
                 </div>
-        <h2 className="left-nav-username">Benjamin Doggett</h2>
+                    <h2 className="left-nav-username">{props.user.user.full_name}</h2>
                 <div className="left-nav-div">
                     <img
                         className="left-nav-user-icons"
