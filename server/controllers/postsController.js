@@ -29,11 +29,11 @@ module.exports = {
 
   createPostLanguages: async (req, res) => {
     const db = req.app.get('db')
-    const user_languages_id = req.session.user.user_id
-    const {post_languages_id} = req.params
-    const {languages} = req.body
+    // const user_languages_id = req.session.user.user_id
+    // const {post_languages_id} = req.params
+    const {languages, languages_img} = req.body
 
-    const newImg = await db.new_language({user_languages_id, post_languages_id, languages})
+    const newImg = await db.new_language({ languages, languages_img})
     res.status(200).send(newImg)
   },
 

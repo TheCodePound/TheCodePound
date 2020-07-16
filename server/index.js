@@ -4,6 +4,7 @@ const express = require('express'),
       massive = require('massive'),
       authCtrl = require('./controllers/authController'),
       postCtrl = require('./controllers/postsController'),
+      setup = require('./controllers/setup'),
       {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env,
       app = express();
 
@@ -30,7 +31,7 @@ app.get(`/auth/user`, authCtrl.getUser)
 // posts end points
 app.post(`/api/post`, postCtrl.createPostContent)
 app.post(`/api/post/img/:post_img_id`, postCtrl.createPostImg)
-app.post(`/api/post/languages/:post_languages_id`, postCtrl.createPostLanguages)
+app.post(`/api/post/languages`, postCtrl.createPostLanguages)
 app.post(`/api/post/comment/:post_comments_id`, postCtrl.createPostComments)
 app.post(`/api/post/bone/:post_bones_id`, postCtrl.giveBone)
 app.get(`/api/all/posts`, postCtrl.getAllPosts)
@@ -44,6 +45,7 @@ app.delete(`/api/post/languages/:post_languages_id`, postCtrl.deletePostLanguage
 app.delete(`/api/post/languages/by/:languages_id`, postCtrl.deleteLanguageById)
 app.delete(`/api/post/content/:post_id`, postCtrl.deletePostContent)
 app.delete(`/api/bone/:bones_id`, postCtrl.deleteBone)
+
 
 
 massive({

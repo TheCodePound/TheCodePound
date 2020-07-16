@@ -1,0 +1,144 @@
+{
+  "data": [
+    {
+      "languages": "Python",
+      "languages_img": "https://www.clipartmax.com/png/middle/434-4343754_python-logo.png"
+    },
+    {
+      "languages": "Node.js",
+      "languages_img": "https://f0.pngfuel.com/png/306/37/node-js-logo-png-clip-art.png"
+    },
+    {
+      "languages": "C",
+      "languages_img": "https://cdn.iconscout.com/icon/free/png-512/c-programming-569564.png"
+    },
+    {
+      "languages": "C++",
+      "languages_img": "https://e7.pngegg.com/pngimages/707/18/png-clipart-the-c-programming-language-c-for-beginners-masters-computer-programming-leave-the-material-blue-angle.png"
+    },
+    {
+      "languages": "Ruby",
+      "languages_img": "https://www.clipartmax.com/png/middle/109-1092346_ruby-logo-ruby-on-rails-png.png"
+    },
+    {
+      "languages": "HTML",
+      "languages_img": "https://www.w3.org/html/logo/downloads/HTML5_1Color_Black.svg"
+    },
+    {
+      "languages": "CSS",
+      "languages_img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1200px-CSS3_logo_and_wordmark.svg.png"
+    },
+    {
+      "languages": "JavaScript",
+      "languages_img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png"
+    },
+    {
+      "languages": "Scheme",
+      "languages_img": "https://c7.uihere.com/files/257/151/778/computer-science-scheme-programming-language-racket-language.jpg"
+    },
+    {
+      "languages": "Go",
+      "languages_img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Go_Logo_Blue.svg/1200px-Go_Logo_Blue.svg.png"
+    },
+    {
+      "languages": "Rust",
+      "languages_img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Rust_programming_language_black_logo.svg/1200px-Rust_programming_language_black_logo.svg.png"
+    },
+    {
+      "languages": "Clojure",
+      "languages_img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Clojure_logo.svg/1024px-Clojure_logo.svg.png"
+    },
+    {
+      "languages": "Haskell",
+      "languages_img": "https://img.favpng.com/13/11/1/haskell-programming-language-functional-programming-logo-read-eval-print-loop-png-favpng-kwG0cNEWPqC7C4sL8kYhMNzaC.jpg"
+    },
+    {
+      "languages": "Kotlin",
+      "languages_img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Kotlin-logo.svg/1200px-Kotlin-logo.svg.png"
+    },
+    {
+      "languages": "Lua",
+      "languages_img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Lua-Logo.svg/1200px-Lua-Logo.svg.png"
+    },
+    {
+      "languages": "Deno",
+      "languages_img": "https://res.cloudinary.com/practicaldev/image/fetch/s--oYP2JOaH--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/aqzvipzkxwk1v45n22s9.png"
+    },
+    {
+      "languages": "C#",
+      "languages_img": "https://f0.pngfuel.com/png/520/669/c-logo-png-clip-art.png"
+    },
+    {
+      "languages": "F#",
+      "languages_img": "https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/fsharp/fsharp.png"
+    },
+    {
+      "languages": "Swift",
+      "languages_img": "https://banner2.cleanpng.com/20180422/hxw/kisspng-swift-programming-language-apple-natural-ecological-food-logo-templates-download-5add30355534a7.530860331524445237349.jpg"
+    },
+    {
+      "languages": "R",
+      "languages_img": "https://www.r-project.org/logo/Rlogo.svg"
+    },
+    {
+      "languages": "Bash",
+      "languages_img": "https://bashlogo.com/img/symbol/jpg/full_colored_light.jpg"
+    },
+    {
+      "languages": "Crystal",
+      "languages_img": "https://www.clipartmax.com/png/middle/197-1976630_crystal-programming-language-logo.png"
+    },
+    {
+      "languages": "Julia",
+      "languages_img": "https://julialang.org/assets/infra/logo.svg"
+    },
+    {
+      "languages": "Elixir",
+      "languages_img": "https://cw-production-assetsbucket-8j84s7jns7p2.s3.amazonaws.com/media/blog-images/elixir.png"
+    },
+    {
+      "languages": "Nim",
+      "languages_img": "https://nim-lang.org/assets/img/twitter_banner.png"
+    },
+    {
+      "languages": "Dart",
+      "languages_img": "https://img.favpng.com/17/22/14/dart-logo-programming-language-computer-programming-png-favpng-dxsn9fxX3pi0nNgU3ehqpmPWN.jpg"
+    },
+    {
+      "languages": "Erlang",
+      "languages_img": "https://ih1.redbubble.net/image.316365857.4340/flat,750x,075,f-pad,750x1000,f8f8f8.u2.jpg"
+    },
+    {
+      "languages": "TypeScript",
+      "languages_img": "https://cdn.iconscout.com/icon/free/png-512/typescript-1174965.png"
+    },
+    {
+      "languages": "Emacs Lisp",
+      "languages_img": "https://w7.pngwing.com/pngs/617/9/png-transparent-learning-lisp-programming-language-artificial-intelligence-programmer-others-miscellaneous-cdr-text.png"
+    },
+    {
+      "languages": "SQLite",
+      "languages_img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/SQLite370.svg/1280px-SQLite370.svg.png"
+    },
+    {
+      "languages": "Java",
+      "languages_img": "https://img.favpng.com/19/25/8/java-programming-language-programmer-computer-programming-logo-png-favpng-fhppYS113xSPzB7babpSMhrfP.jpg"
+    },
+    {
+      "languages": "PHP",
+      "languages_img": "https://www.php.net/images/logos/new-php-logo.svg"
+    },
+    {
+      "languages": "CoffeeScript",
+      "languages_img": "https://img.favpng.com/24/3/17/coffeescript-javascript-ruby-on-rails-logo-png-favpng-vGRVLWKdYW0maCSq7Mmnv4uji.jpg"
+    },
+    {
+      "languages": "Pygame",
+      "languages_img": "https://cms-assets.tutsplus.com/uploads/users/964/posts/24184/preview_image/pygame.jpg"
+    },
+    {
+      "languages": "Love2D",
+      "languages_img": "https://ucarecdn.com/0d16a12d-4fd3-4159-a230-7566e8a9adae/"
+    }
+  ]
+}

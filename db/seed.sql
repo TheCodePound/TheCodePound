@@ -35,7 +35,8 @@ CREATE TABLE languages (
   languages_id SERIAL PRIMARY KEY,
   user_languages_id int REFERENCES users(user_id),
   post_languages_id int REFERENCES posts(post_id), 
-  languages text
+  languages text,
+  languages_img text 
 );
  
 CREATE TABLE junction (
