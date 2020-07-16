@@ -72,13 +72,13 @@ module.exports = {
     
   },
 //  note this is not working need to fix how im getting the sum with the db file
-  // sumUserBones: async (req, res) => {
-  //   const db = req.app.get('db')
-  //   const {user_id} = req.session.user
+  sumUserBones: async (req, res) => {
+    const db = req.app.get('db')
+    const {user_id} = req.session.user
   
-  //   const sumMyBones = await db.sum_user_bones(user_id)
-  //   res.status(200).send(sumMyBones)
-  // },
+    const sumMyBones = await db.sum_user_bones([user_id])
+    res.status(200).send(sumMyBones)
+  },
 
   sumPostBones: async (req, res) => {
     const db = req.app.get('db')
