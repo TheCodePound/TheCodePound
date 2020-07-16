@@ -93,6 +93,7 @@ function Register(props) {
         <div className='about'>
           {/* <img src="" alt="ADDALT" /> */}
           <iframe
+            title="What is Codepound"
             width='560'
             height='315'
             src='https://www.youtube.com/embed/e_MR32HrPxM'

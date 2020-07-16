@@ -1,22 +1,42 @@
+//HOME
+
 .right-home-nav-container {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     
+    .home-right-nav-welcome-text {
+        font-weight: bolder;
+        font-size: 30px;
+        position: absolute;
+        right:15px;
+        width: 10em;
+        text-align: center;
+    }
 }
 
-.home-right-nav-welcome-text {
-    font-weight: bolder;
-    font-size: 30px;
-    position: absolute;
-    right:15px;
-    width: 10em;
-    text-align: center;
+//PROFILE 
+
+.right-nav-languages {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    .right-nav-favorite-programing-languages {
+        font-weight: bolder;
+        font-size: 30px;
+        position: absolute;
+        right:15px;
+        width: 10em;
+        text-align: center;
+    }
 }
+
 
 @media(max-width: 1585px) {
-    .home-right-nav-welcome-text {
+    .home-right-nav-welcome-text  {
         font-weight: bolder;
         font-size: 25px;
         position: absolute;

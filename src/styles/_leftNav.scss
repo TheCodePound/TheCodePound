@@ -2,13 +2,6 @@
     width: 20vw;
 }
 
-.left-nav-div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
 .updateMenu-open {
     display: none;
 }
@@ -16,7 +9,8 @@
     display: none;
   }
 
-.left-nav-home-container {
+//PROFILE SECTION
+.left-nav-container {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -26,10 +20,35 @@
     left: 5%;
     padding-right: 500px;
 
-    .profile-img-left-nav {
-        width: 150px;
-        height:150px;
-        border-radius: 180px;
+    .left-nav-div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+            .profile-img-left-nav {
+                width: 150px;
+                height:150px;
+                border-radius: 180px;
+            }
+
+        .dog-bones-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+
+                .dog-bones-image {
+                    transform: rotate(20deg);
+                }
+
+                .dog-bones-number {
+                    color: $red;
+                    font-weight: bolder;
+                }
+
+            }
     }
 
     .left-nav-username {
@@ -37,13 +56,96 @@
         margin: 10px;
     }
 
-    .left-nav-text {
-        color: $red;
-        font-weight: bolder;
-        font-size: 20px;
-        margin:5px;
+    .new-pound {
+        border: none;
+        background-color: $blue;
+        color: white;
     }
 
+    .updateMenu {
+        border: 1px solid grey;
+        border-radius: 8px;
+        margin:10px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+            .update-input-field {
+                border: 2px solid $blue;
+                border-radius: 6px;
+                margin: 5px;
+                height: 25px;
+            }
+
+            .update-user-btn-update {
+                border: none;
+                color:white;
+                background-color: $blue;
+                width: 125px;
+                height:30px;
+                border-radius: 8px;
+            }
+
+            .update-user-btn-cancel {  
+                border: none; 
+                color: white;
+                background-color: $red;
+                width: 125px;
+                height:30px;
+                border-radius: 8px;
+            }
+    }
+}
+
+    //HOME SECTION
+    .left-nav-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        padding-right: 500px;
+    
+        .left-nav-div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+    
+                .profile-img-left-nav {
+                    width: 150px;
+                    height:150px;
+                    border-radius: 180px;
+                }
+                .left-nav-username {
+                    font-weight: bolder;
+                    margin: 10px;
+                }
+
+                .left-nav-user-icons {
+
+                }
+
+
+            }
+         }
+
+         .left-nav-text {
+            color: $red;
+            font-weight: bolder;
+            font-size: 20px;
+            margin:5px;
+         }
+
+         .plus-symbol-image {
+             margin-left: 25px;
+         }
+         
+    //MEDIA QUERIES FOR SECTIONS ON HOME/PROFILE
     @media(max-width: 1585px) {
         .profile-img-left-nav {
             width: 100px;
@@ -67,7 +169,8 @@
             font-size: 14px;
             margin:5px;
         }
+
     }
-}
+
 
 
