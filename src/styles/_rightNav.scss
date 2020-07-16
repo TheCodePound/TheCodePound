@@ -25,12 +25,42 @@
     align-items: center;
     
     .right-nav-favorite-programing-languages {
+        background-color: $red;
+        padding: 15px;
+        color: white;
+        border-radius: 8px;
         font-weight: bolder;
         font-size: 30px;
-        position: absolute;
+        position: fixed;
         right:15px;
         width: 10em;
         text-align: center;
+    }
+
+    .red-box-arrow {
+        position: fixed;
+        right: 137px;
+        top: 160px;
+        background-color: $red;
+        width: 28px;
+        height: 28px;
+        transform: rotate(45deg);
+    }
+
+    .right-nav-profile-language-icon {
+        width: 80px;
+        height: 80px;
+        margin: 10px;
+    }
+
+    .right-nav-images-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 100px;
+        right: 105px;
     }
 }
 
