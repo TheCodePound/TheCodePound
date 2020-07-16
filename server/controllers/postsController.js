@@ -28,14 +28,28 @@ module.exports = {
   createPostLanguages: async (req, res) => {
     const db = req.app.get("db")
     const user_languages_id = req.session.user.user_id
-    const { post_languages_id } = req.params
-    const { languages } = req.body
+    const {post_languages_id} = req.params
+    const {languages, languages_img} = req.body
 
-    const newImg = await db.new_language({ user_languages_id, post_languages_id, languages })
+    const newImg = await db.new_language({user_languages_id, post_languages_id, languages, languages_img})
     res.status(200).send(newImg)
   },
 
-  getLanguagesByPostId: async (req, res) => {},
+  getLanguagesByPost: async (req, res) => {
+    const db = req.app.get('db')
+    const {post_id} = req.params
+
+    const languagesByPost = await db.get_languages_by_post_id(post_id)
+    res.status(200).send(languagesByPost)
+  },
+
+  getAllLanguages: async (req, res) => {
+    const db = req.app.get('db')
+    
+    const getLanguages = await db.get_all_languages()
+    res.status(200).send(getLanguages)
+  },
+
 
   createPostComments: async (req, res) => {
     const db = req.app.get("db")
@@ -45,6 +59,32 @@ module.exports = {
 
     const makeComment = await db.new_comment({ user_id, post_comments_id, comments })
     res.status(200).send(makeComment)
+  },
+
+  giveBone: async (req, res) => {
+    const db = req.app.get('db')
+    const {post_bones_id} = req.params
+    const {bones} = req.body
+
+    const addBone = await db.add_bone([post_bones_id, bones])
+    res.status(200).send(addBone)
+    
+  },
+//  note this is not working need to fix how im getting the sum with the db file
+  // sumUserBones: async (req, res) => {
+  //   const db = req.app.get('db')
+  //   const {user_id} = req.session.user
+  
+  //   const sumMyBones = await db.sum_user_bones(user_id)
+  //   res.status(200).send(sumMyBones)
+  // },
+
+  sumPostBones: async (req, res) => {
+    const db = req.app.get('db')
+    const {post_bones_id} = req.params
+  
+    const sumPostBones = await db.sum_post_bones(post_bones_id)
+    res.status(200).send(sumPostBones)
   },
 
   getAllPosts: async (req, res) => {
@@ -82,6 +122,14 @@ module.exports = {
 
     const updatedContent = await db.update_post_content([post_id, title, content])
     res.status(200).send(updatedContent)
+  },
+
+  deleteBone: async (req, res) => {
+    const db = req.app.get('db')
+    const {bones_id} = req.params
+
+    const takeBackBone = await db.delete_bone(bones_id)
+    res.status(200).send(takeBackBone)
   },
 
   deleteImgById: async (req, res) => {
