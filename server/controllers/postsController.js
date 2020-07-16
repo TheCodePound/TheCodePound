@@ -45,6 +45,13 @@ module.exports = {
     res.status(200).send(languagesByPost)
   },
 
+  getAllLanguages: async (req, res) => {
+    const db = req.app.get('db')
+    
+    const getLanguages = await db.get_all_languages()
+    res.status(200).send(getLanguages)
+  },
+
   createPostComments: async (req, res) => {
     const db = req.app.get('db')
     const {user_id} = req.session.user
