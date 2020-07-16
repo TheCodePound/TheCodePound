@@ -4,60 +4,61 @@ import { connect } from "react-redux"
 
 const Popup = (props) => {
   const [loading, setLoading] = useState(true)
-  const [post, setPost] = useState({})
+  const [post, setPost] = useState([{}])
   const [title, setTitle] = useState("")
   const [img, setImg] = useState("")
   const [content, setContent] = useState("")
+  const [languages, setLanguage] = useState("")
   const [editMode, setEditMode] = useState(false)
 
-  //commented out so we dont have errors while back end is being built out
+  useEffect(() => {
+    function selectedPost() {
+      axios
+        .get(`/api/one/post/${props.match.params.post_id}`)
+        .then((res) => {
+          setPost(res.data)
+          console.log("this is posts", post)
+          setTitle(res.data.title)
+          setImg(res.data.img)
+          setContent(res.data.content)
+          setLanguage(res.data.languages)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+        .finally(() => {
+          setLoading(false)
+        })
+    }
+    selectedPost()
+  }, [props.match.params.post_id])
 
-  //   useEffect(() => {
-  //     function selectedPost() {
-  //       axios
-  //         .get(`/api/post/${props.match.params.id}`)
-  //         .then((res) => {
-  //           setPost(res.data)
-  //           setImg(res.data.img)
-  //           setTitle(res.data.title)
-  //           setContent(res.data.content)
-  //         })
-  //         .catch((err) => {
-  //           console.log(err)
-  //         })
-  //         .finally(() => {
-  //           setLoading(false)
-  //         })
-  //     }
-  //     selectedPost()
-  //   }, [props.match.params.id])
+  // function deletePost() {
+  //   axios
+  //     .delete(`/api/post/${props.match.params.id}`)
+  //     .then((res) => {
+  //       props.history.push("/Home")
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  // }
 
-  //   function deletePost() {
-  //     axios
-  //       .delete(`/api/post/${props.match.params.id}`)
-  //       .then((res) => {
-  //         props.history.push("/Home")
-  //       })
-  //       .catch((err) => {
-  //         console.log(err)
-  //       })
-  //   }
-
-  //   function submitHandler() {
-  //     axios
-  //       .put(`/api/post/${props.match.params.id}`, {
-  //         title,
-  //         img,
-  //         content,
-  //         author_id: props.userReducer.user.userId,
-  //       })
-  //       .then((res) => {
-  //         props.history.push("/Home")
-  //       })
-  //       .catch((err) => {
-  //         console.log(err)
-  //       })
-  //   }
+  function submitHandler() {
+    axios
+      .put(`/api/post/${props.match.params.post_id}`, {
+        title,
+        img,
+        content,
+        languages,
+      })
+      .then((res) => {
+        props.history.push("/Home")
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
   function editPost() {
     setEditMode(true)
