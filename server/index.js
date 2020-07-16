@@ -28,7 +28,19 @@ app.delete(`/auth/logout`, authCtrl.logout)
 app.get(`/auth/user`, authCtrl.getUser)
 
 // posts end points
-app.post(`/api/post`, postCtrl.createPost)
+app.post(`/api/post`, postCtrl.createPostContent)
+app.post(`/api/post/img/:post_img_id`, postCtrl.createPostImg)
+app.post(`/api/post/languages/:post_languages_id`, postCtrl.createPostLanguages)
+app.post(`/api/post/comment/:post_comments_id`, postCtrl.createPostComments)
+app.get(`/api/all/posts`, postCtrl.getAllPosts)
+app.get(`/api/user/posts`, postCtrl.getAllUserPosts)
+app.get(`/api/one/post/:post_id`, postCtrl.getPostById)
+app.put(`/api/post/:post_id`, postCtrl.updatePost)
+app.delete(`/api/post/imgs/:post_img_id`, postCtrl.deletePostImg)
+app.delete(`/api/post/imgs/by/:img_id`, postCtrl.deleteImgById)
+app.delete(`/api/post/languages/:post_languages_id`, postCtrl.deletePostLanguages)
+app.delete(`/api/post/languages/by/:languages_id`, postCtrl.deleteLanguageById)
+app.delete(`/api/post/content/:post_id`, postCtrl.deletePostContent)
 
 
 massive({
