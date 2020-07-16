@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 
 const Popup = (props) => {
   const [loading, setLoading] = useState(true)
-  const [posts, setPosts] = useState([{}])
+  const [post, setPost] = useState([{}])
   const [title, setTitle] = useState("")
   const [img, setImg] = useState("")
   const [content, setContent] = useState("")
@@ -16,8 +16,8 @@ const Popup = (props) => {
       axios
         .get(`/api/one/post/${props.match.params.post_id}`)
         .then((res) => {
-          setPosts(res.data)
-          console.log("this is posts", posts)
+          setPost(res.data)
+          console.log("this is posts", post)
           setTitle(res.data.title)
           setImg(res.data.img)
           setContent(res.data.content)
@@ -86,11 +86,8 @@ const Popup = (props) => {
 
   if (loading) return <p>loading circle here</p>
 
-  const test = posts.posts.map((el) => <h1>This is a test</h1>)
-
   return (
     <div>
-      {test}
       {editMode ? (
         <div>
           <div>
@@ -134,20 +131,19 @@ const Popup = (props) => {
         <div>
           <div>
             <h3>
-              {console.log("this is posts", posts)}
-              {posts.profile_pic}
-              {posts.full_name}
-              {posts.languages}
+              {post.profile_pic}
+              {post.full_name}
+              {post.languages}
             </h3>
           </div>
           <div>
-            <p>{posts.content}</p>
-            <img src={posts.img} alt='post img' />
+            <p>{post.content}</p>
+            <img src={post.img} alt='post img' />
           </div>
           <div>
             <p>
-              {posts.bones}
-              {posts.comment}
+              {post.bones}
+              {post.comment}
             </p>
           </div>
         </div>

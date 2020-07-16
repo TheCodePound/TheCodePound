@@ -72,7 +72,7 @@ module.exports = {
     const { post_id } = req.params
 
     const onePostById = await db.get_post_by_id([post_id])
-    res.status(200).send(onePostById)
+    res.status(200).send(onePostById[0])
   },
 
   updatePost: async (req, res) => {
