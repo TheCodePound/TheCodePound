@@ -37,9 +37,6 @@ module.exports = {
     res.status(200).send(newImg)
   },
 
-  getLanguagesByPostId: async (req, res) => {
-
-  },
 
   createPostComments: async (req, res) => {
     const db = req.app.get('db')
@@ -49,6 +46,32 @@ module.exports = {
 
     const makeComment = await db.new_comment({user_id, post_comments_id, comments})
     res.status(200).send(makeComment)
+  },
+
+  giveBone: async (req, res) => {
+    const db = req.app.get('db')
+    const {post_bones_id} = req.params
+    const {bones} = req.body
+
+    const addBone = await db.add_bone([post_bones_id, bones])
+    res.status(200).send(addBone)
+    
+  },
+
+  sumUserBones: async (req, res) => {
+    const db = req.app.get('db')
+    const {user_id} = req.session.user
+  
+    const sumMyBones = await db.sum_user_bones(user_id)
+    res.status(200).send(sumMyBones)
+  },
+
+  sumPostBones: async (req, res) => {
+    const db = req.app.get('db')
+    const {post_bones_id} = req.params
+  
+    const sumPostBones = await db.sum_post_bones(post_bones_id)
+    res.status(200).send(sumPostBones)
   },
 
   getAllPosts: async (req, res) => {
