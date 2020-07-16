@@ -57,14 +57,14 @@ module.exports = {
     res.status(200).send(addBone)
     
   },
-
-  sumUserBones: async (req, res) => {
-    const db = req.app.get('db')
-    const {user_id} = req.session.user
+//  note this is not working need to fix how im getting the sum with the db file
+  // sumUserBones: async (req, res) => {
+  //   const db = req.app.get('db')
+  //   const {user_id} = req.session.user
   
-    const sumMyBones = await db.sum_user_bones(user_id)
-    res.status(200).send(sumMyBones)
-  },
+  //   const sumMyBones = await db.sum_user_bones(user_id)
+  //   res.status(200).send(sumMyBones)
+  // },
 
   sumPostBones: async (req, res) => {
     const db = req.app.get('db')
@@ -109,6 +109,14 @@ module.exports = {
 
     const updatedContent = await db.update_post_content([post_id, title, content])
     res.status(200).send(updatedContent)
+  },
+
+  deleteBone: async (req, res) => {
+    const db = req.app.get('db')
+    const {bones_id} = req.params
+
+    const takeBackBone = await db.delete_bone(bones_id)
+    res.status(200).send(takeBackBone)
   },
 
   deleteImgById: async (req, res) => {

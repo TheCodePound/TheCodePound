@@ -43,6 +43,7 @@ app.delete(`/api/post/imgs/by/:img_id`, postCtrl.deleteImgById)
 app.delete(`/api/post/languages/:post_languages_id`, postCtrl.deletePostLanguages)
 app.delete(`/api/post/languages/by/:languages_id`, postCtrl.deleteLanguageById)
 app.delete(`/api/post/content/:post_id`, postCtrl.deletePostContent)
+app.delete(`/api/bone/:bones_id`, postCtrl.deleteBone)
 
 
 massive({
