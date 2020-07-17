@@ -15,6 +15,8 @@ module.exports = {
     res.status(200).send(newPost)
   },
 
+  
+
   createPostImg: async (req, res) => {
     const db = req.app.get("db")
     const user_img_id = req.session.user.user_id
