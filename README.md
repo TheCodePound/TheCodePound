@@ -24,13 +24,16 @@ Welcome to the CodePound! A social media site geared toward developers and the a
 <img src = "./pictures/Register component.png">
 
 ### Home component
-<img src = "./pictures/Home FINAL 2 component.png">
+<img src = "./pictures/Home FINAL 3 component.png">
 
 ### Home adding a language view
 <img src = "./pictures/Language Select Screen.png">
 
+### Home adding a image to your project
+<img src = "./pictures/Add a image.png">
+
 ### Profile component
-<img src = "./pictures/Profile FINAL 2 component.png">
+<img src = "./pictures/Profile FINAL 3 component.png">
 
 ### Update user profile component
 <img src = "./pictures/Profile Update view.png">
