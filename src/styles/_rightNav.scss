@@ -31,14 +31,14 @@
         border-radius: 8px;
         font-weight: bolder;
         font-size: 30px;
-        position: fixed;
+        position: absolute;
         right:15px;
         width: 10em;
         text-align: center;
     }
 
     .red-box-arrow {
-        position: fixed;
+        position: absolute;
         right: 137px;
         top: 160px;
         background-color: $red;
