@@ -30,6 +30,7 @@ app.get(`/auth/user`, authCtrl.getUser)
 
 // posts end points
 app.post(`/api/post`, postCtrl.createPostContent)
+app.post(`/api/post/in/one`, postCtrl.allInOnePost)
 app.post(`/api/post/img/:post_img_id`, postCtrl.createPostImg)
 app.post(`/api/post/languages/:post_languages_id`, postCtrl.createPostLanguages)
 app.post(`/api/post/comment/:post_comments_id`, postCtrl.createPostComments)
