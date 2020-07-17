@@ -1,14 +1,14 @@
-.home-container {
+// .home-container {
     
-}
+// }
 
 .pound-container {
     display: flex;
     flex-direction: column;
     border: 2px solid grey;
-    padding-right: 150px;
-    padding-left: 100px;
-    padding-bottom: 10px;
+    padding-right: 50px;
+    padding-left: 50px;
+    // padding-bottom: 10px;
     border-top: none;
     border-bottom: 50px solid black;
     
@@ -22,6 +22,8 @@
 
 .pound-text-details {
 
+    display: flex;
+    align-items: center;
     // border: 2px solid pink;
     
     .pound-profile-pic {
@@ -32,6 +34,7 @@
         position: relative;
         top: 10px;
         right: 15px;
+        border: solid 3px black;
     }
     
     .pound-text-input {
@@ -40,6 +43,8 @@
         border-radius: 7px;
         font-family:"Times New Roman", Times, serif;  
         font-size: 16px; 
+        margin: 5px 5px;
+        z-index: 3;
     }    
 }
 
@@ -59,6 +64,7 @@
         width: 35px;
         height: 35px;
         margin: 5px;
+        border: solid 3px black
     }
 
     .icon-image:hover {
@@ -78,6 +84,7 @@
         height: 40px;
         border-radius: 12px;
         margin: 5px;
+        border: solid 3px black;
     }
 
     .pound-individual-btn:hover {
@@ -99,4 +106,16 @@
         border-bottom: 50px solid black;
         
     }
+}
+.pound-title-input {
+    width: 250px;
+    height: 40px;
+}
+
+.inputscontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }

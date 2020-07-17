@@ -44,7 +44,7 @@ function LeftNav(props) {
             <div className="left-nav-div">
                 <img
                     className="profile-img-left-nav"  
-                    src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2FFamily%20Pic%202018%202.jpg?v=1546837304267"
+                    src={props.user.user.profile_pic}
                     alt="user"
                 />
                 <div className="dog-bones-container">
@@ -149,7 +149,7 @@ function LeftNav(props) {
                 <div className="left-nav-div">
                     <img
                         className="profile-img-left-nav" 
-                        src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2FFamily%20Pic%202018%202.jpg?v=1546837304267"
+                        src={props.user.user.profile_pic}
                         alt="user"
                     />
                     <div className="dog-bones-container">
