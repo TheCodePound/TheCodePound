@@ -60,18 +60,26 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
           alt='programming language icon'
         />
         <div className='pound-text-details'>
-          {/* {props.user.profile_pic} */}
           <img
             className='pound-profile-pic'
-            src='https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2FFamily%20Pic%202018%202.jpg?v=1546837304267'
+            src={props.user.user.profile_pic}
             alt='profile'
           />
-          <input
-            className='pound-text-input'
-            placeholder='Project details here...'
-            value={content}
-            onChange={handleContent}
-          />
+          <div className="inputscontainer">
+              <input
+                className='pound-title-input'
+                placeholder='post-title-here'
+                type='text'
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              /><br></br>
+              <textarea
+                className='pound-text-input'
+                placeholder='Project details here...'
+                value={content}
+                onChange={handleContent}
+                />
+            </div>
         </div>
         <div className='pound-icons-btns'>
           <div className='pound-icons'>
