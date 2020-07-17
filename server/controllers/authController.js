@@ -153,7 +153,7 @@ function main(email, fullname) {
 module.exports = {
   register: async (req, res) => {
     console.log(req.body)
-    const { fullname, email, password, profile_pic } = req.body
+    const { full_name, email, password, profile_pic } = req.body
     const db = req.app.get("db")
 
     const existingUser = await db.check_user(email)
@@ -165,12 +165,12 @@ module.exports = {
     const salt = bcrypt.genSaltSync(10)
     const hash = bcrypt.hashSync(password, salt)
 
-    const [newUser] = await db.register_user([fullname, email, hash, profile_pic])
+    const [newUser] = await db.register_user([full_name, email, hash, profile_pic])
 
     req.session.user = newUser
     res.status(200).send(req.session.user)
-    console.log(email, fullname)
-    main(email, fullname)
+    console.log(email, full_name)
+    main(email, full_name)
   },
 
   login: async (req, res) => {
@@ -199,7 +199,7 @@ module.exports = {
     console.log(req.session.user)
     const db = req.app.get("db")
     const { user_id } = req.session.user
-    const { fullname, email, new_email, password, new_password, profile_pic } = req.body
+    const { full_name, email, new_email, password, new_password, profile_pic } = req.body
 
     const existingUser = await db.get_user_by_email(email)
     if (!existingUser[0]) {
@@ -216,7 +216,7 @@ module.exports = {
 
     const [newInfo] = await db.update_user_info([
       user_id,
-      fullname,
+      full_name,
       email,
       new_email,
       password,
