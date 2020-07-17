@@ -117,7 +117,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                     <h3>
                       {el.profile_pic}
                       {el.full_name}
-                      {el.languages}
+                      <img src={el.languages} alt="language image" />
                     </h3>
                   </div>
                   <div>
