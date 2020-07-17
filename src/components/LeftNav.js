@@ -4,25 +4,23 @@ import {connect} from 'react-redux'
 import {logoutUser, getUser} from '../ducks/userReducer'
 import axios from 'axios'
 import '../styles/App.scss'
-import { $CombinedState } from 'redux'
 
 function LeftNav(props) {
 
-    const [name, setName] = useState("")
+    const [fullname, setName] = useState("")
     const [email, setEmail] = useState("")
-    const [oldPassword, setOldPassword] = useState("")
-    const [newPassword, setNewPassword] = useState("")
-    const [image, setImage] = useState("")
+    const [password, setOldPassword] = useState("")
+    const [new_password, setNewPassword] = useState("")
+    const [profile_pic, setImage] = useState("")
     const [updateInfo, setUpdateInfo] = useState(true)
-    const [newEmail, setNewEmail] = useState("")
+    const [new_email, setNewEmail] = useState("")
 
     function toggleUpdateInfo() {
         setUpdateInfo(!updateInfo)
     }
 
     function updateUser() {
-        const {id} = props.user.user
-      axios.put(`/auth/update/${id}`, {email, oldPassword, name, newEmail, newPassword, image})  
+      axios.put(`/auth/update`, {email, password, fullname, new_email, new_password, profile_pic})  
     }
 
 
@@ -98,36 +96,36 @@ function LeftNav(props) {
                 <input
                     className="update-input-field"
                     placeholder="Current Password"
-                    type="text"
-                    value={oldPassword}
+                    type="password"
+                    value={password}
                     onChange={e => setOldPassword(e.target.value)}
                 />
                 <input
                     className="update-input-field"
                     placeholder="Full Name"
                     type="text"
-                    value={name}
+                    value={fullname}
                     onChange={e => setName(e.target.value)}
                 />
                 <input
                     className="update-input-field"
                     placeholder="New Email"
                     type="email"
-                    value={newEmail}
+                    value={new_email}
                     onChange={e => setNewEmail(e.target.value)}
                 />
                 <input
                     className="update-input-field"
                     placeholder="New Password"
-                    type="text"
-                    value={newPassword}
+                    type="password"
+                    value={new_password}
                     onChange={e => setNewPassword(e.target.value)}
                 />
                 <input
                     className="update-input-field"
                     placeholder="Image URL"
                     type="text"
-                    value={image}
+                    value={profile_pic}
                     onChange={e => setImage(e.target.value)}
                 /><br></br>
                 <button 

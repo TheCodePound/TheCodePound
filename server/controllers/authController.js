@@ -195,12 +195,13 @@ module.exports = {
   },
 
   updateUserInfo: async (req, res) => {
+    console.log(req.body)
+    console.log(req.session.user)
     const db = req.app.get("db")
     const { user_id } = req.session.user
     const { fullname, email, new_email, password, new_password, profile_pic } = req.body
 
     const existingUser = await db.get_user_by_email(email)
-
     if (!existingUser[0]) {
       return res.status(404).send("user does not exist")
     }
