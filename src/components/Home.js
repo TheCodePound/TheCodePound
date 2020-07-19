@@ -11,11 +11,11 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   const [content, setContent] = useState("")
   const [images, setImages] = useState([])
   const [addPic, setAddPic] = useState(true)
-  const [languages, setLanguages] = useState([])
+  const [allLanguages, setLanguages] = useState([])
   const [addLanguage, setAddLanguage] = useState(false)
   const [openDropdown, setOpenDropdown] = useState(false)
   const [language, setLanguage] = useState("")
-  const [languageIcon, setLanguageIcon] = useState("")
+  const [languages_img, setLanguageIcon] = useState("")
 
   function toggleAddPic() {
     setAddPic(!addPic)
@@ -62,10 +62,12 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   }
 
   function handleSubmit(e) {
+    const languages = language
+    console.log(languages)
     e.preventDefault();
     console.log("hit");
     axios
-      .post("/api/post", { title, content, img, language })
+      .post("/api/post/in/one", { title, content, img, languages, languages_img })
       .then((res) => {
         props.history.push("/Home");
       })
@@ -94,7 +96,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
       toggleOpenDropdown()
   }
 
-    const languageList = languages.map((e, index) => {
+    const languageList = allLanguages.map((e, index) => {
       return (
         <div 
           key={index}
@@ -117,7 +119,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
         {/* {props.user.languages} */}
         <img
           className='language-image'
-          src={languageIcon}
+          src={languages_img}
           alt=''
         />
         <div className="pound-text-details">
