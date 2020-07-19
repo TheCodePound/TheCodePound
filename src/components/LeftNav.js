@@ -7,7 +7,7 @@ import '../styles/App.scss'
 
 function LeftNav(props) {
 
-    const [fullname, setName] = useState("")
+    const [full_name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setOldPassword] = useState("")
     const [new_password, setNewPassword] = useState("")
@@ -20,7 +20,7 @@ function LeftNav(props) {
     }
 
     function updateUser() {
-      axios.put(`/auth/update`, {email, password, fullname, new_email, new_password, profile_pic})  
+      axios.put(`/auth/update`, {email, password, full_name, new_email, new_password, profile_pic})  
     }
 
 
@@ -104,7 +104,7 @@ function LeftNav(props) {
                     className="update-input-field"
                     placeholder="Full Name"
                     type="text"
-                    value={fullname}
+                    value={full_name}
                     onChange={e => setName(e.target.value)}
                 />
                 <input

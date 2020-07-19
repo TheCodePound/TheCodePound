@@ -15,9 +15,13 @@
 }
 
 .language-image {
-    width: 25px;
-    height: 25px;
+    width: 55px;
+    height: 45px;
     margin-top: 5px;
+    background-image: url(https://i2.wp.com/www.nutricarefertilisers.com/wp-content/uploads/2019/11/placeholder.png?fit=300%2C200&ssl=1);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .pound-text-details {
@@ -34,7 +38,6 @@
         position: relative;
         top: 10px;
         right: 15px;
-        border: solid 3px black;
     }
     
     .pound-text-input {
@@ -64,7 +67,6 @@
         width: 35px;
         height: 35px;
         margin: 5px;
-        border: solid 3px black
     }
 
     .icon-image:hover {
@@ -84,7 +86,6 @@
         height: 40px;
         border-radius: 12px;
         margin: 5px;
-        border: solid 3px black;
     }
 
     .pound-individual-btn:hover {
@@ -109,13 +110,133 @@
 }
 .pound-title-input {
     width: 250px;
-    height: 40px;
+    height: 20px;
+    border-radius: 7px;
 }
 
 .inputscontainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    margin-bottom: 5px;
 
 }
+
+// .plussign {
+//     width: 20px;
+//     height: 20px;
+//     color: $blue;
+// }
+
+.add-image-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    left: 100px;
+}
+
+.new-post-image-url {
+    margin-bottom: 15px;
+    width: 400px;
+    height: 20px;
+    border-radius: 5%;
+    margin-right: 10px;
+}
+
+.image-preview {
+    width: 300px;
+    height: 300px;
+    border: solid 1px black;
+    background-image: url(https://i2.wp.com/www.nutricarefertilisers.com/wp-content/uploads/2019/11/placeholder.png?fit=300%2C200&ssl=1);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    left: 50px;
+}
+
+.add-post-pic-open {
+    display: none;
+}
+
+.language-dropdown {
+    width: 160px;
+    position: relative;
+    left: 460px;
+}
+
+.dropdown-icon {
+    width: 60px;
+    height: 60px;
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: solid 1px black;
+}
+
+
+.scroll-div {
+    height: 350px;
+    width: 185px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
+    left: 440px;
+    border: solid 9px $blue;
+    border-radius: 4%;
+
+}
+
+.scrollbar-div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.dropdown-name {
+    font-size: 20px;
+}
+
+.scrolldown-label {
+    font-size: 20px;
+    margin-left: 5px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.scrolldown-label-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.arrow-image {
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+    position: relative;
+    top: -2px;
+    transform: scaleY(-1);
+}
+
+.scroll-div-open {
+    display: none;
+}
+
+.dropdown-options {
+    display: none;
+}
+
+.arrow-image-open {
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+    position: relative;
+    top: -2px;
+}
+
+
+

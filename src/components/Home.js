@@ -3,11 +3,31 @@ import axios from "axios"
 import { connect } from "react-redux"
 import { getPosts } from "../ducks/postReducer"
 
+
 const Home = ({ postReducer, posts, getPosts, ...props }) => {
   const [loading, setLoading] = useState(true)
   const [title, setTitle] = useState("")
   const [img, setImg] = useState("")
   const [content, setContent] = useState("")
+  const [images, setImages] = useState([])
+  const [addPic, setAddPic] = useState(true)
+  const [languages, setLanguages] = useState([])
+  const [addLanguage, setAddLanguage] = useState(false)
+  const [openDropdown, setOpenDropdown] = useState(false)
+  const [language, setLanguage] = useState("")
+  const [languageIcon, setLanguageIcon] = useState("")
+
+  function toggleAddPic() {
+    setAddPic(!addPic)
+  }
+
+  function toggleAddLanguage() {
+    setAddLanguage(!addLanguage)
+  }
+
+  function toggleOpenDropdown() {
+    setOpenDropdown(!openDropdown)
+  }
 
   useEffect(() => {
     axios
@@ -19,7 +39,15 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
         console.log(err)
       })
       .finally(() => setLoading(false))
+      getLanguages()
   }, [])
+
+  function getLanguages() {
+    axios.get('api/all/languages')
+    .then(res => {
+      setLanguages(res.data)
+    })
+  } 
 
   function handleTitle(e) {
     setTitle(e.target.value)
@@ -35,20 +63,52 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
 
   function handleSubmit(e) {
     e.preventDefault()
-    console.log("hit")
     axios
-      .post("/api/post", { title, content })
+      .post("/api/post", { title, content, img, language })
       .then((res) => {
         props.history.push("/Home")
       })
       .catch((err) => {
         console.log(err)
       })
+      setTitle("")
+      setContent("")
+      setImg("")
+      setLanguage("")
+      setLanguageIcon("")
   }
 
   function cancel() {
     props.history.push("/Home")
   }
+
+  function addImage() {
+    console.log('Image Added', img)
+  }
+
+  function selectLanguage(language, icon) {
+      setLanguage(language)
+      setLanguageIcon(icon)
+      toggleAddLanguage()
+      toggleOpenDropdown()
+  }
+
+    const languageList = languages.map((e, index) => {
+      return (
+        <div 
+          key={index}
+          className="scrollbar-div"
+          onClick={() => selectLanguage(e.languages, e.languages_img)}>
+          <img 
+            src={e.languages_img} 
+            alt={e.languages}
+            className="dropdown-icon"
+            />
+          <h3 className="dropdown-name">{e.languages}</h3>
+        </div>
+      )
+    }
+    )
 
   return (
     <div className='home-container'>
@@ -56,8 +116,8 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
         {/* {props.user.languages} */}
         <img
           className='language-image'
-          src='https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fjavascript-icon.png?v=1594835510447'
-          alt='programming language icon'
+          src={languageIcon}
+          alt=''
         />
         <div className='pound-text-details'>
           <img
@@ -68,7 +128,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
           <div className="inputscontainer">
               <input
                 className='pound-title-input'
-                placeholder='post-title-here'
+                placeholder='Post title here...'
                 type='text'
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
@@ -80,13 +140,35 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                 onChange={handleContent}
                 />
             </div>
+            </div>
+            <div className={`${addPic ? "add-post-pic-open" : "add-image-div"}`}>
+                <div>
+                <input
+                  className='new-post-image-url'
+                  placeholder='Image URL here...'
+                  value={img}
+                  onChange={handleImg}
+                />
+                {/* <img
+                  className="plussign"
+                  src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fplus%20BIG.png?v=1594854392581"
+                  alt="plus"
+                  /> */}
+                </div>
+                <img 
+                  src={img} 
+                  alt=""
+                  className='image-preview'
+                  />
         </div>
+            <div>{images}</div>
         <div className='pound-icons-btns'>
           <div className='pound-icons'>
             <img
               className='icon-image'
               src='https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Ficon%20image%20BIG.png?v=1594831414804'
               alt='image icon'
+              onClick={() => toggleAddPic()}
             />
             <img
               className='icon-image'
@@ -100,12 +182,22 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
             />
           </div>
           <div className='pound-btns'>
-            <button className='pound-individual-btn'>Add Language +</button>
+            <button className='pound-individual-btn' onClick={() => toggleAddLanguage()}>Add Language +</button>
             <button className='pound-individual-btn' onClick={handleSubmit}>
               Post Pound
             </button>
           </div>
         </div>
+        <div className={`${addLanguage ? "scroll-div" : "scroll-div-open"}`}>
+          <div className="scrolldown-label-div"
+              onClick={() => toggleOpenDropdown()}>
+            <h3 className="scrolldown-label">Language</h3>
+            <img className={`${openDropdown ? "arrow-image" : "arrow-image-open"}`} src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS6InPWiE5FO1K0z_mlLYlMet4gVSoCGE0Exw&usqp=CAU"/>
+          </div>
+          <div className={`${openDropdown ? "dropdown-options" : "dropdown-options-open"}`}>
+      {languageList}
+      </div>
+      </div>
       </div>
       <div>
         {!loading ? (
