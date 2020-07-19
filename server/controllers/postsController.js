@@ -15,6 +15,29 @@ module.exports = {
     res.status(200).send(newPost)
   },
 
+  allInOnePost: async (req, res) => {
+    const db = req.app.get("db")
+    const { user_id } = req.session.user
+    const { title, content, img, languages, languages_img } = req.body
+
+    const newPost = await db.add_post({ user_id, title, content })
+    const user_junction_id = req.session.user.user_id
+    const post_junction_id = newPost[0].post_id
+    await db.get_post_id_in_junction([user_junction_id, post_junction_id])
+    // note start of img
+    const user_img_id = req.session.user.user_id
+    const post_img_id  = newPost[0].post_id
+
+    const [newImg] = await db.new_img({ user_img_id, post_img_id, img })
+    // start of languages
+    const user_languages_id = req.session.user.user_id
+    const post_languages_id = newPost[0].post_id
+
+    const newLanguage = await db.new_language({user_languages_id, post_languages_id, languages, languages_img})
+    res.status(200).send(newPost, [newImg], newLanguage)
+  },
+  
+
   createPostImg: async (req, res) => {
     const db = req.app.get("db")
     const user_img_id = req.session.user.user_id

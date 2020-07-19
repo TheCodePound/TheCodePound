@@ -3,16 +3,26 @@
 .right-home-nav-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    top: 5px;
+    right:10px;
+
     
-    .home-right-nav-welcome-text {
-        font-weight: bolder;
-        font-size: 30px;
-        position: absolute;
-        right:15px;
-        width: 10em;
-        text-align: center;
+    .right-nav-div {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        .home-right-nav-welcome-text {
+            font-weight: bolder;
+            font-size: 30px;
+            position: absolute;
+            right:15px;
+            width: 10em;
+            text-align: center;
+        }
     }
 }
 
@@ -31,14 +41,14 @@
         border-radius: 8px;
         font-weight: bolder;
         font-size: 30px;
-        position: fixed;
+        position: absolute;
         right:15px;
         width: 10em;
         text-align: center;
     }
 
     .red-box-arrow {
-        position: fixed;
+        position: absolute;
         right: 137px;
         top: 160px;
         background-color: $red;

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios"
-import { connect } from "react-redux"
-import { getPosts } from "../ducks/postReducer"
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { connect } from "react-redux";
+import { getPosts } from "../ducks/postReducer";
 
 
 const Home = ({ postReducer, posts, getPosts, ...props }) => {
@@ -33,10 +33,10 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
     axios
       .get("/api/all/posts")
       .then((res) => {
-        getPosts(res.data)
+        getPosts(res.data);
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
       })
       .finally(() => setLoading(false))
       getLanguages()
@@ -50,23 +50,24 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   } 
 
   function handleTitle(e) {
-    setTitle(e.target.value)
+    setTitle(e.target.value);
   }
 
   function handleImg(e) {
-    setImg(e.target.value)
+    setImg(e.target.value);
   }
 
   function handleContent(e) {
-    setContent(e.target.value)
+    setContent(e.target.value);
   }
 
   function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
+    console.log("hit");
     axios
       .post("/api/post", { title, content, img, language })
       .then((res) => {
-        props.history.push("/Home")
+        props.history.push("/Home");
       })
       .catch((err) => {
         console.log(err)
@@ -79,7 +80,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   }
 
   function cancel() {
-    props.history.push("/Home")
+    props.history.push("/Home");
   }
 
   function addImage() {
@@ -111,19 +112,19 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
     )
 
   return (
-    <div className='home-container'>
-      <div className='pound-container'>
+    <div className="home-container">
+      <div className="pound-container">
         {/* {props.user.languages} */}
         <img
           className='language-image'
           src={languageIcon}
           alt=''
         />
-        <div className='pound-text-details'>
+        <div className="pound-text-details">
           <img
-            className='pound-profile-pic'
+            className="pound-profile-pic"
             src={props.user.user.profile_pic}
-            alt='profile'
+            alt="profile"
           />
           <div className="inputscontainer">
               <input
@@ -171,14 +172,14 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
               onClick={() => toggleAddPic()}
             />
             <img
-              className='icon-image'
-              src='https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fgif%20icon%20big.png?v=1594831425259'
-              alt='gif icon'
+              className="icon-image"
+              src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fgif%20icon%20big.png?v=1594831425259"
+              alt="gif icon"
             />
             <img
-              className='icon-image'
-              src='https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fvideo%20icon%20big.png?v=1594831421374'
-              alt='video icon'
+              className="icon-image"
+              src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fvideo%20icon%20big.png?v=1594831421374"
+              alt="video icon"
             />
           </div>
           <div className='pound-btns'>
@@ -203,36 +204,59 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
         {!loading ? (
           posts.posts.map((el, index) => {
             return (
-              <div key={el?.id ?? index} onClick={() => props.history.push(`/Popup/${el.post_id}`)}>
-                <div>
-                  <div>
-                    <h3>
-                      {el.profile_pic}
-                      {el.full_name}
-                      {el.languages}
-                    </h3>
+              <div className="posts-home-container-main">
+                <div
+                  key={el?.id ?? index}
+                  onClick={() => props.history.push(`/Popup/${el.post_id}`)}
+                >
+                  <div className="posts-info-container">
+                    <div className="posts-user-info">
+                      <img
+                        className="posts-home-profile-image"
+                        // src={el.profile_pic}
+                        src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fme.jpg?v=1569425179160"
+                        alt="profile image"
+                      />
+                      <p className="posts-home-username">{el.full_name}</p>
+                      <img
+                        className="posts-home-language-image"
+                        src={el.languages_img}
+                        alt="language image"
+                      />
+                    </div>
+                    <div className="post-details-box">
+                      <div className="post-details">
+                        <p>{el.content}</p>
+                        <img 
+                          className="post-image"
+                          src={el.img} alt="post img" 
+                        />
+                      </div>
+                    </div>
+                    <div className="post-user-interaction-container">
+                      <div className="post-user-bones">
+                        <img
+                          className="dog-bones-image"
+                          src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fbone%20like%20button.png?v=1594853507429"
+                          alt="bone"
+                        />
+                        <p className="dog-bones-number">{el.bones}</p> 
+
+                      </div>
+                      <button className="comment-btn">Comment</button>  {/* {el.comment} */}
+                    </div>
+                    <hr />
                   </div>
-                  <div>
-                    <p>{el.content}</p>
-                    <img src={el.img} alt='post img' />
-                  </div>
-                  <div>
-                    <p>
-                      {el.bones}
-                      {el.comment}
-                    </p>
-                  </div>
-                  <hr />
                 </div>
               </div>
-            )
+            );
           })
         ) : (
           <div>this will be loading.</div>
         )}
       </div>
     </div>
-  )
-}
-const mapStateToProps = (reduxState) => reduxState
-export default connect(mapStateToProps, { getPosts })(Home)
+  );
+};
+const mapStateToProps = (reduxState) => reduxState;
+export default connect(mapStateToProps, { getPosts })(Home);
