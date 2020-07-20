@@ -33,7 +33,8 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
     axios
       .get("/api/all/posts")
       .then((res) => {
-        getPosts(res.data);
+        console.log(res.data[0]);
+        getPosts(res.data[0]);
       })
       .catch((err) => {
         console.log(err);
