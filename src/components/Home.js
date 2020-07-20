@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { getPosts } from "../ducks/postReducer";
+import { getPosts, getBones, getComments } from "../ducks/postReducer";
 
 
 const Home = ({ postReducer, posts, getPosts, ...props }) => {
@@ -16,6 +16,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   const [openDropdown, setOpenDropdown] = useState(false)
   const [language, setLanguage] = useState("")
   const [languages_img, setLanguageIcon] = useState("")
+  const [bones, setBones] = useState([])
 
   function toggleAddPic() {
     setAddPic(!addPic)
@@ -33,8 +34,9 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
     axios
       .get("/api/all/posts")
       .then((res) => {
-        console.log(res.data[0]);
-        getPosts(res.data[0]);
+        getPosts(res.data[0])
+        setBones(res.data[1])
+        getComments(res.data[2])
       })
       .catch((err) => {
         console.log(err);
@@ -117,7 +119,6 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   return (
     <div className="home-container">
       <div className="pound-container">
-        {/* {props.user.languages} */}
         <img
           className='language-image'
           src={languages_img}
@@ -214,8 +215,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                     <div className="posts-user-info">
                       <img
                         className="posts-home-profile-image"
-                        // src={el.profile_pic}
-                        src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fme.jpg?v=1569425179160"
+                        src={el.profile_pic}
                         alt="profile image"
                       />
                     <div className="post-name-time">
@@ -245,7 +245,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                           src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fbone%20like%20button.png?v=1594853507429"
                           alt="bone"
                         />
-                        <p className="dog-bones-number">{el.bones}</p> 
+                        <p className="dog-bones-number">{bones[index][0].count}</p> 
 
                       </div>
                       <button className="comment-btn">Comment</button>  {/* {el.comment} */}
@@ -264,4 +264,4 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   );
 };
 const mapStateToProps = (reduxState) => reduxState;
-export default connect(mapStateToProps, { getPosts })(Home);
+export default connect(mapStateToProps, { getPosts, getBones, getComments })(Home);
