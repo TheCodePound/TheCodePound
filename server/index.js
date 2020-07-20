@@ -4,7 +4,6 @@ const express = require('express'),
       massive = require('massive'),
       authCtrl = require('./controllers/authController'),
       postCtrl = require('./controllers/postsController'),
-      // setup = require('./controllers/setup'),
       {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env,
       app = express();
 

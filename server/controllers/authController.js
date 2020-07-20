@@ -152,7 +152,7 @@ function main(email, fullname) {
 
 module.exports = {
   register: async (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     const { full_name, email, password, profile_pic } = req.body
     const db = req.app.get("db")
 
@@ -169,7 +169,7 @@ module.exports = {
 
     req.session.user = newUser
     res.status(200).send(req.session.user)
-    console.log(email, full_name)
+    // console.log(email, full_name)
     main(email, full_name)
   },
 
@@ -195,8 +195,8 @@ module.exports = {
   },
 
   updateUserInfo: async (req, res) => {
-    console.log(req.body)
-    console.log(req.session.user)
+    // console.log(req.body)
+    // console.log(req.session.user)
     const db = req.app.get("db")
     const { user_id } = req.session.user
     const { full_name, email, new_email, password, new_password, profile_pic } = req.body
