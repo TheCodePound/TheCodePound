@@ -113,19 +113,26 @@ module.exports = {
 
     
       const allPosts = await db.get_all_post()
-      console.log(' all posts', allPosts)
+      // console.log(' all posts', allPosts)
         const postIdMap = async() => Promise.all( allPosts.map(async (e) => {
         const post_id =  e.post_id
         const getAllComments = await db.get_all_comments(post_id)
        
-        console.log('get all comments', getAllComments)
-        return getAllComments
-
+        // console.log('get all comments', getAllComments, getAllBones)
+        // console.log('bones', getAllBones)
+        return getAllComments;
       }))
 
+      const postForBonesMap = async() => Promise.all(allPosts.map(async (e) => {
+        const post_bones_id = e.post_id
+        const getAllBones = await db.sum_post_bones(post_bones_id)
+        return getAllBones
+      }))
      const some = await postIdMap()
+     const bones = await postForBonesMap() 
      console.log('some', some)
-     res.status(200).send( [some, allPosts])
+     console.log('bones', bones)
+     res.status(200).send( [bones, some, allPosts])
 
   },
 
