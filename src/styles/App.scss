@@ -16,4 +16,5 @@
 
 .center-div {
     @include flex(space-between);
+    align-items: flex-start;
 }

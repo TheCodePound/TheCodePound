@@ -38,7 +38,7 @@ function RightNav(props) {
     return (
       <div className="right-nav-languages">
         <p className="right-nav-favorite-programing-languages">
-          Tail Wagging Favorites
+          Favorite Languages
         </p>
         <div className="red-box-arrow"></div>
         {/* {languageList} */}

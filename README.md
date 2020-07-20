@@ -38,6 +38,12 @@ Welcome to the CodePound! A social media site geared toward developers and the a
 ### Update user profile component
 <img src = "./pictures/Profile Update view.png">
 
+### Click a individual post
+<img src = "./pictures/Click post.png">
+
+### Edit individual post
+<img src = "./pictures/Edit post.png">
+
 ## Schema (DataBase Design):
 <img src = "./pictures/Database-relations.png">
 
