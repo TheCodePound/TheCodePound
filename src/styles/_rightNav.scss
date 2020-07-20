@@ -42,6 +42,7 @@
         font-weight: bolder;
         font-size: 30px;
         position: absolute;
+        top: 10px;
         right:15px;
         width: 10em;
         text-align: center;
@@ -49,8 +50,8 @@
 
     .red-box-arrow {
         position: absolute;
-        right: 137px;
-        top: 160px;
+        right: 150px;
+        top: 55px;
         background-color: $red;
         width: 28px;
         height: 28px;
@@ -70,7 +71,12 @@
         align-items: center;
         position: absolute;
         top: 100px;
-        right: 105px;
+        right: 100px;
+        border: 1px solid lightgrey;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 8px;
+
     }
 }
 

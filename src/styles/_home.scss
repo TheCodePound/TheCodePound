@@ -121,12 +121,34 @@
                 border-radius: 180px;
             }
 
-            .posts-home-username {
-                font-weight: bolder;
-                font-size: 18px;
-                margin-left: 10px;
-                margin-top: 15px;
+            .post-name-time {
+                display: flex;
+                flex-direction: column;
+                justify-content: left;
+                align-items: left;
+
+                .posts-home-username {
+                    font-weight: bolder;
+                    font-size: 18px;
+                    margin-left: 10px;
+                    margin-top: 15px;
+                }
+        
+                .post-time {
+                    margin-left: 5px;
+                    margin-top: 5px;
+                    color:$blue;
+                    font-weight: bolder;
+                    font-size: 18px;
+                }
+        
+                .post-time span {
+                    color:$red;
+                    font-weight: bolder;
+                    margin: 5px;
+                }
             }
+
     
             .posts-home-language-image {
                 width: 45px;

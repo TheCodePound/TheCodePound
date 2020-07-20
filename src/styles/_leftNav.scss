@@ -25,6 +25,7 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
+        margin-left: 55px;
 
             .profile-img-left-nav {
                 width: 150px;
@@ -60,6 +61,14 @@
         border: none;
         background-color: $blue;
         color: white;
+        width: 150px;
+        height:40px;
+        border-radius: 8px;
+    }
+
+    .new-pound:hover {
+        opacity: 0.6;
+        cursor: pointer;
     }
 
     .updateMenu {
