@@ -111,12 +111,22 @@ module.exports = {
   getAllPosts: async (req, res) => {
     const db = req.app.get("db")
 
-    try {
+    
       const allPosts = await db.get_all_post()
-      res.status(200).send(allPosts)
-    } catch (err) {
-      res.status(404).send("could not get posts", err)
-    }
+      console.log(' all posts', allPosts)
+        const postIdMap = async() => Promise.all( allPosts.map(async (e) => {
+        const post_id =  e.post_id
+        const getAllComments = await db.get_all_comments(post_id)
+       
+        console.log('get all comments', getAllComments)
+        return getAllComments
+
+      }))
+
+     const some = await postIdMap()
+     console.log('some', some)
+     res.status(200).send( [some, allPosts])
+
   },
 
   getAllUserPosts: async (req, res) => {
@@ -124,7 +134,7 @@ module.exports = {
     const { user_id } = req.session.user
 
     const userPosts = await db.get_all_user_posts([user_id])
-    console.log("this is user posts", userPosts)
+    // console.log("this is user posts", userPosts)
     res.status(200).send(userPosts)
   },
 
