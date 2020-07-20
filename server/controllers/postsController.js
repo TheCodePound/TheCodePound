@@ -130,8 +130,8 @@ module.exports = {
       }))
      const comments = await postIdMap() 
      const bones = await postForBonesMap() 
-     console.log('comments', comments)
-     console.log('bones', bones)
+    //  console.log('comments', comments)
+    //  console.log('bones', bones)
      res.status(200).send( [allPosts, bones, comments]) 
 
   },
@@ -141,8 +141,24 @@ module.exports = {
     const { user_id } = req.session.user
 
     const userPosts = await db.get_all_user_posts([user_id])
-    // console.log("this is user posts", userPosts)
-    res.status(200).send(userPosts)
+    const commentMap = async() => Promise.all( userPosts.map(async (e) => {
+      const post_id =  e.post_id
+      const getAllComments = await db.get_all_comments(post_id)
+     
+      console.log('get all comments', getAllComments)
+      return getAllComments;
+    }))
+    const bonesMap = async() => Promise.all(userPosts.map(async (e) => {
+      const post_bones_id = e.post_id
+      const getAllBones = await db.sum_post_bones(post_bones_id)
+      return getAllBones
+    }))
+
+
+    const comments = await commentMap() 
+    const bones = await bonesMap() 
+
+    res.status(200).send([userPosts, bones, comments]) 
   },
 
   getPostById: async (req, res) => {
