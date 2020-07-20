@@ -128,11 +128,11 @@ module.exports = {
         const getAllBones = await db.sum_post_bones(post_bones_id)
         return getAllBones
       }))
-     const some = await postIdMap()
+     const comments = await postIdMap() 
      const bones = await postForBonesMap() 
-     console.log('some', some)
+     console.log('comments', comments)
      console.log('bones', bones)
-     res.status(200).send( [bones, some, allPosts])
+     res.status(200).send( [allPosts, bones, comments]) 
 
   },
 
