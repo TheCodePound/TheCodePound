@@ -11,7 +11,7 @@ const Profile = ({ postReducer, posts, getPosts, ...props }) => {
     axios
       .get("/api/user/posts")
       .then((res) => {
-        getPosts(res.data)
+        getPosts(res.data[0])
       })
       .catch((err) => {
         console.log(err)
