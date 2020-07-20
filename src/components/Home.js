@@ -220,6 +220,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                         alt="profile image"
                       />
                       <p className="posts-home-username">{el.full_name}</p>
+                      {/* Include here a date underneath the username in a div */}
                       <img
                         className="posts-home-language-image"
                         src={el.languages_img}
