@@ -1,8 +1,7 @@
 const { renderSync } = require("node-sass")
 
 module.exports = {
-  searchPosts: async (req, res) => {},
-
+  
   createPostContent: async (req, res) => {
     const db = req.app.get("db")
     const { user_id } = req.session.user
@@ -37,7 +36,6 @@ module.exports = {
     res.status(200).send(newPost, [newImg], newLanguage)
   },
   
-
   createPostImg: async (req, res) => {
     const db = req.app.get("db")
     const user_img_id = req.session.user.user_id
