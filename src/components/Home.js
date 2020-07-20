@@ -152,18 +152,13 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                   value={img}
                   onChange={handleImg}
                 />
-                {/* <img
-                  className="plussign"
-                  src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fplus%20BIG.png?v=1594854392581"
-                  alt="plus"
-                  /> */}
                 </div>
                 <img 
                   src={img} 
                   alt=""
                   className='image-preview'
                   />
-        </div>
+            </div>
             <div>{images}</div>
         <div className='pound-icons-btns'>
           <div className='pound-icons'>
@@ -185,13 +180,9 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
             />
           </div>
           <div className='pound-btns'>
+            <div className="relativity">
             <button className='pound-individual-btn' onClick={() => toggleAddLanguage()}>Add Language +</button>
-            <button className='pound-individual-btn' onClick={handleSubmit}>
-              Post Pound
-            </button>
-          </div>
-        </div>
-        <div className={`${addLanguage ? "scroll-div" : "scroll-div-open"}`}>
+            <div className={`${addLanguage ? "scroll-div" : "scroll-div-open"}`}>
           <div className="scrolldown-label-div"
               onClick={() => toggleOpenDropdown()}>
             <h3 className="scrolldown-label">Language</h3>
@@ -201,6 +192,13 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
       {languageList}
       </div>
       </div>
+      </div>
+            <button className='pound-individual-btn' onClick={handleSubmit}>
+              Post Pound
+            </button>
+          </div>
+        </div>
+
       </div>
       <div>
         {!loading ? (
