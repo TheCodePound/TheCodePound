@@ -166,7 +166,21 @@ module.exports = {
     const { post_id } = req.params
 
     const onePostById = await db.get_post_by_id([post_id])
-    res.status(200).send(onePostById[0])
+    const commentMap = async() => Promise.all( onePostById.map(async (e) => {
+      const post_id =  e.post_id
+      const getAllComments = await db.get_all_comments(post_id)
+     
+      console.log('get all comments', getAllComments)
+      return getAllComments;
+    }))
+    const bonesMap = async() => Promise.all(onePostById.map(async (e) => {
+      const post_bones_id = e.post_id
+      const getAllBones = await db.sum_post_bones(post_bones_id)
+      return getAllBones
+    }))
+    const comments = await commentMap()
+    const bones = await bonesMap() 
+    res.status(200).send([onePostById, bones, comments])
   },
 
   updatePost: async (req, res) => {
