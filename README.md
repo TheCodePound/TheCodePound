@@ -32,6 +32,9 @@ Welcome to the CodePound! A social media site geared toward developers and the a
 ### Home adding a image to your project
 <img src = "./pictures/Add a image.png">
 
+### Home adding a comment to a post
+<img src = "./pictures/Comment view.png">
+
 ### Profile component
 <img src = "./pictures/Profile FINAL 3 component.png">
 
