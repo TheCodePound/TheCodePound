@@ -30,7 +30,7 @@ function RightNav(props) {
     return (
       <div className="right-home-nav-container">
         <div className="right-nav-div">
-          <h1 className="home-right-nav-welcome-text">{`Welcome Home ${full_name}!`}</h1>
+          <h1 className="home-right-nav-welcome-text"><span className="welcome-span">{`${full_name}!`}</span> Welcome to the HomePage</h1>
         </div>
       </div>
     );

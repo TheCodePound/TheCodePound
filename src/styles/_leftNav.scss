@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap');
+
 .left-nav-profile-container {
     width: 20vw;
 }
@@ -86,6 +88,28 @@
         position: absolute;
         top: 480px;
         left: 60px;
+        animation-name: fade;
+        animation-duration: 1s;
+        animation-timing-function: ease-in;
+        
+
+    @keyframes fade {
+        0% {
+            opacity: 0;
+        }
+        25% {
+            opacity: 0.3;
+        }
+        50% {
+            opacity: 0.6;
+        }
+        75% {
+            opacity: 0.8;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
 
             .update-input-field {
                 border: 2px solid $blue;

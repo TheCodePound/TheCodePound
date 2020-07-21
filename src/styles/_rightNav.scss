@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap');
+
 //HOME
 
 .right-home-nav-container {
@@ -25,6 +27,21 @@
             right:15px;
             width: 10em;
             text-align: center;
+            font-family: 'Nunito', sans-serif;
+            color: $red
+        }
+
+        .welcome-span {
+            font-weight: bolder;
+            font-size: 50px;
+            position: absolute;
+            top: 60px;
+            // right: 
+            // width: 15em;
+            margin-top: 10px;
+            text-align: center;
+            font-family: 'Nunito', sans-serif;
+            color: $blue
         }
     }
 }

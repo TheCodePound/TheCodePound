@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap');
+
 .home-container {
     width: 50vw;
 }
@@ -265,6 +267,7 @@
                     font-size: 18px;
                     margin-left: 10px;
                     margin-top: 15px;
+                    font-family: 'Nunito', sans-serif;
                 }
         
                 .post-time {
@@ -301,6 +304,13 @@
 
             .post-details {
                 margin:20px;
+
+                .post-details-title {
+                    font-size: 40px;
+                    font-family: 'Nunito', sans-serif;
+                    color: $blue;
+                    text-align: center;
+                }
 
                 .post-image {
                     width:500px;
@@ -410,10 +420,13 @@
 
 .comment-text-input {
     width: 90%;
-    height: 100px;
+    height: 60px;
     margin-bottom: 20px;
     margin-left: 40px;
     border-radius: 8px;
+    border-radius: 7px;
+    font-family:"Times New Roman", Times, serif;  
+    font-size: 14px; 
 }
 
 .post-comment-button {
@@ -434,8 +447,8 @@
     display: none;
 }
 
-.post-details-title {
-    font-size: 40px;
+.comment-container {
+
 }
 
 

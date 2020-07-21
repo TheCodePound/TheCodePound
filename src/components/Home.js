@@ -16,7 +16,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   const [openDropdown, setOpenDropdown] = useState(false)
   const [language, setLanguage] = useState("")
   const [languages_img, setLanguageIcon] = useState("")
-  const [comments, setComment] = useState("")
+  const [comments, setComments] = useState([])
   const [bones, setBones] = useState([])
   const [makeComment, setMakeComment] = useState(false)
 
@@ -42,7 +42,8 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
       .then((res) => {
         getPosts(res.data[0])
         setBones(res.data[1])
-        getComments(res.data[2])
+        console.log("this is comments", res.data[2])
+        setMakeComment(res.data[2])
       })
       .catch((err) => {
         console.log(err);
@@ -105,7 +106,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
 
   function addComment(id) {
     axios.post(`api/post/comment/${id}`, {comments}).then(() => {
-      setComment("")
+      setComments("")
       toggleMakeComment()
     })
   }
@@ -216,7 +217,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
       <div>
         {!loading ? (
           posts.posts.map((el, index) => {
-            console.log(el.post_id)
+            // console.log("MAPPED COMMENTS",makeComment[index][0].profile_pic)
             return (
               <div className="posts-home-container-main">
                 <div
@@ -277,11 +278,11 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                         <h2>{props.user.user.full_name}</h2>
                         </div>
                         <div>
-                        <input
+                        <textarea
                           className="comment-text-input"
-                          placeholder="Type Comment Here"
+                          placeholder="Type Comment Here..."
                           value={comments}
-                          onChange={(e) => setComment(e.target.value)}
+                          onChange={(e) => setComments(e.target.value)}
                           />
                         </div>
                         <div className="post-button-div">
@@ -289,6 +290,19 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                           className="post-comment-button"
                           onClick={() => addComment(el.post_id)}
                           >Post Comment</button>
+                        </div>
+
+                        <div className="comment-container">
+                          <div>
+                            {/* profile-pic */}
+                           {/* <img src={makeComment[index][1].profile_pic} /> */}
+                            {/* date */}
+                          </div>
+                          <div>
+                            {/* hr */}
+                            {/* username */}
+                            {/* text */}
+                          </div>
                         </div>
                       </div>
                     <hr />

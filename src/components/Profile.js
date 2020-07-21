@@ -47,8 +47,7 @@ const Profile = ({ postReducer, posts, getPosts, ...props }) => {
                     <div className="posts-user-info">
                       <img
                         className="posts-home-profile-image"
-                        // src={el.profile_pic}
-                        src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fme.jpg?v=1569425179160"
+                        src={el.profile_pic}
                         alt="profile image"
                       />
                       <div className="post-name-time">
