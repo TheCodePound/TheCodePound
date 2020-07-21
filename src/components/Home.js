@@ -201,24 +201,6 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
       </div>
 
       <div>
-<<<<<<< HEAD
-        {!loading ? (
-          posts.posts.map((el, index) => {
-            // console.log("MAPPED COMMENTS",makeComment[index][0].profile_pic)
-            return (
-              <div className="posts-home-container-main">
-                <div
-                  // key={el?.id ?? index}
-                  
-                >
-                  <div className="posts-info-container">
-                    <div className="posts-user-info">
-                      <img
-                        className="posts-home-profile-image"
-                        src={el.profile_pic}
-                        alt="profile image"
-                      />
-=======
         {!loading ? (posts.posts.map((el, index) => {
           return (
             <div className="posts-home-container-main">
@@ -230,7 +212,6 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                       src={el.profile_pic}
                       alt="profile image"
                     />
->>>>>>> master
                     <div className="post-name-time">
                       <p className="posts-home-username">{el.full_name}</p>
                       <p className="post-time"><span>57</span>min</p>
@@ -280,7 +261,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                         className="comment-text-input"
                         placeholder="Type Comment Here"
                         value={comments}
-                        onChange={(e) => setComment(e.target.value)}
+                        onChange={(e) => setComments(e.target.value)}
                       />
                     </div>
                     <div className="post-button-div">
@@ -289,46 +270,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                         onClick={() => addComment(el.post_id)}>Post Comment
                       </button>
                     </div>
-<<<<<<< HEAD
-                      <div className={`${makeComment ? "make-comment" : "make-comment-open"}`}>
-                        <div className="user-information-comment">
-                        <img 
-                          src={props.user.user.profile_pic}
-                          className="make-comment-image"
-                          />
-                        <h2>{props.user.user.full_name}</h2>
-                        </div>
-                        <div>
-                        <textarea
-                          className="comment-text-input"
-                          placeholder="Type Comment Here..."
-                          value={comments}
-                          onChange={(e) => setComments(e.target.value)}
-                          />
-                        </div>
-                        <div className="post-button-div">
-                        <button
-                          className="post-comment-button"
-                          onClick={() => addComment(el.post_id)}
-                          >Post Comment</button>
-                        </div>
-
-                        <div className="comment-container">
-                          <div>
-                            {/* profile-pic */}
-                           {/* <img src={makeComment[index][1].profile_pic} /> */}
-                            {/* date */}
-                          </div>
-                          <div>
-                            {/* hr */}
-                            {/* username */}
-                            {/* text */}
-                          </div>
-                        </div>
-                      </div>
                     <hr />
-=======
->>>>>>> master
                   </div>
                   <hr />
                 </div>
