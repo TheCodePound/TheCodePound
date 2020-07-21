@@ -27,6 +27,7 @@
         align-items: center;
         margin-left: 55px;
 
+
             .profile-img-left-nav {
                 width: 150px;
                 height:150px;
@@ -64,6 +65,8 @@
         width: 150px;
         height:40px;
         border-radius: 8px;
+        margin-left: 35px;
+        margin-top: 10px;
     }
 
     .new-pound:hover {
@@ -80,6 +83,9 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+        position: absolute;
+        top: 480px;
+        left: 60px;
 
             .update-input-field {
                 border: 2px solid $blue;
@@ -135,9 +141,9 @@
                     margin: 10px;
                 }
 
-                .left-nav-user-icons {
+                // .left-nav-user-icons {
 
-                }
+                // }
 
 
             }
