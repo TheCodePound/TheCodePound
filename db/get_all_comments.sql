@@ -1,4 +1,4 @@
-select u.full_name, u.profile_pic, c.comments, c.post_comments_id, p.post_id from junction j
+select u.full_name, u.profile_pic, c.comments, c.comments_date, c.post_comments_id, p.post_id from junction j
 join users u
 on u.user_id = j.user_junction_id 
 join comments c

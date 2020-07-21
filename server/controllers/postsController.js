@@ -238,6 +238,14 @@ module.exports = {
     res.status(200).send(deleteLanguages)
   },
 
+  deleteComments: async (req, res) => {
+    const db = req.app.get("db")
+    const { post_comments_id } = req.params
+
+    const deleteComments = await db.delete_post_comments([post_comments_id])
+    res.status(200).send(deleteComments)
+  },
+
   deletePostContent: async (req, res) => {
     const db = req.app.get("db")
     const { post_id } = req.params
@@ -245,4 +253,17 @@ module.exports = {
     const deleteContent = await db.delete_post_content([post_id])
     res.status(200).send(deleteContent)
   },
+  
+  deleteAllOfPost: async (req, res) => {
+    const db = req.app.get("db")
+    const { post_id } = req.params
+
+    try{
+      const deleteContent = await db.delete_post([post_id])
+      res.status(200).send(deleteContent)
+    }catch (err){
+      res.status(500).send('could not delete')
+    }
+
+  }
 }
