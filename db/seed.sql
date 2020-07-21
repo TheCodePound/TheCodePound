@@ -53,4 +53,6 @@ CREATE TABLE junction (
   languages_junction_id int REFERENCES languages(languages_id),
   comments_junction_id int REFERENCES comments(comment_id)
 );
+
+
  
