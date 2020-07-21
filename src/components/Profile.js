@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { connect } from "react-redux"
-import { getPosts } from "../ducks/postReducer"
+import { getPosts, getBones, getComments } from "../ducks/postReducer"
 
 const Profile = ({ postReducer, posts, getPosts, ...props }) => {
   console.log("this is props", props)
@@ -12,10 +12,13 @@ const Profile = ({ postReducer, posts, getPosts, ...props }) => {
       .get("/api/user/posts")
       .then((res) => {
         getPosts(res.data[0])
+        getBones(res.data[1])
+        getComments(res.data[2])
       })
       .catch((err) => {
         console.log(err)
       })
+
       .finally(() => setLoading(false))
   }, [])
 
@@ -82,4 +85,4 @@ const Profile = ({ postReducer, posts, getPosts, ...props }) => {
 };
 
 const mapStateToProps = (reduxState) => reduxState
-export default connect(mapStateToProps, { getPosts })(Profile)
+export default connect(mapStateToProps, { getPosts, getBones, getComments })(Profile)
