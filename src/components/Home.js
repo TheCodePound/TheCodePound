@@ -299,7 +299,9 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
             );
           })
         ) : (
-          <div>this will be loading.</div>
+          <div className="loader-container">
+            <div className="loader"></div>
+          </div>
         )}
       </div>
     </div>
