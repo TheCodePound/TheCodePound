@@ -162,6 +162,7 @@ module.exports = {
   },
 
   getPostById: async (req, res) => {
+    console.log(req.params)
     const db = req.app.get("db")
     const { post_id } = req.params
 
