@@ -50,6 +50,7 @@ app.delete(`/api/post/languages/:post_languages_id`, postCtrl.deletePostLanguage
 app.delete(`/api/post/languages/by/:languages_id`, postCtrl.deleteLanguageById)
 app.delete(`/api/post/content/:post_id`, postCtrl.deletePostContent)
 app.delete(`/api/bone/:bones_id`, postCtrl.deleteBone)
+app.delete(`/api/post/:post_id`, postCtrl.deleteAllOfPost)
 
 
 
