@@ -48,64 +48,77 @@ Welcome to the CodePound! A social media site geared toward developers and the a
 <img src = "./pictures/Edit post.png">
 
 ## Schema (DataBase Design):
-<img src = "./pictures/Database-relations.png">
+<img src = "./pictures/finished-db-codepound.png">
 
 
 ### Users TABLE
 ```SQL
-CREATE TABLE users(
-    id SERIAL PRIMARY KEY,
+create table users (
+    user_id SERIAL PRIMARY KEY,
     full_name VARCHAR(100),
-    email VARCHAR(50)
+    email VARCHAR(50),
+    new_email VARCHAR(50),
     password TEXT,
-    profile_pic TEXT
+    new_password TEXT,
+    profile_pic TEXT 
 );
 ```
 
 ### Posts TABLE 
 ```SQL
 CREATE TABLE posts(
-    id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES users(id),
+    post_id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(user_id),
     title VARCHAR(50),
-    img TEXT,
-    content TEXT
+    content TEXT,
+    post_date TEXT
 );
 ```
 
 ### Comments TABLE
 ```SQL 
 CREATE TABLE comments(
-id SERIAL PRIMARY KEY,
-user_id INTEGER REFERENCES users(id),
-post_id INTEGER REFERENCES posts(id),
-comments TEXT,
-bones INTEGER
+    comment_id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(user_id),
+    post_comments_id INTEGER REFERENCES posts(post_id),
+    comments TEXT
 );
 ```
 
 ### image TABLE 
 ```SQL 
-CREATE TABLE image (
-  id SERIAL PRIMARY KEY,
-  post_id INTEGER,
-  post_img TEXT
-);
+CREATE TABLE img (
+  img_id SERIAL PRIMARY KEY,
+  user_img_id int REFERENCES users(user_id),
+  post_img_id int REFERENCES posts(post_id), 
+  img text
+); 
 ```
 
 ### languages TABLE 
 ```SQL
 CREATE TABLE languages (
-  id SERIAL PRIMARY KEY,
-  languages TEXT
+  languages_id SERIAL PRIMARY KEY,
+  user_languages_id int REFERENCES users(user_id),
+  post_languages_id int REFERENCES posts(post_id), 
+  languages text,
+  languages_img text 
+);
+```
+### bones TABLE 
+```SQL
+CREATE TABLE bones (
+  bones_id SERIAL PRIMARY KEY,
+  post_bones_id int REFERENCES posts(post_id), 
+  bones int
 );
 ```
 
 ### junction TABLE 
 ```SQL
 CREATE TABLE junction (
-  id SERIAL PRIMARY KEY,
-  posts_id INTEGER,
-  languages_id INTEGER
+  junction_id SERIAL PRIMARY KEY,
+  user_junction_id int REFERENCES users(user_id),
+  post_junction_id int REFERENCES posts(post_id)
 );
 ```
