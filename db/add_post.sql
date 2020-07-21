@@ -1,5 +1,5 @@
-insert into posts (user_id, title, content)
-values (${user_id}, ${title}, ${content}) returning *;
+insert into posts (user_id, title, content, post_date)
+values (${user_id}, ${title}, ${content}, ${post_date}) returning *;
 
 
 

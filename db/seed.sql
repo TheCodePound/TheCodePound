@@ -13,15 +13,15 @@ CREATE TABLE posts(
     post_id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users(user_id),
     title VARCHAR(50),
-    content TEXT
+    content TEXT,
+    post_date TEXT
 );
 
 CREATE TABLE comments(
     comment_id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users(user_id),
     post_comments_id INTEGER REFERENCES posts(post_id),
-    comments TEXT,
-    bones INTEGER
+    comments TEXT
 );
 
 CREATE TABLE img (
@@ -37,6 +37,12 @@ CREATE TABLE languages (
   post_languages_id int REFERENCES posts(post_id), 
   languages text,
   languages_img text 
+);
+
+CREATE TABLE bones (
+  bones_id SERIAL PRIMARY KEY,
+  post_bones_id int REFERENCES posts(post_id), 
+  bones int
 );
  
 CREATE TABLE junction (

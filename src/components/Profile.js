@@ -4,8 +4,9 @@ import { connect } from "react-redux"
 import { getPosts, getBones, getComments } from "../ducks/postReducer"
 
 const Profile = ({ postReducer, posts, getPosts, ...props }) => {
-  console.log("this is props", props)
   const [loading, setLoading] = useState(true)
+  const [makeComment, setMakeComment] = useState(false)
+  const [comments, setComment] = useState("")
 
   useEffect(() => {
     axios
@@ -22,6 +23,17 @@ const Profile = ({ postReducer, posts, getPosts, ...props }) => {
       .finally(() => setLoading(false))
   }, [])
 
+  function toggleMakeComment() {
+    setMakeComment(!makeComment)
+  }
+
+  function addComment(id) {
+    axios.post(`api/post/comment/${id}`, {comments}).then(() => {
+      setComment("")
+      toggleMakeComment()
+    })
+  }
+
   return (
     <div className="profile-container">
       <p className="profile-text">All User Posts</p>
@@ -30,10 +42,7 @@ const Profile = ({ postReducer, posts, getPosts, ...props }) => {
           posts.posts.map((el, index) => {
             return (
               <div className="posts-home-container-main">
-                <div
-                  key={el?.id ?? index}
-                  onClick={() => props.history.push(`/Popup/${el.post_id}`)}
-                >
+                <div>
                   <div className="posts-info-container">
                     <div className="posts-user-info">
                       <img
@@ -52,8 +61,11 @@ const Profile = ({ postReducer, posts, getPosts, ...props }) => {
                         alt="language image"
                       />
                     </div>
-                    <div className="post-details-box">
+                    <div 
+                      className="post-details-box"
+                      onClick={() => props.history.push(`/Popup/${el.post_id}`)}>
                       <div className="post-details">
+                        <h1 className="post-details-title">{el.title}</h1>
                         <p>{el.content}</p>
                         <img 
                           className="post-image"
@@ -68,11 +80,35 @@ const Profile = ({ postReducer, posts, getPosts, ...props }) => {
                           src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fbone%20like%20button.png?v=1594853507429"
                           alt="bone"
                         />
-                        <p className="dog-bones-number">12</p> {/* {el.bones} */}  
-
+                        <p className="dog-bones-number">12</p> {/* {el.bones} */} 
                       </div>
-                      <button className="comment-btn">Comment</button>  {/* {el.comment} */}
+                      <button 
+                        className="comment-btn"
+                        onClick={() => toggleMakeComment()}>Comment</button>
                     </div>
+                    <div className={`${makeComment ? "make-comment" : "make-comment-open"}`}>
+                        <div className="user-information-comment">
+                        <img 
+                          src={props.user.user.profile_pic}
+                          className="make-comment-image"
+                          />
+                        <h2>{props.user.user.full_name}</h2>
+                        </div>
+                        <div>
+                        <input
+                          className="comment-text-input"
+                          placeholder="Type Comment Here"
+                          value={comments}
+                          onChange={(e) => setComment(e.target.value)}
+                          />
+                        </div>
+                        <div className="post-button-div">
+                        <button
+                          className="post-comment-button"
+                          onClick={() => addComment(el.post_id)}
+                          >Post Comment</button>
+                        </div>
+                      </div>
                     <hr />
                   </div>
                 </div>
