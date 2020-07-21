@@ -400,7 +400,10 @@
 .post-button-div {
     width: 100%;
     @include flex(center);
+}
 
+.make-comment-open {
+    display: none;
 }
 
 

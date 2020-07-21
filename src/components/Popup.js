@@ -10,18 +10,30 @@ const Popup = (props) => {
   const [content, setContent] = useState("");
   const [languages, setLanguage] = useState("");
   const [editMode, setEditMode] = useState(false);
+  const [makeComment, setMakeComment] = useState(false)
+  const [comments, setComment] = useState("")
+
+  function toggleMakeComment() {
+    setMakeComment(!makeComment)
+  }
+
+  function addComment(id) {
+    axios.post(`api/post/comment/${props.match.params.post_id}`, {comments}).then(() => {
+      setComment("")
+      toggleMakeComment()
+    })
+  }
 
   useEffect(() => {
     function selectedPost() {
       axios
         .get(`/api/one/post/${props.match.params.post_id}`)
         .then((res) => {
-          setPost(res.data);
-          console.log("this is posts", post);
-          setTitle(res.data.title);
-          setImg(res.data.img);
-          setContent(res.data.content);
-          setLanguage(res.data.languages);
+          setPost(res.data[0]);
+          setTitle(res.data[0][0].content);
+          setImg(res.data[0][0].img);
+          setContent(res.data[0][0].content);
+          setLanguage(res.data[0][0].languages);
         })
         .catch((err) => {
           console.log(err);
@@ -181,9 +193,33 @@ const Popup = (props) => {
                 />
                 <p className="edit-dog-bones-number">{props.bones}</p>
               </div>
-              <button className="edit-comment-btn">Comment</button>{" "}
-              {/* {el.comment} */}
+              <button 
+              className="edit-comment-btn"
+              onClick={() => toggleMakeComment()}>Comment</button>{" "}
             </div>
+              <div className={`${makeComment ? "make-comment" : "make-comment-open"}`}>
+                        <div className="user-information-comment">
+                        <img 
+                          src={props.user.user.profile_pic}
+                          className="make-comment-image"
+                          />
+                        <h2>{props.user.user.full_name}</h2>
+                        </div>
+                        <div>
+                        <input
+                          className="comment-text-input"
+                          placeholder="Type Comment Here"
+                          value={comments}
+                          onChange={(e) => setComment(e.target.value)}
+                          />
+                        </div>
+                        <div className="post-button-div">
+                        <button
+                          className="post-comment-button"
+                          onClick={() => addComment()}
+                          >Post Comment</button>
+                        </div>
+                      </div>
             <hr />
           </div>
         </div>

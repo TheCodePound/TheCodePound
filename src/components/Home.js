@@ -16,8 +16,13 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   const [openDropdown, setOpenDropdown] = useState(false)
   const [language, setLanguage] = useState("")
   const [languages_img, setLanguageIcon] = useState("")
-  const [comment, setComment] = useState("")
+  const [comments, setComment] = useState("")
   const [bones, setBones] = useState([])
+  const [makeComment, setMakeComment] = useState(false)
+
+  function toggleMakeComment() {
+    setMakeComment(!makeComment)
+  }
 
   function toggleAddPic() {
     setAddPic(!addPic)
@@ -101,7 +106,10 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   }
 
   function addComment(id) {
-    axios.post(`api/post/comment/${id}`, {comment})
+    axios.post(`api/post/comment/${id}`, {comments}).then(() => {
+      setComment("")
+      toggleMakeComment()
+    })
   }
 
     const languageList = allLanguages.map((e, index) => {
@@ -253,9 +261,11 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                         <p className="dog-bones-number">{bones[index][0].count}</p> 
 
                       </div>
-                      <button className="comment-btn">Comment</button>
+                      <button 
+                        className="comment-btn"
+                        onClick={() => toggleMakeComment()}>Comment</button>
                     </div>
-                      <div className="make-comment">
+                      <div className={`${makeComment ? "make-comment" : "make-comment-open"}`}>
                         <div className="user-information-comment">
                         <img 
                           src={props.user.user.profile_pic}
@@ -267,6 +277,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                         <input
                           className="comment-text-input"
                           placeholder="Type Comment Here"
+                          value={comments}
                           onChange={(e) => setComment(e.target.value)}
                           />
                         </div>
