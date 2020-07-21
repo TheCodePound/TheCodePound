@@ -18,6 +18,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   const [comments, setComment] = useState("")
   const [bones, setBones] = useState([])
   const [makeComment, setMakeComment] = useState(false)
+  const [filtered, setFiltered] = useState([])
 
   function toggleMakeComment() {
     setMakeComment(!makeComment)
@@ -204,10 +205,85 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
       <div>
         {!loading ? (posts.posts.map((el, index) => {
             if (props.filter.filter) {
-              console.log("Truthy")
-            }
-            else {
-              console.log('falsey')
+              if (el.languages.toLowerCase().includes(props.filter.filter.toLowerCase())) {
+                return (
+                  <div className="posts-home-container-main">
+              <div>
+                <div className="posts-info-container">
+                  <div className="posts-user-info">
+                    <img
+                      className="posts-home-profile-image"
+                      src={el.profile_pic}
+                      alt="profile image"
+                    />
+                    <div className="post-name-time">
+                      <p className="posts-home-username">{el.full_name}</p>
+                      <p className="post-time"><span>57</span>min</p>
+                    </div>
+                    <img
+                      className="posts-home-language-image"
+                      src={el.languages_img}
+                      alt="language image"
+                    />
+                  </div>
+                  <div 
+                    className="post-details-box"
+                    onClick={() => props.history.push(`/Popup/${el.post_id}`)}>
+                    <div className="post-details">
+                      <h1 className="post-details-title">{el.title}</h1>
+                      <p>{el.content}</p>
+                      <img 
+                        className="post-image"
+                        src={el.img} 
+                        alt="post img"   
+                      />
+                    </div>
+                  </div>
+                  <div className="post-user-interaction-container">
+                    <div className="post-user-bones">
+                      <img
+                        className="dog-bones-image"
+                        src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fbone%20like%20button.png?v=1594853507429"
+                        alt="bone"
+                      />
+                      <p className="dog-bones-number">{bones[index][0].count}</p> 
+                    </div>
+                    <button 
+                      className="comment-btn"
+                      onClick={() => toggleMakeComment()}>Comment</button>
+                  </div>
+                  <div className={`${makeComment ? "make-comment" : "make-comment-open"}`}>
+                    <div className="user-information-comment">
+                      <img 
+                        src={props.user.user.profile_pic}
+                        className="make-comment-image"
+                      />
+                      <h2>{props.user.user.full_name}</h2>
+                    </div>
+                    <div>
+                      <input
+                        className="comment-text-input"
+                        placeholder="Type Comment Here"
+                        value={comments}
+                        onChange={(e) => setComment(e.target.value)}
+                      />
+                    </div>
+                    <div className="post-button-div">
+                      <button
+                        className="post-comment-button"
+                        onClick={() => addComment(el.post_id)}>Post Comment
+                      </button>
+                    </div>
+                  </div>
+                  <hr />
+                </div>
+              </div>
+            </div>
+                )
+              }
+              else {
+                return null
+              }
             }
           return (
             <div className="posts-home-container-main">
