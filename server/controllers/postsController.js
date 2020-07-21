@@ -17,9 +17,11 @@ module.exports = {
   allInOnePost: async (req, res) => {
     const db = req.app.get("db")
     const { user_id } = req.session.user
+    const d = Date()
+    const post_date = d.slice(0,15)
     const { title, content, img, languages, languages_img } = req.body
 
-    const newPost = await db.add_post({ user_id, title, content })
+    const newPost = await db.add_post({ user_id, title, content, post_date })
     const user_junction_id = req.session.user.user_id
     const post_junction_id = newPost[0].post_id
     await db.get_post_id_in_junction([user_junction_id, post_junction_id])
