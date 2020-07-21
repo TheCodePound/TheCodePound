@@ -39,9 +39,11 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
     axios
       .get("/api/all/posts")
       .then((res) => {
+
         getPosts(res.data[0])
         setBones(res.data[1])
         getComments(res.data[2])
+
       })
       .catch((err) => {
         console.log(err);
@@ -201,6 +203,12 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
 
       <div>
         {!loading ? (posts.posts.map((el, index) => {
+            if (props.filter.filter) {
+              console.log("Truthy")
+            }
+            else {
+              console.log('falsey')
+            }
           return (
             <div className="posts-home-container-main">
               <div>

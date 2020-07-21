@@ -20,6 +20,7 @@ function LeftNav(props) {
     }
 
     function updateUser() {
+        console.log(email, password, full_name, new_email, new_password, profile_pic)
       axios.put(`/auth/update`, {email, password, full_name, new_email, new_password, profile_pic})  
     }
 
