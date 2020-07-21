@@ -42,7 +42,10 @@ const Profile = ({ postReducer, posts, getPosts, ...props }) => {
                         src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fme.jpg?v=1569425179160"
                         alt="profile image"
                       />
-                      <p className="posts-home-username">{el.full_name}</p>
+                      <div className="post-name-time">
+                        <p className="posts-home-username">{el.full_name}</p>
+                        <p className="post-time"><span>57</span>min</p>
+                      </div>
                       <img
                         className="posts-home-language-image"
                         src={el.languages_img}
@@ -77,7 +80,7 @@ const Profile = ({ postReducer, posts, getPosts, ...props }) => {
             );
           })
         ) : (
-          <div>this will be loading.</div>
+          <div className="loader"></div>
         )}
       </div>
     </div>
