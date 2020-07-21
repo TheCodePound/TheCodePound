@@ -240,6 +240,7 @@
         padding: 15px;
 
 
+
         .posts-user-info {
             display: flex;
             flex-direction: row;
@@ -316,6 +317,8 @@
             align-items: center;
             margin-left:20px;
             margin-right:20px;
+            margin-bottom: 20px;
+            position: relative;
 
             .post-user-bones {
                 display: flex;
@@ -363,6 +366,41 @@
         border-bottom: 50px solid black;
         
     }
+}
+
+.make-comment-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 180px;
+        margin-right: 10px;
+}
+
+.user-information-comment {
+    @include flex(flex-start);
+    margin-bottom: 20px;
+}
+
+.comment-text-input {
+    width: 90%;
+    height: 100px;
+    margin-bottom: 20px;
+    margin-left: 40px;
+    border-radius: 8px;
+}
+
+.post-comment-button {
+    border: none;
+    background-color: $blue;
+    color: white;
+    width: 140px;
+    height: 30px;
+    border-radius: 12px;
+}
+
+.post-button-div {
+    width: 100%;
+    @include flex(center);
+
 }
 
 

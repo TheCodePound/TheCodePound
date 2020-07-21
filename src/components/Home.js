@@ -16,6 +16,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   const [openDropdown, setOpenDropdown] = useState(false)
   const [language, setLanguage] = useState("")
   const [languages_img, setLanguageIcon] = useState("")
+  const [comment, setComment] = useState("")
 
   function toggleAddPic() {
     setAddPic(!addPic)
@@ -95,6 +96,10 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
       setLanguageIcon(icon)
       toggleAddLanguage()
       toggleOpenDropdown()
+  }
+
+  function addComment(id) {
+    axios.post(`api/post/comment/${id}`, {comment})
   }
 
     const languageList = allLanguages.map((e, index) => {
@@ -199,30 +204,29 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
             </button>
           </div>
         </div>
-
       </div>
+
       <div>
         {!loading ? (
           posts.posts.map((el, index) => {
+            console.log(el.post_id)
             return (
               <div className="posts-home-container-main">
                 <div
-                  key={el?.id ?? index}
-                  onClick={() => props.history.push(`/Popup/${el.post_id}`)}
+                  // key={el?.id ?? index}
+                  // onClick={() => props.history.push(`/Popup/${el.post_id}`)}
                 >
                   <div className="posts-info-container">
                     <div className="posts-user-info">
                       <img
                         className="posts-home-profile-image"
-                        // src={el.profile_pic}
-                        src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fme.jpg?v=1569425179160"
+                        src={el.profile_pic}
                         alt="profile image"
                       />
                     <div className="post-name-time">
                       <p className="posts-home-username">{el.full_name}</p>
                       <p className="post-time"><span>57</span>min</p>
                   </div>
-
                       <img
                         className="posts-home-language-image"
                         src={el.languages_img}
@@ -248,12 +252,35 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                         <p className="dog-bones-number">{el.bones}</p> 
 
                       </div>
-                      <button className="comment-btn">Comment</button>  {/* {el.comment} */}
+                      <button className="comment-btn">Comment</button>
                     </div>
+                      <div className="make-comment">
+                        <div className="user-information-comment">
+                        <img 
+                          src={props.user.user.profile_pic}
+                          className="make-comment-image"
+                          />
+                        <h2>{props.user.user.full_name}</h2>
+                        </div>
+                        <div>
+                        <input
+                          className="comment-text-input"
+                          placeholder="Type Comment Here"
+                          onChange={(e) => setComment(e.target.value)}
+                          />
+                        </div>
+                        <div className="post-button-div">
+                        <button
+                          className="post-comment-button"
+                          onClick={() => addComment(el.post_id)}
+                          >Post Comment</button>
+                        </div>
+                      </div>
                     <hr />
                   </div>
                 </div>
               </div>
+              
             );
           })
         ) : (
