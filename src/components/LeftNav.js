@@ -23,7 +23,6 @@ function LeftNav(props) {
       axios.put(`/auth/update`, {email, password, full_name, new_email, new_password, profile_pic})  
     }
 
-
     const pathname = props.location.pathname
 
     if (pathname === '/' || pathname === '/Register') {
@@ -35,9 +34,7 @@ function LeftNav(props) {
 
     else if (pathname === '/Profile') {
 
-
-    //PROFILE SECTION OF APPLICATION
-    console.log(props.user.user.full_name)
+    //PROFILE SECTION OF APPLICATION  
     return (
     
         <div className="left-nav-container">
@@ -56,7 +53,7 @@ function LeftNav(props) {
                     <p className="dog-bones-number">127</p>
                 </div>
             </div>
-                <h2 className="left-nav-username">{props.user.user.full_name}</h2>
+            <h2 className="left-nav-username">{props.user.user.full_name}</h2>
             <div className="left-nav-div">
                 <img
                     src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fhome%20icon%20BIG.png?v=1594854280392"
@@ -82,7 +79,7 @@ function LeftNav(props) {
                 />
                 <h2 className="left-nav-text">Update Info</h2>
             </div>
-            <Link to="/Newpost">
+            <Link to="/Home">
                 <button className={`new-pound ${!updateInfo ? "new-pound-open" : null }`}>New Pound</button>
             </Link>
             <div className={`${updateInfo ? "updateMenu-open" : "updateMenu"}`}>
@@ -127,11 +124,13 @@ function LeftNav(props) {
                     type="text"
                     value={profile_pic}
                     onChange={e => setImage(e.target.value)}
-                /><br></br>
+                />
+                <br></br>
                 <button 
                     className="update-user-btn-update"
                     onClick={() => updateUser()}>Update
-                </button><br></br>
+                </button>
+                <br></br>
                 <button
                     className="update-user-btn-cancel"
                     onClick={toggleUpdateInfo}>Cancel
@@ -153,15 +152,15 @@ function LeftNav(props) {
                         alt="user"
                     />
                     <div className="dog-bones-container">
-                    <img
-                        className="dog-bones-image"
-                        src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fbone%20like%20button.png?v=1594853507429"
-                        alt="bone"
-                    />
-                    <p className="dog-bones-number">127</p>
+                        <img
+                            className="dog-bones-image"
+                            src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fbone%20like%20button.png?v=1594853507429"
+                            alt="bone"
+                        />
+                        <p className="dog-bones-number">127</p>
+                    </div>
                 </div>
-                </div>
-                    <h2 className="left-nav-username">{props.user.user.full_name}</h2>
+                <h2 className="left-nav-username">{props.user.user.full_name}</h2>
                 <div className="left-nav-div">
                     <img
                         className="left-nav-user-icons"
