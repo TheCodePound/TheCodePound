@@ -18,6 +18,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   const [comments, setComment] = useState("")
   const [bones, setBones] = useState([])
   const [makeComment, setMakeComment] = useState(false)
+  const [getPostComments, setPostComments] = useState([])
 
   function toggleMakeComment() {
     setMakeComment(!makeComment)
@@ -41,7 +42,8 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
       .then((res) => {
         getPosts(res.data[0])
         setBones(res.data[1])
-        getComments(res.data[2])
+        setPostComments(res.data[2][0][0])
+        console.log('getcomments',res.data[2][0][0].comments)
       })
       .catch((err) => {
         console.log(err);
@@ -201,6 +203,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
 
       <div>
         {!loading ? (posts.posts.map((el, index) => {
+          console.log('comments cl', getPostComments[index])
           return (
             <div className="posts-home-container-main">
               <div>
@@ -256,7 +259,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                       <h2>{props.user.user.full_name}</h2>
                     </div>
                     <div>
-                      <input
+                      <textarea
                         className="comment-text-input"
                         placeholder="Type Comment Here"
                         value={comments}
@@ -268,6 +271,18 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                         className="post-comment-button"
                         onClick={() => addComment(el.post_id)}>Post Comment
                       </button>
+                    </div>
+                    <div className="comment-container">
+                      <div className="comments-profile-pic">
+                        <img src='testing'/>
+                        <p>date for now</p>
+                      </div>
+                      <div>
+                        <hr/>
+                        <h3>hello</h3>
+                        <p>{getPostComments.comments}</p>
+                        <hr/>
+                      </div>
                     </div>
                   </div>
                   <hr />
