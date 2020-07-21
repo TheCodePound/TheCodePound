@@ -167,7 +167,7 @@ const Popup = (props) => {
             <div className="edit-post-details-box">
               <div className="edit-post-details">
                 {/* This is where the title goes */}
-                <h2>CodePound</h2>
+                <h1 className="post-details-title">{title}</h1>
                 {/* This is the project details */}
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras

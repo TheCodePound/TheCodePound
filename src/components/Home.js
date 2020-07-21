@@ -72,9 +72,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
 
   function handleSubmit(e) {
     const languages = language
-    console.log(languages)
     e.preventDefault();
-    console.log("hit");
     axios
       .post("/api/post/in/one", { title, content, img, languages, languages_img })
       .then((res) => {
@@ -223,7 +221,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
               <div className="posts-home-container-main">
                 <div
                   // key={el?.id ?? index}
-                  // onClick={() => props.history.push(`/Popup/${el.post_id}`)}
+                  
                 >
                   <div className="posts-info-container">
                     <div className="posts-user-info">
@@ -242,12 +240,17 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                         alt="language image"
                       />
                     </div>
-                    <div className="post-details-box">
+                    <div 
+                      className="post-details-box"
+                      onClick={() => props.history.push(`/Popup/${el.post_id}`)}
+                    >
                       <div className="post-details">
+                        <h1 className="post-details-title">{el.title}</h1>
                         <p>{el.content}</p>
                         <img 
                           className="post-image"
-                          src={el.img} alt="post img" 
+                          src={el.img} alt="post img"
+                           
                         />
                       </div>
                     </div>
