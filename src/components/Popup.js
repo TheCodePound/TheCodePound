@@ -30,7 +30,7 @@ const Popup = (props) => {
         .get(`/api/one/post/${props.match.params.post_id}`)
         .then((res) => {
           setPost(res.data[0]);
-          setTitle(res.data[0][0].content);
+          setTitle(res.data[0][0].title);
           setImg(res.data[0][0].img);
           setContent(res.data[0][0].content);
           setLanguage(res.data[0][0].languages);
@@ -167,7 +167,7 @@ const Popup = (props) => {
             <div className="edit-post-details-box">
               <div className="edit-post-details">
                 {/* This is where the title goes */}
-                <h2>CodePound</h2>
+                <h1 className="post-details-title">{title}</h1>
                 {/* This is the project details */}
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras

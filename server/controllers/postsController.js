@@ -74,6 +74,9 @@ module.exports = {
 
   createPostComments: async (req, res) => {
     const db = req.app.get("db")
+    console.log(req.session.user)
+    console.log(req.params)
+    console.log(req.body)
     const { user_id } = req.session.user
     const { post_comments_id } = req.params
     const { comments } = req.body
