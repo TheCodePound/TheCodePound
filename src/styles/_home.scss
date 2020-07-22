@@ -411,6 +411,11 @@
         margin-right: 10px;
 }
 
+.make-comment-username {
+    font-weight: bolder;
+    font-family: 'Nunito', sans-serif;
+}
+
 .user-information-comment {
     @include flex(flex-start);
     margin-bottom: 20px;
@@ -427,23 +432,77 @@
     font-size: 14px; 
 }
 
-.post-comment-button {
-    border: none;
-    background-color: $blue;
-    color: white;
-    width: 140px;
-    height: 30px;
-    border-radius: 12px;
-}
-
 .post-button-div {
     width: 100%;
     @include flex(center);
+
+    .post-comment-button {
+        border: none;
+        background-color: $blue;
+        color: white;
+        width: 140px;
+        height: 30px;
+        border-radius: 12px;
+    }
+
+    .post-comment-button:hover {
+        opacity: 0.6;
+        cursor: pointer;
+    }
 }
 
 .make-comment-open {
     display: none;
 }
+
+//COMMENT DISPLAY ON A POST
+.comment-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin:5px;
+
+    .comments-profile-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+
+        .comments-profile-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 180px;
+        }
+
+        .comments-profile-date {
+
+        }
+    }
+
+    .comments-username {
+        margin-bottom: 10px;
+        font-weight: bolder;
+        font-family: 'Nunito', sans-serif;
+        
+    }
+
+    .comments-border-container {
+        border: 2px solid $red;
+        width: 600px;
+        border-radius: 8px;
+
+        .comments-border {
+            margin: 10px;
+        }
+    }
+
+    .comments-date {
+        opacity: 0.5;
+    }
+}
+
 
 
 
