@@ -7,14 +7,17 @@ const Profile = ({ postReducer, posts, getPosts, ...props }) => {
   const [loading, setLoading] = useState(true)
   const [makeComment, setMakeComment] = useState(false)
   const [comments, setComment] = useState("")
+  const [bones, setBones] = useState([])
+  const [getPostComments, setPostComments] = useState([])
+
 
   useEffect(() => {
     axios
       .get("/api/user/posts")
       .then((res) => {
         getPosts(res.data[0])
-        getBones(res.data[1])
-        getComments(res.data[2])
+        setBones(res.data[1])
+        setPostComments(res.data[2])
       })
       .catch((err) => {
         console.log(err)
@@ -81,7 +84,7 @@ const Profile = ({ postReducer, posts, getPosts, ...props }) => {
                             src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fbone%20like%20button.png?v=1594853507429"
                             alt="bone"
                           />
-                          <p className="dog-bones-number">12</p> {/* {el.bones} */} 
+                          <p className="dog-bones-number">{bones[index][0].count}</p> {/* {el.bones} */} 
                         </div>
                         <button 
                           className="comment-btn"
@@ -159,7 +162,7 @@ const Profile = ({ postReducer, posts, getPosts, ...props }) => {
                           src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fbone%20like%20button.png?v=1594853507429"
                           alt="bone"
                         />
-                        <p className="dog-bones-number">12</p> {/* {el.bones} */} 
+                        <p className="dog-bones-number">{bones[index][0].count}</p> {/* {el.bones} */} 
                       </div>
                       <button 
                         className="comment-btn"
@@ -187,6 +190,24 @@ const Profile = ({ postReducer, posts, getPosts, ...props }) => {
                           onClick={() => addComment(el.post_id)}
                           >Post Comment</button>
                         </div>
+                       {/* COMMENT DISPLAY ON A POST */}
+                    {getPostComments[index][0] != null?(
+                      <div className="comment-container">
+                        <div className="comments-profile-info">
+                          <img src={getPostComments[index][0].profile_pic}
+                              className="comments-profile-image"
+                              alt="user" />
+                        </div>
+                        <div>
+                          <h3 className="comments-username">{getPostComments[index][0].full_name}</h3>
+                          <div className="comments-border-container">
+                            <p className="comments-border">{getPostComments[index][0].comments}</p>
+                            {/* <p className="comments-border">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p> */}
+                          </div> 
+                        </div>
+                        <p className="comments-date">{getPostComments[index][0].comments_date}</p>
+                      </div>
+                      ) : null}
                       </div>
                     <hr />
                   </div>
