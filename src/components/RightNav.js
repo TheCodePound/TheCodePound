@@ -49,9 +49,9 @@ function RightNav(props) {
             src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fjavascript-icon.png?v=1594835510447"
             alt="programming language icon"
           />
-                    <img
+          <img
             className="right-nav-profile-language-icon"
-            src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fjavascript-icon.png?v=1594835510447"
+            src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fnode-js-icon.png?v=1595265649911"
             alt="programming language icon"
           />
         </div>
