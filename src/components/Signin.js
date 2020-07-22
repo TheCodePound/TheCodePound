@@ -97,9 +97,9 @@ function Register(props) {
             width='560'
             height='315'
             src='https://www.youtube.com/embed/e_MR32HrPxM'
-            frameborder='0'
+            frameBorder='0'
             allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-            allowfullscreen></iframe>
+            allowFullScreen></iframe>
           <p className='signin-about-paragraph'>
             Welcome to the CodePound! A social media site geared toward developers and the ability
             for said developers to share the creative projects they have built throughout their
