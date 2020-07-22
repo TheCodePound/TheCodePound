@@ -48,6 +48,7 @@
 .nav-container {
     @include flex(space-between);
     background-color: $red;
+    
     .nav-main-logo {
         margin-left: 50px;
         padding:20px;

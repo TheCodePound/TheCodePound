@@ -2,10 +2,16 @@ import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser, getUser, loginUser } from "../ducks/userReducer";
+import {setFilter, resetFilter} from "../ducks/filterReducer"
 import axios from "axios";
 import "../styles/App.scss";
 
+
 function Nav(props) {
+  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   useEffect(() => {
     getUser();
   }, []);
@@ -29,12 +35,8 @@ function Nav(props) {
     });
   };
 
-  const [search, setSearch] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  function siteSearch() {
-    console.log("search");
+  function handleFilter(e) {
+    props.setFilter(e.target.value)
   }
 
   const pathname = props.location.pathname;
@@ -81,14 +83,14 @@ function Nav(props) {
             className="nav-search-logo"
             src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fmagnifying-glass-thin.png?v=1594746257323"
             alt="Magnifying Glass"
-            onClick={() => siteSearch()}
+            onClick={e => props.setFilter(e.target.value)}
           />
           <input
             className="nav-search-text"
             placeholder="Search Codepound"
             type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            value={props.filter.filter}
+            onChange={handleFilter}
           />
         </div>
         <button className="nav-logout-btn" onClick={() => logout()}>
@@ -102,5 +104,5 @@ function Nav(props) {
 const mapStateToProps = (reduxState) => reduxState;
 
 export default withRouter(
-  connect(mapStateToProps, { logoutUser, getUser, loginUser })(Nav)
+  connect(mapStateToProps, { logoutUser, getUser, loginUser, setFilter, resetFilter })(Nav)
 );
