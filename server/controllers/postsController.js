@@ -76,14 +76,13 @@ module.exports = {
 
   createPostComments: async (req, res) => {
     const db = req.app.get("db")
-    console.log(req.session.user)
-    console.log(req.params)
-    console.log(req.body)
+    const d = Date()
+    const comments_date = d.slice(0,15)
     const { user_id } = req.session.user
     const { post_comments_id } = req.params
     const { comments } = req.body
 
-    const makeComment = await db.new_comment({ user_id, post_comments_id, comments })
+    const makeComment = await db.new_comment({ user_id, post_comments_id, comments_date, comments })
     res.status(200).send(makeComment)
   },
 

@@ -43,8 +43,8 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
 
         getPosts(res.data[0])
         setBones(res.data[1])
-        setPostComments(res.data[2][0][0])
-        console.log('getcomments',res.data[2][0][0].comments)
+        setPostComments(res.data[2])
+        console.log('getcomments',res.data[2][0])
       })
       .catch((err) => {
         console.log(err);
@@ -355,13 +355,14 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                     </div>
                     <div className="comment-container">
                       <div className="comments-profile-pic">
-                        <img src='testing'/>
+                        <img src={getPostComments[index][0].profile_pic}/>
                         <p>date for now</p>
                       </div>
                       <div>
                         <hr/>
-                        <h3>hello</h3>
-                        <p>{getPostComments.comments}</p>
+                        <h3>name:{getPostComments[index][0].full_name}</h3>
+                        <p>{getPostComments[index][0].comments}</p>
+                        
                         <hr/>
                       </div>
                     </div>
