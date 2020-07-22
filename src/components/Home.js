@@ -19,6 +19,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   const [bones, setBones] = useState([])
   const [makeComment, setMakeComment] = useState(false)
   const [getPostComments, setPostComments] = useState([])
+  const [seeAllComments, setSeeAllComments] = useState(false)
 
   function toggleMakeComment() {
     setMakeComment(!makeComment)
@@ -34,6 +35,10 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
 
   function toggleOpenDropdown() {
     setOpenDropdown(!openDropdown)
+  }
+
+  function toggleAllComments(){
+    setSeeAllComments(!seeAllComments)
   }
 
   useEffect(() => {
@@ -84,6 +89,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
       setImg("")
       setLanguage("")
       setLanguageIcon("")
+      toggleAddPic()
   }
 
   function selectLanguage(language, icon) {
@@ -99,6 +105,8 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
       toggleMakeComment()
     })
   }
+
+
 
     const languageList = allLanguages.map((e, index) => {
       return (
@@ -204,6 +212,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
 
       <div>
         {!loading ? (posts.posts.map((el, index) => {
+          // console.log('jason check' ,getPostComments[index][1])
             if (props.filter.filter) {
               if (el.languages.toLowerCase().includes(props.filter.filter.toLowerCase())) {
                 return (
@@ -286,7 +295,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
               }
             }
           return (
-            <div className="posts-home-container-main">
+            <div key={el.post_id} className="posts-home-container-main">
               <div>
                 <div className="posts-info-container">
                   <div className="posts-user-info">
@@ -369,6 +378,31 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                         </div> 
                       </div>
                       <p className="comments-date">{getPostComments[index][0].comments_date}</p>
+                      <div className="all-comments-container">
+                        <div></div>
+                        {getPostComments[index][1] != null ? (
+                          <div>
+                          <button onClick={() => toggleAllComments()}>See all Comments</button>
+                          {seeAllComments === true ? (
+                          <div>
+
+                            <div className="comments-profile-info">
+                              <img src={getPostComments[index][1].profile_pic}
+                              className="comments-profile-image"
+                              alt="user" />
+                            </div>
+                            <div>
+                              <h3 className="comments-username">{getPostComments[index][1].full_name}</h3>
+                              <div className="comments-border-container">
+                                <p className="comments-border">{getPostComments[index][1].comments}</p>
+                              </div> 
+                            </div>
+                            <p className="comments-date">{getPostComments[index][1].comments_date}</p>
+                          </div> 
+                          ) : null}
+                          </div>
+                          ) : null }
+                      </div>
                     </div>
                      ) : null}
                   </div>
