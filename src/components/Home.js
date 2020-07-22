@@ -43,8 +43,8 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
 
         getPosts(res.data[0])
         setBones(res.data[1])
-        setPostComments(res.data[2][0][0])
-        console.log('getcomments',res.data[2][0][0].comments)
+        setPostComments(res.data[2])
+        console.log('getcomments',res.data[2][0])
       })
       .catch((err) => {
         console.log(err);
@@ -353,18 +353,35 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                         onClick={() => addComment(el.post_id)}>Post Comment
                       </button>
                     </div>
-                    <div className="comment-container">
-                      <div className="comments-profile-pic">
-                        <img src='testing'/>
-                        <p>date for now</p>
-                      </div>
-                      <div>
-                        <hr/>
-                        <h3>hello</h3>
-                        <p>{getPostComments.comments}</p>
-                        <hr/>
-                      </div>
-                    </div>
+                    {/* map for comments */}
+                    
+                    {/* {el.post_id === getPostComments[index].post_comments_id,
+                    console.log('get comments if match', getPostComments[index].post_comments_id),
+                    console.log('el.postid', el.post_id) ? (
+
+                    getPostComments.map((e, index) => {
+                      console.log('comment map',e)
+                        return ( */}
+                         
+                          <div className="comment-container">
+                            <div className="comments-profile-pic">
+                              <img src='testing'/>
+                              <p>date for now</p>
+                            </div>
+                            <div>
+                              <hr/>
+                              <h3>name:{getPostComments[index][0].full_name}</h3>
+                              <p>{getPostComments[index][0].comments}</p>
+                              
+                              <hr/>
+                            </div>
+                          </div>
+                          
+                        {/* )
+                      } 
+                    )
+                    ) : <p>not working</p> } */}
+                    {/* end of map for comments */}
                   </div>
                   <hr />
                 </div>
