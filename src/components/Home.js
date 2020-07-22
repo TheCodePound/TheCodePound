@@ -353,8 +353,8 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                         onClick={() => addComment(el.post_id)}>Post Comment
                       </button>
                     </div>
-
-                    {/* COMMENT DISPLAY ON A POST */}
+                  {/* COMMENT DISPLAY ON A POST */}
+                    {getPostComments[index][0] != null?(
                     <div className="comment-container">
                       <div className="comments-profile-info">
                         <img src={getPostComments[index][0].profile_pic}
@@ -370,6 +370,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                       </div>
                       <p className="comments-date">{getPostComments[index][0].comments_date}</p>
                     </div>
+                     ) : null}
                   </div>
                   <hr />
                 </div>
