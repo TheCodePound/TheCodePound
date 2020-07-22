@@ -84,6 +84,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
       setImg("")
       setLanguage("")
       setLanguageIcon("")
+      toggleAddPic()
   }
 
   function selectLanguage(language, icon) {
