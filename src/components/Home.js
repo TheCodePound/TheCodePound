@@ -353,35 +353,19 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                         onClick={() => addComment(el.post_id)}>Post Comment
                       </button>
                     </div>
-                    {/* map for comments */}
-                    
-                    {/* {el.post_id === getPostComments[index].post_comments_id,
-                    console.log('get comments if match', getPostComments[index].post_comments_id),
-                    console.log('el.postid', el.post_id) ? (
-
-                    getPostComments.map((e, index) => {
-                      console.log('comment map',e)
-                        return ( */}
-                         
-                          <div className="comment-container">
-                            <div className="comments-profile-pic">
-                              <img src='testing'/>
-                              <p>date for now</p>
-                            </div>
-                            <div>
-                              <hr/>
-                              <h3>name:{getPostComments[index][0].full_name}</h3>
-                              <p>{getPostComments[index][0].comments}</p>
-                              
-                              <hr/>
-                            </div>
-                          </div>
-                          
-                        {/* )
-                      } 
-                    )
-                    ) : <p>not working</p> } */}
-                    {/* end of map for comments */}
+                    <div className="comment-container">
+                      <div className="comments-profile-pic">
+                        <img src={getPostComments[index][0].profile_pic}/>
+                        <p>date for now</p>
+                      </div>
+                      <div>
+                        <hr/>
+                        <h3>name:{getPostComments[index][0].full_name}</h3>
+                        <p>{getPostComments[index][0].comments}</p>
+                        
+                        <hr/>
+                      </div>
+                    </div>
                   </div>
                   <hr />
                 </div>
