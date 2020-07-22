@@ -18,7 +18,6 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   const [comments, setComment] = useState("")
   const [bones, setBones] = useState([])
   const [makeComment, setMakeComment] = useState(false)
-  const [filtered, setFiltered] = useState([])
 
   function toggleMakeComment() {
     setMakeComment(!makeComment)

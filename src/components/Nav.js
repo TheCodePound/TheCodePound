@@ -9,7 +9,6 @@ import "../styles/App.scss";
 
 function Nav(props) {
   
-  const [search, setSearch] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -38,10 +37,6 @@ function Nav(props) {
 
   function handleFilter(e) {
     props.setFilter(e.target.value)
-  }
-
-  function siteSearch() {
-    
   }
 
   const pathname = props.location.pathname;
