@@ -20,28 +20,29 @@ CREATE TABLE posts(
 CREATE TABLE comments(
     comment_id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users(user_id),
-    post_comments_id INTEGER REFERENCES posts(post_id),
-    comments TEXT
+    post_comments_id INTEGER REFERENCES posts(post_id) ON DELETE CASCADE,
+    comments TEXT,
+    comments_date TEXT
 );
 
 CREATE TABLE img (
   img_id SERIAL PRIMARY KEY,
   user_img_id int REFERENCES users(user_id),
-  post_img_id int REFERENCES posts(post_id), 
+  post_img_id int REFERENCES posts(post_id) ON DELETE CASCADE, 
   img text
 ); 
 
 CREATE TABLE languages (
   languages_id SERIAL PRIMARY KEY,
   user_languages_id int REFERENCES users(user_id),
-  post_languages_id int REFERENCES posts(post_id), 
+  post_languages_id int REFERENCES posts(post_id) ON DELETE CASCADE, 
   languages text,
   languages_img text 
 );
 
 CREATE TABLE bones (
   bones_id SERIAL PRIMARY KEY,
-  post_bones_id int REFERENCES posts(post_id), 
+  post_bones_id int REFERENCES posts(post_id) ON DELETE CASCADE, 
   bones int
 );
  
