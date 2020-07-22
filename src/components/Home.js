@@ -337,7 +337,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                         src={props.user.user.profile_pic}
                         className="make-comment-image"
                       />
-                      <h2>{props.user.user.full_name}</h2>
+                      <h2 className="make-comment-username">{props.user.user.full_name}</h2>
                     </div>
                     <div>
                       <textarea
@@ -353,20 +353,22 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                         onClick={() => addComment(el.post_id)}>Post Comment
                       </button>
                     </div>
+                  {/* COMMENT DISPLAY ON A POST */}
                     {getPostComments[index][0] != null?(
-                    
                     <div className="comment-container">
-                      <div className="comments-profile-pic">
-                        <img src={getPostComments[index][0].profile_pic}/>
-                        <p>date for now</p>
+                      <div className="comments-profile-info">
+                        <img src={getPostComments[index][0].profile_pic}
+                            className="comments-profile-image"
+                            alt="user" />
                       </div>
                       <div>
-                        <hr/>
-                        <h3>name:{getPostComments[index][0].full_name}</h3>
-                        <p>{getPostComments[index][0].comments}</p>
-                        
-                        <hr/>
+                        <h3 className="comments-username">{getPostComments[index][0].full_name}</h3>
+                        <div className="comments-border-container">
+                          <p className="comments-border">{getPostComments[index][0].comments}</p>
+                          {/* <p className="comments-border">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p> */}
+                        </div> 
                       </div>
+                      <p className="comments-date">{getPostComments[index][0].comments_date}</p>
                     </div>
                      ) : null}
                   </div>

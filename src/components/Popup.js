@@ -14,6 +14,7 @@ const Popup = (props) => {
   const [comments, setComment] = useState("")
   const [full_name, setFullName] = useState("")
   const [profile_pic, setProfilePic] = useState("")
+  const [user_id, setUserId] = useState(null)
 
   function toggleMakeComment() {
     setMakeComment(!makeComment)
@@ -31,6 +32,7 @@ const Popup = (props) => {
       axios
         .get(`/api/one/post/${props.match.params.post_id}`)
         .then((res) => {
+          console.log("brent stinks", res.data[0][0])
           setPost(res.data[0])
           setTitle(res.data[0][0].title)
           setImg(res.data[0][0].img)
@@ -38,6 +40,7 @@ const Popup = (props) => {
           setLanguageImg(res.data[0][0].languages_img)
           setProfilePic(res.data[0][0].profile_pic)
           setFullName(res.data[0][0].full_name)
+          setUserId(res.data[0][0].user_id)
         })
         .catch((err) => {
           console.log(err)
@@ -98,7 +101,14 @@ const Popup = (props) => {
     setContent(e.target.value)
   }
 
-  if (loading) return <p>loading circle here</p>
+  var editBtn
+  if (props.user.user.user_id === user_id) {
+    editBtn = (
+      <button className='popUp-edit-btn' onClick={editPost}>
+        Edit
+      </button>
+    )
+  }
 
   return (
     <div>
@@ -208,12 +218,7 @@ const Popup = (props) => {
           <button className='popUp-back-btn' onClick={backBtn}>
             Back
           </button>
-          <button className='popUp-cancel-btn' onClick={deletePost}>
-            Delete Post
-          </button>
-          <button className='popUp-edit-btn' onClick={editPost}>
-            Edit
-          </button>
+          {editBtn}
         </div>
       )}
     </div>
