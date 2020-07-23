@@ -44,7 +44,7 @@ function main(email, fullname) {
                                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                     <tr>
                                         <td style="color: #ff5757; font-family: Arial, sans-serif; font-size: 36px; text-align: center;">
-                                            <b>Welcome ${fullname} to the Pound!</b>
+                                            <b>Welcome ${full_name} to the Pound!</b>
                                         </td>
                                     </tr>
                                     <tr>
