@@ -11,9 +11,6 @@ const express = require('express'),
 
 
 app.use(express.static(`${__dirname}/../build`)); // note need this to do yarn run build for digitalOcean
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../build/index.html'))
-})
 
 app.use(express.json())
 app.use(
