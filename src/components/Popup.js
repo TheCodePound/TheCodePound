@@ -113,7 +113,7 @@ const Popup = (props) => {
   }
 
   return (
-    <div>
+    <div className="edit-page-border">
       {editMode ? (
         <div>
           <h1 className="header-editing-post">Editing Post</h1>
@@ -174,8 +174,8 @@ const Popup = (props) => {
             <div className="edit-post-details-box">
               <div className="edit-post-details">
                 <h1 className="post-details-title">{title}</h1>
-                <p>{content}</p>
                 <img className="edit-post-image" src={img} alt="post img" />
+                <p className="edit-post-details-description">{content}</p>
               </div>
             </div>
             <div className="edit-post-user-interaction-container">

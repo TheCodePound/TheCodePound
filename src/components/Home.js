@@ -256,12 +256,12 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                     onClick={() => props.history.push(`/Popup/${el.post_id}`)}>
                     <div className="post-details">
                       <h1 className="post-details-title">{el.title}</h1>
-                      <p>{el.content}</p>
                       <img 
                         className="post-image"
                         src={el.img} 
                         alt="post img"   
                       />
+                    <p className="post-details-description">{el.content}</p>
                     </div>
                   </div>
                   <div className="post-user-interaction-container">
@@ -336,12 +336,13 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                     onClick={() => props.history.push(`/Popup/${el.post_id}`)}>
                     <div className="post-details">
                       <h1 className="post-details-title">{el.title}</h1>
-                      <p>{el.content}</p>
                       <img 
                         className="post-image"
                         src={el.img} 
                         alt="post img"   
                       />
+                      <p className="post-details-description">{el.content}</p>
+                      {/* <p className="post-details-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p> */}
                     </div>
                   </div>
                   <div className="post-user-interaction-container">
@@ -382,6 +383,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                     </div>
                   {/* COMMENT DISPLAY ON A POST */}
                     {getPostComments[index][0] != null?(
+                    <div>
                     <div className="comment-container">
                       <div className="comments-profile-info">
                         <img src={getPostComments[index][0].profile_pic}
@@ -396,6 +398,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                         </div> 
                       </div>
                       <p className="comments-date">{getPostComments[index][0].comments_date}</p>
+                    </div>
                       <div className="all-comments-container">
                         <div></div>
                         {getPostComments[index][1] != null ? (
@@ -404,23 +407,24 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                           {seeAllComments === true ? (
                           <div>
 
-                            <div className="comments-profile-info">
+                            <div className="all-comments-profile-info">
                               <img src={getPostComments[index][1].profile_pic}
-                              className="comments-profile-image"
+                              className="all-comments-profile-image"
                               alt="user" />
                             </div>
                             <div>
-                              <h3 className="comments-username">{getPostComments[index][1].full_name}</h3>
-                              <div className="comments-border-container">
-                                <p className="comments-border">{getPostComments[index][1].comments}</p>
+                              <h3 className="all-comments-username">{getPostComments[index][1].full_name}</h3>
+                              <div className="all-comments-border-container">
+                                <p className="all-comments-border">{getPostComments[index][1].comments}</p>
                               </div> 
                             </div>
-                            <p className="comments-date">{getPostComments[index][1].comments_date}</p>
+                            <p className="all-comments-date">{getPostComments[index][1].comments_date}</p>
                           </div> 
                           ) : null}
                           </div>
                           ) : null }
                       </div>
+
                     </div>
                      ) : null}
                   </div>
