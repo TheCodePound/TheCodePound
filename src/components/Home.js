@@ -400,13 +400,11 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                       <p className="comments-date">{getPostComments[index][0].comments_date}</p>
                     </div>
                       <div className="all-comments-container">
-                        <div></div>
                         {getPostComments[index][1] != null ? (
-                          <div>
-                          <button onClick={() => toggleAllComments()}>See all Comments</button>
+                          <div className="all-comments">
+                          <button className="all-comments-btn" onClick={() => toggleAllComments()}>See all Comments</button>
                           {seeAllComments === true ? (
-                          <div>
-
+                          <div className="all-comments-box">
                             <div className="all-comments-profile-info">
                               <img src={getPostComments[index][1].profile_pic}
                               className="all-comments-profile-image"

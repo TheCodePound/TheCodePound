@@ -513,7 +513,30 @@
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    margin:5px;
+
+    .all-comments {
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+    }
+
+    .all-comments-btn {
+        border: none;
+        background-color: $blue;
+        color: white;
+        width: 140px;
+        height: 30px;
+        border-radius: 12px;
+    }
+
+    .all-comments-box {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 15px;
+    }
 
     .all-comments-profile-info {
         display: flex;
