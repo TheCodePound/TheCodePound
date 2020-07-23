@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { getPosts, getBones, getComments } from "../ducks/postReducer";
+import {userBones} from '../ducks/bonesReducer'
 
 const Home = ({ postReducer, posts, getPosts, ...props }) => {
   const [loading, setLoading] = useState(true)
@@ -43,22 +44,28 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   useEffect(() => {
     getAllPosts()
     getLanguages()
-  }, [])
+    getUserBones()
+  }, [props.userBones, getAllPosts])
 
   function getAllPosts() {
     axios
     .get("/api/all/posts")
     .then((res) => {
-
       getPosts(res.data[0])
       setBones(res.data[1])
       setPostComments(res.data[2])
-      console.log('getcomments',res.data[2][0])
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => setLoading(false))
+  }
+
+  function getUserBones() {
+    axios.get('/api/user/bones')
+        .then(res => {
+            props.userBones(res.data[0].count)
+        })
   }
 
   function getLanguages() {
@@ -434,4 +441,4 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
 };
 
 const mapStateToProps = (reduxState) => reduxState;
-export default connect(mapStateToProps, { getPosts, getBones, getComments })(Home);
+export default connect(mapStateToProps, { getPosts, getBones, getComments, userBones })(Home);
