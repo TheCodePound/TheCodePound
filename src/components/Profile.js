@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { connect } from "react-redux"
 import { getPosts, getBones, getComments } from "../ducks/postReducer"
+import {userBones} from '../ducks/bonesReducer'
 
 const Profile = ({ postReducer, posts, getPosts, ...props }) => {
   const [loading, setLoading] = useState(true)
@@ -24,7 +25,15 @@ const Profile = ({ postReducer, posts, getPosts, ...props }) => {
       })
 
       .finally(() => setLoading(false))
+      getUserBones()
   }, [])
+
+  function getUserBones() {
+    axios.get('/api/user/bones')
+        .then(res => {
+            props.userBones(res.data[0].count)
+        })
+  }
 
   function toggleMakeComment() {
     setMakeComment(!makeComment)
@@ -225,4 +234,4 @@ const Profile = ({ postReducer, posts, getPosts, ...props }) => {
 };
 
 const mapStateToProps = (reduxState) => reduxState
-export default connect(mapStateToProps, { getPosts, getBones, getComments })(Profile)
+export default connect(mapStateToProps, { getPosts, getBones, getComments, userBones })(Profile)
