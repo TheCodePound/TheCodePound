@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { getPosts, getBones, getComments } from "../ducks/postReducer";
-
+import {userBones} from '../ducks/bonesReducer'
 
 const Home = ({ postReducer, posts, getPosts, ...props }) => {
   const [loading, setLoading] = useState(true)
@@ -42,21 +42,31 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   }
 
   useEffect(() => {
-    axios
-      .get("/api/all/posts")
-      .then((res) => {
+    getAllPosts()
+    getLanguages()
+    getUserBones()
+  }, [props.userBones, getAllPosts])
 
-        getPosts(res.data[0])
-        setBones(res.data[1])
-        setPostComments(res.data[2])
-        console.log('getcomments',res.data[2][0])
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => setLoading(false))
-      getLanguages()
-  }, [])
+  function getAllPosts() {
+    axios
+    .get("/api/all/posts")
+    .then((res) => {
+      getPosts(res.data[0])
+      setBones(res.data[1])
+      setPostComments(res.data[2])
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => setLoading(false))
+  }
+
+  function getUserBones() {
+    axios.get('/api/user/bones')
+        .then(res => {
+            props.userBones(res.data[0].count)
+        })
+  }
 
   function getLanguages() {
     axios.get('api/all/languages')
@@ -100,13 +110,19 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   }
 
   function addComment(id) {
-    axios.post(`api/post/comment/${id}`, {comments}).then(() => {
+    axios.post(`/api/post/comment/${id}`, {comments}).then(() => {
       setComment("")
       toggleMakeComment()
     })
   }
 
-
+  function throwBone(id) {
+    const bones = 1
+    axios.post(`/api/post/bone/${id}`, {bones})
+    .then(() => {
+      getAllPosts()
+    })
+  }
 
     const languageList = allLanguages.map((e, index) => {
       return (
@@ -254,6 +270,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                         className="dog-bones-image"
                         src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fbone%20like%20button.png?v=1594853507429"
                         alt="bone"
+                        onClick={() => {throwBone(el.post_id)}}
                       />
                       <p className="dog-bones-number">{bones[index][0].count}</p> 
                     </div>
@@ -333,6 +350,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                         className="dog-bones-image"
                         src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fbone%20like%20button.png?v=1594853507429"
                         alt="bone"
+                        onClick={() => {throwBone(el.post_id)}}
                       />
                       <p className="dog-bones-number">{bones[index][0].count}</p> 
                     </div>
@@ -423,4 +441,4 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
 };
 
 const mapStateToProps = (reduxState) => reduxState;
-export default connect(mapStateToProps, { getPosts, getBones, getComments })(Home);
+export default connect(mapStateToProps, { getPosts, getBones, getComments, userBones })(Home);

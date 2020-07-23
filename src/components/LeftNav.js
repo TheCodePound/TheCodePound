@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Link, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {logoutUser, getUser} from '../ducks/userReducer'
+import {userBones} from '../ducks/bonesReducer'
 import axios from 'axios'
 import '../styles/App.scss'
 
@@ -14,6 +15,15 @@ function LeftNav(props) {
     const [profile_pic, setImage] = useState("")
     const [updateInfo, setUpdateInfo] = useState(true)
     const [new_email, setNewEmail] = useState("")
+    const pathname = props.location.pathname
+
+
+    useEffect(() => {
+      axios.get('/api/user/bones')
+        .then(res => {
+            userBones(res.data[0].count)
+        })
+      }, [props.userBones])
 
     function toggleUpdateInfo() {
         setUpdateInfo(!updateInfo)
@@ -24,7 +34,7 @@ function LeftNav(props) {
       axios.put(`/auth/update`, {email, password, full_name, new_email, new_password, profile_pic})  
     }
 
-    const pathname = props.location.pathname
+    
 
     if (pathname === '/' || pathname === '/Register') {
 
@@ -33,7 +43,7 @@ function LeftNav(props) {
     )
     }
 
-    else if (pathname === '/Profile') {
+    if (pathname === '/Profile') {
 
     //PROFILE SECTION OF APPLICATION  
     return (
@@ -51,7 +61,7 @@ function LeftNav(props) {
                         src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fbone%20like%20button.png?v=1594853507429"
                         alt="bone"
                     />
-                    <p className="dog-bones-number">127</p>
+                    <p className="dog-bones-number">{props.bones.bones}</p>
                 </div>
             </div>
             <h2 className="left-nav-username">{props.user.user.full_name}</h2>
@@ -137,8 +147,7 @@ function LeftNav(props) {
                     onClick={toggleUpdateInfo}>Cancel
                 </button>
             </div>
-        </div>
-        
+        </div>  
     )
     }
 
@@ -158,7 +167,7 @@ function LeftNav(props) {
                             src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fbone%20like%20button.png?v=1594853507429"
                             alt="bone"
                         />
-                        <p className="dog-bones-number">127</p>
+                        <p className="dog-bones-number">{props.bones.bones}</p>
                     </div>
                 </div>
                 <h2 className="left-nav-username">{props.user.user.full_name}</h2>
@@ -189,4 +198,4 @@ function LeftNav(props) {
 
 const mapStateToProps = reduxState => reduxState
 
-export default withRouter(connect(mapStateToProps, {logoutUser, getUser})(LeftNav))
+export default withRouter(connect(mapStateToProps, {logoutUser, getUser, userBones})(LeftNav))
