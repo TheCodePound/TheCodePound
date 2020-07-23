@@ -3,7 +3,6 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { getPosts, getBones, getComments } from "../ducks/postReducer";
 
-
 const Home = ({ postReducer, posts, getPosts, ...props }) => {
   const [loading, setLoading] = useState(true)
   const [title, setTitle] = useState("")
@@ -37,21 +36,25 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   }
 
   useEffect(() => {
-    axios
-      .get("/api/all/posts")
-      .then((res) => {
-
-        getPosts(res.data[0])
-        setBones(res.data[1])
-        setPostComments(res.data[2])
-        console.log('getcomments',res.data[2][0])
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => setLoading(false))
-      getLanguages()
+    getAllPosts()
+    getLanguages()
   }, [])
+
+  function getAllPosts() {
+    axios
+    .get("/api/all/posts")
+    .then((res) => {
+
+      getPosts(res.data[0])
+      setBones(res.data[1])
+      setPostComments(res.data[2])
+      console.log('getcomments',res.data[2][0])
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => setLoading(false))
+  }
 
   function getLanguages() {
     axios.get('api/all/languages')
@@ -95,9 +98,17 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
   }
 
   function addComment(id) {
-    axios.post(`api/post/comment/${id}`, {comments}).then(() => {
+    axios.post(`/api/post/comment/${id}`, {comments}).then(() => {
       setComment("")
       toggleMakeComment()
+    })
+  }
+
+  function throwBone(id) {
+    const bones = 1
+    axios.post(`/api/post/bone/${id}`, {bones})
+    .then(() => {
+      getAllPosts()
     })
   }
 
@@ -246,6 +257,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                         className="dog-bones-image"
                         src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fbone%20like%20button.png?v=1594853507429"
                         alt="bone"
+                        onClick={() => {throwBone(el.post_id)}}
                       />
                       <p className="dog-bones-number">{bones[index][0].count}</p> 
                     </div>
@@ -325,6 +337,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
                         className="dog-bones-image"
                         src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fbone%20like%20button.png?v=1594853507429"
                         alt="bone"
+                        onClick={() => {throwBone(el.post_id)}}
                       />
                       <p className="dog-bones-number">{bones[index][0].count}</p> 
                     </div>
