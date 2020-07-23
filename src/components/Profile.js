@@ -70,11 +70,11 @@ const Profile = ({ postReducer, posts, getPosts, ...props }) => {
                         onClick={() => props.history.push(`/Popup/${el.post_id}`)}>
                         <div className="post-details">
                           <h1 className="post-details-title">{el.title}</h1>
-                          <p>{el.content}</p>
                           <img 
                             className="post-image"
                             src={el.img} alt="post img" 
                           />
+                          <p className="post-details-description">{el.content}</p>
                         </div>
                       </div>
                       <div className="post-user-interaction-container">
@@ -148,11 +148,11 @@ const Profile = ({ postReducer, posts, getPosts, ...props }) => {
                       onClick={() => props.history.push(`/Popup/${el.post_id}`)}>
                       <div className="post-details">
                         <h1 className="post-details-title">{el.title}</h1>
-                        <p>{el.content}</p>
                         <img 
                           className="post-image"
                           src={el.img} alt="post img" 
                         />
+                        <p className="post-details-description">{el.content}</p>
                       </div>
                     </div>
                     <div className="post-user-interaction-container">
