@@ -7,11 +7,15 @@ module.exports = {
     const { user_id } = req.session.user
     const { title, content } = req.body
 
-    const newPost = await db.add_post({ user_id, title, content })
-    const user_junction_id = req.session.user.user_id
-    const post_junction_id = newPost[0].post_id
-    await db.get_post_id_in_junction([user_junction_id, post_junction_id])
-    res.status(200).send(newPost)
+    try{
+      const newPost = await db.add_post({ user_id, title, content })
+      const user_junction_id = req.session.user.user_id
+      const post_junction_id = newPost[0].post_id
+      await db.get_post_id_in_junction([user_junction_id, post_junction_id])
+      res.status(200).send(newPost)
+    } catch {
+      res.status(500).send('could not create post')
+    }
   },
 
   allInOnePost: async (req, res) => {
@@ -21,21 +25,23 @@ module.exports = {
     const post_date = d.slice(0,15)
     const { title, content, img, languages, languages_img } = req.body
 
-    const newPost = await db.add_post({ user_id, title, content, post_date })
-    const user_junction_id = req.session.user.user_id
-    const post_junction_id = newPost[0].post_id
-    await db.get_post_id_in_junction([user_junction_id, post_junction_id])
-    // note start of img
-    const user_img_id = req.session.user.user_id
-    const post_img_id  = newPost[0].post_id
 
-    const [newImg] = await db.new_img({ user_img_id, post_img_id, img })
-    // start of languages
-    const user_languages_id = req.session.user.user_id
-    const post_languages_id = newPost[0].post_id
+      const newPost = await db.add_post({ user_id, title, content, post_date })
+      const user_junction_id = req.session.user.user_id
+      const post_junction_id = newPost[0].post_id
+      await db.get_post_id_in_junction([user_junction_id, post_junction_id])
+      // note start of img
+      const user_img_id = req.session.user.user_id
+      const post_img_id  = newPost[0].post_id
+  
+      const [newImg] = await db.new_img({ user_img_id, post_img_id, img })
+      // start of languages
+      const user_languages_id = req.session.user.user_id
+      const post_languages_id = newPost[0].post_id
+  
+      const newLanguage = await db.new_language({user_languages_id, post_languages_id, languages, languages_img})
+      res.status(200).send(newPost, [newImg], newLanguage)
 
-    const newLanguage = await db.new_language({user_languages_id, post_languages_id, languages, languages_img})
-    res.status(200).send(newPost, [newImg], newLanguage)
   },
   
   createPostImg: async (req, res) => {
@@ -99,17 +105,26 @@ module.exports = {
   sumUserBones: async (req, res) => {
     const db = req.app.get('db')
     const {user_id} = req.session.user
-  
-    const sumMyBones = await db.sum_user_bones(user_id)
-    res.status(200).send(sumMyBones)
+    
+    try {
+
+      const sumMyBones = await db.sum_user_bones(user_id)
+      res.status(200).send(sumMyBones)
+    } catch (err) {
+      res.status(404).send('could not sum bones', err)
+    }
   },
 
   sumPostBones: async (req, res) => {
     const db = req.app.get('db')
     const {post_bones_id} = req.params
   
-    const sumPostBones = await db.sum_post_bones(post_bones_id)
-    res.status(200).send(sumPostBones)
+    try {
+      const sumPostBones = await db.sum_post_bones(post_bones_id)
+      res.status(200).send(sumPostBones)
+    } catch (err) {
+      res.status(500).send('could not give a bone', err)
+    }
   },
 
   getAllPosts: async (req, res) => {
@@ -121,9 +136,6 @@ module.exports = {
         const postIdMap = async() => Promise.all( allPosts.map(async (e) => {
         const post_id =  e.post_id
         const getAllComments = await db.get_all_comments(post_id)
-       
-        // console.log('get all comments', getAllComments, getAllBones)
-        // console.log('bones', getAllBones)
         return getAllComments;
       }))
 
@@ -134,8 +146,7 @@ module.exports = {
       }))
      const comments = await postIdMap() 
      const bones = await postForBonesMap() 
-    //  console.log('comments', comments)
-    //  console.log('bones', bones)
+
      res.status(200).send( [allPosts, bones, comments]) 
 
   },
@@ -144,29 +155,34 @@ module.exports = {
     const db = req.app.get("db")
     const { user_id } = req.session.user
 
-    const userPosts = await db.get_all_user_posts([user_id])
-    const commentMap = async() => Promise.all( userPosts.map(async (e) => {
-      const post_id =  e.post_id
-      const getAllComments = await db.get_all_comments(post_id)
-     
-      console.log('get all comments', getAllComments)
-      return getAllComments;
-    }))
-    const bonesMap = async() => Promise.all(userPosts.map(async (e) => {
-      const post_bones_id = e.post_id
-      const getAllBones = await db.sum_post_bones(post_bones_id)
-      return getAllBones
-    }))
+    try {
+      const userPosts = await db.get_all_user_posts([user_id])
+      const commentMap = async() => Promise.all( userPosts.map(async (e) => {
+        const post_id =  e.post_id
+        const getAllComments = await db.get_all_comments(post_id)
+       
+        // console.log('get all comments', getAllComments)
+        return getAllComments;
+      }))
+      const bonesMap = async() => Promise.all(userPosts.map(async (e) => {
+        const post_bones_id = e.post_id
+        const getAllBones = await db.sum_post_bones(post_bones_id)
+        return getAllBones
+      }))
+  
+  
+      const comments = await commentMap() 
+      const bones = await bonesMap() 
+  
+      res.status(200).send([userPosts, bones, comments]) 
+    } catch {
+      res.status(404).send('could not get posts')
+    }
 
-
-    const comments = await commentMap() 
-    const bones = await bonesMap() 
-
-    res.status(200).send([userPosts, bones, comments]) 
   },
 
   getPostById: async (req, res) => {
-    console.log(req.params)
+    // console.log(req.params)
     const db = req.app.get("db")
     const { post_id } = req.params
 
@@ -175,7 +191,7 @@ module.exports = {
       const post_id =  e.post_id
       const getAllComments = await db.get_all_comments(post_id)
      
-      console.log('get all comments', getAllComments)
+      // console.log('get all comments', getAllComments)
       return getAllComments;
     }))
     const bonesMap = async() => Promise.all(onePostById.map(async (e) => {

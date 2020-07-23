@@ -45,7 +45,7 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
     getAllPosts()
     getLanguages()
     getUserBones()
-  }, [props.userBones, getAllPosts])
+  }, [props.userBones])
 
   function getAllPosts() {
     axios

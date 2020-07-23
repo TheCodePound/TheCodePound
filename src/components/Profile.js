@@ -46,7 +46,8 @@ const Profile = ({ postReducer, posts, getPosts, ...props }) => {
             if (props.filter.filter) {
               if (el.languages.toLowerCase().includes(props.filter.filter.toLowerCase())) {
                 return (
-                  <div className="posts-home-container-main">
+                  
+                  <div key={index} className="posts-home-container-main">
                   <div>
                     <div className="posts-info-container">
                       <div className="posts-user-info">
