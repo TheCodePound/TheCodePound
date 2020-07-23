@@ -4,12 +4,16 @@ const express = require('express'),
       massive = require('massive'),
       authCtrl = require('./controllers/authController'),
       postCtrl = require('./controllers/postsController'),
+      path = require('path'),
       // setup = require('./controllers/setup'),
       {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env,
       app = express();
 
 
 app.use(express.static(`${__dirname}/../build`)); // note need this to do yarn run build for digitalOcean
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
 
 app.use(express.json())
 app.use(
