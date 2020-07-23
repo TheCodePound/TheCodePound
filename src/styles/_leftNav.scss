@@ -53,6 +53,11 @@
 
             }
     }
+    .pound-profile-pic-placeholder{
+        width: 150px;
+        height:150px;
+        border-radius: 180px;
+    }
 
     .left-nav-username {
         font-weight: bolder;
@@ -147,12 +152,12 @@
         top: 5px;
         left: 10px;
         padding-right: 500px;
-    
-        .left-nav-div {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
+
+.left-nav-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     
                 .profile-img-left-nav {
                     width: 150px;
@@ -169,8 +174,13 @@
                 // }
 
 
-            }
+}
          }
+.pound-profile-pic-placeholder{
+    width: 150px;
+    height:150px;
+    border-radius: 180px;
+}
 
          .left-nav-text {
             color: $red;

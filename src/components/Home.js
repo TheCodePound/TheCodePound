@@ -150,11 +150,23 @@ const Home = ({ postReducer, posts, getPosts, ...props }) => {
           alt=''
         />
         <div className="pound-text-details">
-          <img
-            className="pound-profile-pic"
-            src={props.user.user.profile_pic}
-            alt="profile"
-          />
+          {props.user.user.profile_pic != null ? (
+          <div>
+            <img
+              className="pound-profile-pic"
+              src={props.user.user.profile_pic}
+              alt="profile"
+            />
+          </div>
+          ) :           
+          <div>
+            <img
+              className="pound-profile-pic"
+              src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/403a546f-55d9-4bac-b978-518e26cae689/d1bmcrw-53d4ebd5-deb2-461b-8cf1-6765eddd972f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvNDAzYTU0NmYtNTVkOS00YmFjLWI5NzgtNTE4ZTI2Y2FlNjg5XC9kMWJtY3J3LTUzZDRlYmQ1LWRlYjItNDYxYi04Y2YxLTY3NjVlZGRkOTcyZi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.APvnhZsX79G_qVrRnfSAUwKjd5D-DbBlXHN-n_r59AY"
+              alt="profile"
+            />
+          </div>
+           }
           <div className="inputscontainer">
             <input
               className='pound-title-input'

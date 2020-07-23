@@ -132,7 +132,6 @@ module.exports = {
 
     
       const allPosts = await db.get_all_post()
-      // console.log(' all posts', allPosts)
         const postIdMap = async() => Promise.all( allPosts.map(async (e) => {
         const post_id =  e.post_id
         const getAllComments = await db.get_all_comments(post_id)
@@ -161,7 +160,6 @@ module.exports = {
         const post_id =  e.post_id
         const getAllComments = await db.get_all_comments(post_id)
        
-        // console.log('get all comments', getAllComments)
         return getAllComments;
       }))
       const bonesMap = async() => Promise.all(userPosts.map(async (e) => {
@@ -182,7 +180,6 @@ module.exports = {
   },
 
   getPostById: async (req, res) => {
-    // console.log(req.params)
     const db = req.app.get("db")
     const { post_id } = req.params
 
@@ -190,8 +187,6 @@ module.exports = {
     const commentMap = async() => Promise.all( onePostById.map(async (e) => {
       const post_id =  e.post_id
       const getAllComments = await db.get_all_comments(post_id)
-     
-      // console.log('get all comments', getAllComments)
       return getAllComments;
     }))
     const bonesMap = async() => Promise.all(onePostById.map(async (e) => {

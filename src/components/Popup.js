@@ -35,7 +35,7 @@ const Popup = (props) => {
       axios
         .get(`/api/one/post/${props.match.params.post_id}`)
         .then((res) => {
-          console.log("brent stinks", res.data[0][0]);
+          // console.log("brent stinks", res.data[0][0]);
           setPost(res.data[0]);
           setTitle(res.data[0][0].title);
           setImg(res.data[0][0].img);
@@ -45,7 +45,6 @@ const Popup = (props) => {
           setFullName(res.data[0][0].full_name);
           setUserId(res.data[0][0].user_id);
           setBones(res.data[1][0][0].count)
-          console.log('bones',res.data[1][0][0].count)
         })
         .catch((err) => {
           console.log(err);
