@@ -16,7 +16,7 @@ function Register(props) {
       alert("passwords do not match")
     } else {
       axios
-        .post("/auth/register", { fullname, email, password })
+        .post("/auth/register", { full_name, email, password })
         .then((res) => {
           props.registerUser(res.data)
           props.history.push("/Home")
