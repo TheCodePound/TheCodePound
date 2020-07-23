@@ -15,6 +15,7 @@ const Popup = (props) => {
   const [full_name, setFullName] = useState("");
   const [profile_pic, setProfilePic] = useState("");
   const [user_id, setUserId] = useState(null);
+  const [bones, setBones] = useState([]);
 
   function toggleMakeComment() {
     setMakeComment(!makeComment);
@@ -43,6 +44,8 @@ const Popup = (props) => {
           setProfilePic(res.data[0][0].profile_pic);
           setFullName(res.data[0][0].full_name);
           setUserId(res.data[0][0].user_id);
+          setBones(res.data[1][0][0].count)
+          console.log('bones',res.data[1][0][0].count)
         })
         .catch((err) => {
           console.log(err);
@@ -185,7 +188,8 @@ const Popup = (props) => {
                   src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fbone%20like%20button.png?v=1594853507429"
                   alt="bone"
                 />
-                <p className="edit-dog-bones-number">{props.bones}</p>
+                <p className="edit-dog-bones-number">{bones}</p>
+                
               </div>
               <button
                 className="edit-comment-btn"
