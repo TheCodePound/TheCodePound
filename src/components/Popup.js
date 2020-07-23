@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
+import {userBones} from '../ducks/bonesReducer'
 
 const Popup = (props) => {
   const [loading, setLoading] = useState(true);
@@ -31,31 +32,38 @@ const Popup = (props) => {
   }
 
   useEffect(() => {
-    function selectedPost() {
-      axios
-        .get(`/api/one/post/${props.match.params.post_id}`)
-        .then((res) => {
-          console.log("brent stinks", res.data[0][0]);
-          setPost(res.data[0]);
-          setTitle(res.data[0][0].title);
-          setImg(res.data[0][0].img);
-          setContent(res.data[0][0].content);
-          setLanguageImg(res.data[0][0].languages_img);
-          setProfilePic(res.data[0][0].profile_pic);
-          setFullName(res.data[0][0].full_name);
-          setUserId(res.data[0][0].user_id);
-          setBones(res.data[1][0][0].count)
-          console.log('bones',res.data[1][0][0].count)
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    }
     selectedPost();
+    getUserBones()
   }, [props.match.params.post_id]);
+
+  function selectedPost() {
+    axios
+      .get(`/api/one/post/${props.match.params.post_id}`)
+      .then((res) => {
+        setPost(res.data[0]);
+        setTitle(res.data[0][0].title);
+        setImg(res.data[0][0].img);
+        setContent(res.data[0][0].content);
+        setLanguageImg(res.data[0][0].languages_img);
+        setProfilePic(res.data[0][0].profile_pic);
+        setFullName(res.data[0][0].full_name);
+        setUserId(res.data[0][0].user_id);
+        setBones(res.data[1][0][0].count)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }
+
+  function getUserBones() {
+    axios.get('/api/user/bones')
+        .then(res => {
+            props.userBones(res.data[0].count)
+        })
+  }
 
   function deletePost() {
     axios
@@ -66,6 +74,14 @@ const Popup = (props) => {
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  function throwBone(id) {
+    const bones = 1
+    axios.post(`/api/post/bone/${id}`, {bones})
+    .then(() => {
+      selectedPost()
+    })
   }
 
   function submitHandler() {
@@ -187,9 +203,9 @@ const Popup = (props) => {
                   className="edit-dog-bones-image"
                   src="https://cdn.glitch.com/875fcc3a-ee91-4d48-806c-d5b121d9c21c%2Fbone%20like%20button.png?v=1594853507429"
                   alt="bone"
+                  onClick={() => {throwBone(props.match.params.post_id)}}
                 />
                 <p className="edit-dog-bones-number">{bones}</p>
-                
               </div>
               <button
                 className="edit-comment-btn"
@@ -256,4 +272,4 @@ const Popup = (props) => {
 };
 
 const mapStateToProps = (reduxState) => reduxState;
-export default connect(mapStateToProps)(Popup);
+export default connect(mapStateToProps, {userBones})(Popup);

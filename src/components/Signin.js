@@ -8,7 +8,7 @@ import { connect } from "react-redux"
 function Register(props) {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [fullname, setFullname] = useState("")
+  const [full_name, setFullname] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
 
   function register() {
@@ -16,7 +16,7 @@ function Register(props) {
       alert("passwords do not match")
     } else {
       axios
-        .post("/auth/register", { fullname, email, password })
+        .post("/auth/register", { full_name, email, password })
         .then((res) => {
           props.registerUser(res.data)
           props.history.push("/Home")
@@ -54,7 +54,7 @@ function Register(props) {
                 className='signin-bone-fields'
                 placeholder='Full Name'
                 type='text'
-                value={fullname}
+                value={full_name}
                 onChange={(e) => setFullname(e.target.value)}
               />
               <input
